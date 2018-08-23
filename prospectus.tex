@@ -1,11 +1,17 @@
 \documentclass[11pt, a4paper]{article}
 \usepackage[a4paper, margin=1in]{geometry}
 
-\usepackage{fontspec} 
-\setmainfont{Roboto}
+\usepackage{fontspec}
+\setmainfont{Roboto-Regular}[
+    Path=fonts/,
+    BoldFont=Roboto-Bold,
+    ItalicFont=Roboto-Italic,
+    BoldItalicFont=Roboto-BoldItalic
+]
 
-\usepackage[style=nature]{biblatex}
-\addbibresource{prospectus.bib}
+% \usepackage[style=nature]{biblatex}
+\usepackage[]{cite}
+% \addbibresource{prospectus.bib}
 
 \usepackage{enumitem}
 
@@ -37,7 +43,7 @@ N.B. The work described in this section is currently in the review process. A pr
 
 The transcriptional landscape of the eukaryotic genome is complex, consisting of many classes of coding and non-coding transcripts which are often interleaved with one another \cite{jensen2013, pelechano2017}. All of these transcripts are regulated at the stage of transcription initiation, meaning that how a cell defines and regulates sites of initiation is fundamental to gene expression.
 
-Past genetic studies in yeast produced the unexpected finding that the specificity of transcription initiation may be controlled in part by transcription \textit{elongation} factors, including histone chaperones and histone modification enzymes \cite{kaplan2003, cheung2008, hennig2013}. Therefore, transcription and co-transcriptional processes influence which sites in the genome are permitted to become sites of transcription initiation. 
+Past genetic studies in yeast produced the unexpected finding that the specificity of transcription initiation may be controlled in part by transcription \textit{elongation} factors, including histone chaperones and histone modification enzymes \cite{kaplan2003, cheung2008, hennig2013}. Therefore, transcription and co-transcriptional processes influence which sites in the genome are permitted to become sites of transcription initiation.
 
 One of the transcription elongation factors most important for the specificity of initiation sites is \textbf{Spt6}, which:
 \begin{itemize}[nosep]
@@ -67,10 +73,10 @@ One of the transcription elongation factors most important for the specificity o
 
 Studies in the yeasts \textit{S. cerevisiae} and \textit{S. pombe} have shown that Spt6 controls transcription genome-wide \cite{cheung2008, degennaro2013, kaplan2003, pathak2018, uwimana2017, vanbakel2013}. In \textit{spt6} mutants, transcription changes dramatically, with altered sense transcription and increased levels of transcription antisense to genes. Notably, in \textit{spt6} mutants there is widespread upregulation of cryptic or \textbf{intragenic transcription} appearing to initiate from within protein-coding genes \cite{cheung2008, degennaro2013, kaplan2003, uwimana2017}.
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/spt6_2018_figure1C-TSS-seq-diffexp-summary.pdf}
-\end{figure}
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.8\textwidth]{figures/spt6_2018_figure1C-TSS-seq-diffexp-summary.pdf}
+% \end{figure}
 
 In this project, we address issues relating to intragenic transcription and its regulation by Spt6 in \textit{Saccharomyces cerevisiae}. Previous studies of transcript levels in \textit{S. cerevisiae spt6} mutants used Northern blots \cite{kaplan2003}, tiled microarrays \cite{cheung2008}, and RNA-sequencing \cite{uwimana2017}. Because these techniques measure steady-state RNA levels, they are unable to distinguish whether intragenic transcripts are the result of new initation, or the result of changes in RNA processing or decay. Microarrays and RNA-seq are also unable to detect intragenic transcripts from highly transcribed genes, because the signal from any intragenic transcript is convoluted with the signal from the overlapping `genic' transcript \cite{cheung2008, lickwar2009}.
 
@@ -84,5 +90,7 @@ In this project, we address issues relating to intragenic transcription and its 
 
 Lorem ipsum.
 
-\printbibliography
+% \printbibliography
+\bibliography{prospectus}{}
+\bibliographystyle{plain}
 \end{document}
