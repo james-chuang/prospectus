@@ -1,5 +1,5 @@
 
-main = function(theme_spec, heatmap_scripts,
+main = function(theme_spec, heatmap_scripts, annotation,
                 sense_tss_data, antisense_tss_data,
                 fig_width, fig_height, pdf_out){
     source(theme_spec)
@@ -9,7 +9,7 @@ main = function(theme_spec, heatmap_scripts,
     cps_dist = 0.3
     max_length = 3
     add_ylabel = TRUE
-    cutoff_pct = 0.95
+    cutoff_pct = 0.93
 
     sense_heatmap = plot_heatmap(data_path = sense_tss_data,
                                  sample_list = sample_list,
@@ -36,6 +36,7 @@ main = function(theme_spec, heatmap_scripts,
 
 main(theme_spec = snakemake@input[["theme"]],
      heatmap_scripts = snakemake@input[["heatmap_scripts"]],
+     annotation = snakemake@input[["annotation"]],
      sense_tss_data = snakemake@input[["tss_sense"]],
      antisense_tss_data = snakemake@input[["tss_antisense"]],
      fig_width = snakemake@params[["width"]],

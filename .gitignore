@@ -2,3 +2,5 @@ prospectus*
 !prospectus.bib
 !prospectus.tex
 .snakemake/
+Rplots.pdf
+figures/

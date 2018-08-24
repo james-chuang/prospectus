@@ -11,6 +11,7 @@ rule figure_two:
     input:
         theme = config["theme_spec"],
         heatmap_scripts = "scripts/plot_heatmap.R",
+        annotation = config["figure_two"]["annotation"],
         tss_sense = config["figure_two"]["tss_sense"],
         tss_antisense = config["figure_two"]["tss_antisense"]
     output:
@@ -24,12 +25,13 @@ rule figure_two:
 
 rule compile_document:
     input:
-        "prospectus.tex"
+        "figures/figure_two_tss-seq-heatmaps.pdf",
+        tex = "prospectus.tex"
     output:
         "prospectus.pdf"
     conda: "envs/latex.yaml"
     shell: """
-        tectonic {input}
+        tectonic {input.tex}
         """
 
 
