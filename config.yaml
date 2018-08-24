@@ -1,0 +1,7 @@
+theme_spec: scripts/spt6_2018_theme_specification.R
+
+figure_two:
+    tss_sense: ../../intragenic/tss-seq/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/spikenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tss-seq-spikenorm-SENSE.tsv.gz
+    tss_antisense: ../../intragenic/tss-seq/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/spikenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tss-seq-spikenorm-ANTISENSE.tsv.gz
+    height: 10
+    width: 17.4

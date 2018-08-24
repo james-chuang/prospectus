@@ -1,3 +1,4 @@
 prospectus*
 !prospectus.bib
 !prospectus.tex
+.snakemake/
