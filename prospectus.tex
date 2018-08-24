@@ -19,6 +19,8 @@
 
 \usepackage{hyperref}
 
+\usepackage{textcomp}
+
 \begin{document}
 
 \begin{titlepage}
@@ -35,31 +37,28 @@
 
 \tableofcontents
 
-\section{genomic approaches to studying the transcription elongation factor Spt6}
+\section{analysis of genomics data relating to the transcription elongation factor Spt6}
 
-N.B. The work described in this section is currently in the review process. A preprint can be found at \url{https://www.biorxiv.org/content/early/2018/06/15/347575)} \cite{doris2018}.
+N.B. The work described in this section is currently in the review process. A preprint can be found at \url{https://doi.org/10.1101/347575} \cite{doris2018}.
 
-\subsection{introduction}
+\subsection{introduction to Spt6, intragenic transcription, and assays used to study the two}
 
-The transcriptional landscape of the eukaryotic genome is complex, consisting of many classes of coding and non-coding transcripts which are often interleaved with one another \cite{jensen2013, pelechano2017}. All of these transcripts are regulated at the stage of transcription initiation, meaning that how a cell defines and regulates sites of initiation is fundamental to gene expression.
+The aim of the work described in this section is related to understanding how a eukaryotic cell specifies which sites in its genome are permitted to become sites of transcription initiation. From past genetic studies in yeast, it is known that some of the factors involved in controlling the specificity of transcription initiation are actually transcription \textit{elongation} factors, including histone chaperones and histone modification enzymes \cite{kaplan2003, cheung2008, hennig2013}. My collaborators on this project are interested in the role of the transcription elongation factor \textbf{Spt6} in this process.
 
-Past genetic studies in yeast produced the unexpected finding that the specificity of transcription initiation may be controlled in part by transcription \textit{elongation} factors, including histone chaperones and histone modification enzymes \cite{kaplan2003, cheung2008, hennig2013}. Therefore, transcription and co-transcriptional processes influence which sites in the genome are permitted to become sites of transcription initiation.
-
-One of the transcription elongation factors most important for the specificity of initiation sites is \textbf{Spt6}, which:
-\begin{itemize}[nosep]
-\item interacts directly with:
+\begin{itemize}[nosep, topsep=.5em]
+\item Spt6 interacts directly with:
 	\begin{itemize}[nosep]
 	\item RNA polymerase II (RNAPII) \cite{close2011, diebold2011, liu2011, sdano2017, sun2010, yoh2007}
 	\item histones \cite{bortvin1996, mccullough2015}
 	\item the essential factor Spn1 (IWS1) \cite{diebold2010b, li2018, mcdonald2010}
 	\end{itemize}
-\item is believed to function primarily as an elongation factor based on:
+\item Spt6 is believed to function primarily as an elongation factor based on:
 	\begin{itemize}[nosep]
 	\item association with elongating RNAPII \cite{andrulis2000, ivanovska2011, kaplan2000, mayer2010}
 	\item ability to enhance elongation in vitro \cite{endoh2004} and in vivo \cite{ardehali2009}
 	\end{itemize}
-\item has been shown to regulate initiation in some cases \cite{adkins2006, ivanovska2011}
-\item regulates:
+\item Spt6 has been shown to regulate initiation in some cases \cite{adkins2006, ivanovska2011}
+\item Spt6 regulates:
 	\begin{itemize}[nosep]
 	\item chromatin structure \cite{bortvin1996, degennaro2013, ivanovska2011, jeronimo2015, kaplan2003, perales2013, vanbakel2013}
 	\item histone modifications, including:
@@ -68,17 +67,28 @@ One of the transcription elongation factors most important for the specificity o
 		\item in some organisms, H3K4 and H3K27 methylation \cite{begum2012, chen2012, degennaro2013, wang2017, wang2013}
 		\end{itemize}
 	\end{itemize}
-\item is likely to be a histone chaperone required to reassemble nucleosomes in the wake of transcription \cite{duina2011}
+\item Spt6 is likely to be a histone chaperone required to reassemble nucleosomes in the wake of transcription \cite{duina2011}.
 \end{itemize}
 
-Studies in the yeasts \textit{S. cerevisiae} and \textit{S. pombe} have shown that Spt6 controls transcription genome-wide \cite{cheung2008, degennaro2013, kaplan2003, pathak2018, uwimana2017, vanbakel2013}. In \textit{spt6} mutants, transcription changes dramatically, with altered sense transcription and increased levels of transcription antisense to genes. Notably, in \textit{spt6} mutants there is widespread upregulation of cryptic or \textbf{intragenic transcription} appearing to initiate from within protein-coding genes \cite{cheung2008, degennaro2013, kaplan2003, uwimana2017}.
+Previous studies in the yeasts \textit{S. cerevisiae} and \textit{S. pombe} have examined the requirement for Spt6 in normal transcription \cite{cheung2008, degennaro2013, kaplan2003, pathak2018, uwimana2017, vanbakel2013}. Many of these studies make use of the same temperature-sensitive \textit{S. cerevisiae} \textit{spt6} mutant used in this project, \textbf{\textit{spt6-1004}}, in which Spt6 protein is depleted at the non-permissive temperature of 37\textdegree C. The most notable phenotype of the \textit{spt6-1004} mutant is the appearance of \textbf{intragenic transcripts}, transcripts which appear to initiate from within protein-coding genes, both in same orientation and in the antisense orientation relative to the coding gene \cite{cheung2008, degennaro2013, kaplan2003, uwimana2017}.
+
+Previous genome-wide measurements of transcript levels in \textit{spt6-1004} were made using tiled microarrays \cite{cheung2008} and RNA sequencing \cite{uwimana2017}. These methods measure steady-state RNA levels, making them unable to determine whether the intragenic transcripts observed in \textit{spt6-1004} are the result of: A) new intragenic transcription initiation in the mutant, B) reduced decay of an intragenic transcript normally turned over rapidly in wild-type, or C) RNA processing of the full-length protein-coding RNA. Additionally, these methods are suboptimal for identifying where intragenic transcription occurs, since the signal for an intragenic transcript in the same orientation as the gene it overlaps is convoluted with the signal from the full-length `genic' transcript \cite{cheung2008, lickwar2009}.
+
+To overcome these issues, one of my collaborators applied two genomic assays to study transcription in \textit{spt6-1004}: transcription start-site sequencing (TSS-seq), and ChIP-nexus of TFIIB, a component of the RNA polymerase II (RNAPII) pre-initiation complex (PIC). The TSS-seq technique used sequences the 5' end of capped and polyadenylated RNAs, allowing us to separate intragenic from genic RNA signals and identify the locations of intragenic transcripts with single-nucleotide resolution. The ChIP-nexus technique used is a high-resolution chromatin immunoprecipitation technique in which the ChIPed DNA is exonuclease digested up to the bases crosslinked with the factor of interest before sequencing. When applied to the PIC component TFIIB, ChIP-nexus allows us to test if intragenic transcripts actually result from new intragenic transcription initiation.
+
+\subsection{pipeline development for TSS-seq and ChIP-nexus}
+
+In order to analyze TSS-seq and ChIP-nexus data and answer questions about Spt6 and intragenic transcription, I developed analysis pipelines for TSS-seq and ChIP-nexus data. The pipelines are written using the Python-based Snakemake workflow specification language, and carry out steps including read cleaning, various quality controls, read alignment, data normalization, coverage track generation, peak calling, differential expression/binding analyses, data visualization, motif enrichment analyses, and gene ontology analyses. Importantly, the Snakemake framework allows data analyses using these pipelines to be reproducible and scalable from workstations up to computing clusters. Up-to-date versions of these pipelines with more details on their capabilities are available at \href{https://github.com/winston-lab}{github.com/winston-lab}. In the following subsections I will only describe the thought behind a few of the more novel pipeline steps before moving on to results relating to Spt6 and intragenic transcription.
+
+\subsubsection{TSS-seq peak calling}
+
+\subsubsection{ChIP-nexus peak calling}
 
 % \begin{figure}[h]
 % \centering
 % \includegraphics[width=0.8\textwidth]{figures/spt6_2018_figure1C-TSS-seq-diffexp-summary.pdf}
 % \end{figure}
 
-In this project, we address issues relating to intragenic transcription and its regulation by Spt6 in \textit{Saccharomyces cerevisiae}. Previous studies of transcript levels in \textit{S. cerevisiae spt6} mutants used Northern blots \cite{kaplan2003}, tiled microarrays \cite{cheung2008}, and RNA-sequencing \cite{uwimana2017}. Because these techniques measure steady-state RNA levels, they are unable to distinguish whether intragenic transcripts are the result of new initation, or the result of changes in RNA processing or decay. Microarrays and RNA-seq are also unable to detect intragenic transcripts from highly transcribed genes, because the signal from any intragenic transcript is convoluted with the signal from the overlapping `genic' transcript \cite{cheung2008, lickwar2009}.
 
 \subsection{results}
 \subsection{discussion}
@@ -87,6 +97,8 @@ In this project, we address issues relating to intragenic transcription and its 
 \subsection{introduction}
 \subsection{results}
 \subsection{discussion}
+
+\section{Spt5 does things}
 
 Lorem ipsum.
 
