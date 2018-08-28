@@ -40,3 +40,10 @@ figure_six:
     height: 6
     width: 7
 
+figure_seven:
+    genic: ../../intragenic/tss-v-tfiib-nexus/diff_binding/spt6-1004-37C-v-WT-37C-tfiib-window-results-genic.tsv
+    intragenic: ../../intragenic/tss-v-tfiib-nexus/diff_binding/spt6-1004-37C-v-WT-37C-tfiib-window-results-intragenic.tsv
+    antisense: ../../intragenic/tss-v-tfiib-nexus/diff_binding/spt6-1004-37C-v-WT-37C-tfiib-window-results-antisense.tsv
+    width: 17.4
+    height: 4.5
+

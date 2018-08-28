@@ -118,22 +118,34 @@ ChIP-seq peaks do not have strand information, as DNA binding factors usually do
 \label{fig:tss_heatmaps}
 \end{figure}
 
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=8.7cm]{figures/figure_four_tfiib-heatmaps.pdf}
 \caption{Heatmaps of TFIIB binding measured by ChIP-nexus, over the same regions shown in Figure \ref{fig:tss_heatmaps}. Values are the mean of library-size normalized coverage in 20 basepair windows, averaged over two replicates. Values above the 85th percentile are set to the 85th percentile for visualization.}
+\label{fig:tfiib_heatmaps}
 \end{figure}
+
+To assay transcription start sites and transcription initiation in \textit{spt6-1004}, one of my collaborators performed TSS-seq and ChIP-nexus of TFIIB. In wild-type cells, TSS-seq and TFIIB ChIP-nexus signal has the expected distribution over the genome, with most TSS-seq signal at annotated genic TSSs and most TFIIB signal just upstream (Figures \ref{fig:tss_heatmaps}, \ref{fig:tfiib_heatmaps}). In \textit{spt6-1004}, the signal for both assays infiltrates gene bodies, consistent with a role for intragenic initiation in the intragenic transcription phenotype. In particular, sense strand TSS-seq signal in \textit{spt6-1004} tends to occur towards the 3' end of genes, while antisense strand TSS-seq signal tends to occur towards the 5' ends of genes.
+
+The TSS-seq data were quantified by peak calling and differential expression analysis, and classified into genomic categories based on their position relative to coding genes (Figure \ref{fig:tss_diffexp_summary}). The results from this analysis support the pattern observed in the heatmap visualization (Figure \ref{fig:tss_heatmaps}), with most genic TSSs downregulated and almost 8000 TSSs upregulated intragenic or antisense to genes. The overall effect of this on expression levels is to equalize expression levels between the different classes of transcripts (Figure \ref{fig:tss_expression_levels}).
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=8cm]{figures/figure_five_tss-diffexp-summary.pdf}
 \caption{asdf}
+\label{fig:tss_diffexp_summary}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=7cm]{figures/figure_six_tss-expression-levels.pdf}
+\caption{asdf}
+\label{fig:tss_expression_levels}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=17.4cm]{figures/figure_seven_tss-v-tfiib.pdf}
 \caption{asdf}
 \end{figure}
 

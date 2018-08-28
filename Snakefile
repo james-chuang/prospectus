@@ -10,7 +10,26 @@ rule all:
         "figures/figure_four_tfiib-heatmaps.pdf",
         "figures/figure_five_tss-diffexp-summary.pdf",
         "figures/figure_six_tss-expression-levels.pdf",
+        "figures/figure_seven_tss-v-tfiib.pdf",
         "prospectus.pdf"
+
+rule compile_document:
+    input:
+        "figures/figure_one_tss-seq-coverage.pdf",
+        "figures/figure_two_tss-seq-heatmaps.pdf",
+        "figures/figure_three_tfiib-nexus-tata.pdf",
+        "figures/figure_four_tfiib-heatmaps.pdf",
+        "figures/figure_five_tss-diffexp-summary.pdf",
+        "figures/figure_six_tss-expression-levels.pdf",
+        "figures/figure_seven_tss-v-tfiib.pdf",
+        tex = "prospectus.tex"
+    output:
+        "prospectus.pdf"
+    conda: "envs/latex.yaml"
+    shell: """
+        tectonic {input.tex}
+        """
+
 
 rule figure_one:
     input:
@@ -106,22 +125,19 @@ rule figure_six:
     script:
         "scripts/figure_six_tss-expression-levels.R"
 
-rule compile_document:
+rule figure_seven:
     input:
-        "figures/figure_one_tss-seq-coverage.pdf",
-        "figures/figure_two_tss-seq-heatmaps.pdf",
-        "figures/figure_three_tfiib-nexus-tata.pdf",
-        "figures/figure_four_tfiib-heatmaps.pdf",
-        "figures/figure_five_tss-diffexp-summary.pdf",
-        "figures/figure_six_tss-expression-levels.pdf",
-        tex = "prospectus.tex"
+        genic = config["figure_seven"]["genic"],
+        intragenic = config["figure_seven"]["intragenic"],
+        antisense = config["figure_seven"]["antisense"],
+        theme = config["theme_spec"]
     output:
-        "prospectus.pdf"
-    conda: "envs/latex.yaml"
-    shell: """
-        tectonic {input.tex}
-        """
-
-
+        pdf = "figures/figure_seven_tss-v-tfiib.pdf",
+    params:
+        height = eval(str(config["figure_seven"]["height"])),
+        width = eval(str(config["figure_seven"]["width"])),
+    conda: "envs/plot.yaml"
+    script:
+        "scripts/figure_seven_tss-v-tfiib.R"
 
 

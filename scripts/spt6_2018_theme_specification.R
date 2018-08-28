@@ -37,7 +37,7 @@ theme_heatmap = theme_minimal() +
           legend.box.spacing = unit(0, "pt"),
           strip.text = element_blank(),
           strip.background = element_blank(),
-          axis.text.x = element_text(size=7, color="black", margin=margin(t=1, unit="pt")),
+          axis.text.x = element_text(size=7, color="black", margin=margin(t=2, unit="pt")),
           axis.text.y = element_blank(),
           axis.title.x = element_blank(),
           axis.title.y = element_text(size=9, margin=margin(r=0)),
