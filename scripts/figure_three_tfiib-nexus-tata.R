@@ -51,8 +51,5 @@ main(theme_spec = snakemake@input[["theme"]],
      antisense_tfiib_path = snakemake@input[["antisense_tfiib_data"]],
      fig_width = snakemake@params[["width"]],
      fig_height = snakemake@params[["height"]],
-     svg_out = snakemake@output[["svg"]],
-     pdf_out = snakemake@output[["pdf"]],
-     png_out = snakemake@output[["png"]],
-     grob_out = snakemake@output[["grob"]])
+     pdf_out = snakemake@output[["pdf"]])
 
