@@ -47,3 +47,7 @@ figure_seven:
     width: 17.4
     height: 4.5
 
+figure_eight:
+    tfiib_data: ../../intragenic/spt6-data-integration/datavis/spreading-ssa4/spreading-ssa4_TFIIB-ChIP-nexus-protection.tsv.gz
+    height: 6
+    width: 8
