@@ -114,7 +114,7 @@ ChIP-seq peaks do not have strand information, as DNA binding factors usually do
 
 \subsection{TSS-seq and TFIIB ChIP-nexus results in \textit{spt6-1004}}
 
-To assay transcription start sites and transcription initiation in \textit{spt6-1004}, one of my collaborators performed TSS-seq and ChIP-nexus of TFIIB. In wild-type cells, TSS-seq and TFIIB ChIP-nexus signal has the expected distribution over the genome, with most TSS-seq signal at annotated genic TSSs and most TFIIB signal just upstream (Figures \ref{fig:tss_heatmaps}, \ref{fig:tfiib_heatmaps}). In \textit{spt6-1004}, the signal for both assays infiltrates gene bodies, consistent with a role for intragenic initiation in the intragenic transcription phenotype. In particular, sense strand TSS-seq signal in \textit{spt6-1004} tends to occur towards the 3' end of genes, while antisense strand TSS-seq signal tends to occur towards the 5' ends of genes.
+To assay transcription start sites and transcription initiation in \textit{spt6-1004}, one of my collaborators performed TSS-seq and ChIP-nexus of TFIIB. In wild-type cells, TSS-seq and TFIIB ChIP-nexus signal has the expected distribution over the genome, with most TSS-seq signal at annotated genic TSSs and most TFIIB signal just upstream (Figures \ref{fig:tss_heatmaps}, \ref{fig:tfiib_heatmaps}). In \textit{spt6-1004}, the signal for both assays infiltrates gene bodies, consistent with a role for intragenic initiation in the intragenic transcription phenotype. Notably, sense strand TSS-seq signal in \textit{spt6-1004} tends to occur towards the 3' end of genes, while antisense strand TSS-seq signal tends to occur towards the 5' ends of genes.
 
 The TSS-seq data were quantified by peak calling and differential expression analysis, and classified into genomic categories based on their position relative to coding genes (Figure \ref{fig:tss_diffexp_summary}). The results from this analysis support the pattern observed in the heatmap visualization (Figure \ref{fig:tss_heatmaps}), with most genic TSSs downregulated and almost 8000 TSSs upregulated intragenic or antisense to genes. The overall effect of this on expression levels is to equalize expression levels between the different classes of transcripts (Figure \ref{fig:tss_expression_levels}).
 
@@ -132,7 +132,6 @@ The TSS-seq data were quantified by peak calling and differential expression ana
 \label{fig:tfiib_heatmaps}
 \end{SCfigure}
 
-
 \begin{SCfigure}[50][h]
 \centering
 \includegraphics[width=8cm]{figures/figure5_tss-diffexp-summary.pdf}
@@ -147,10 +146,13 @@ The TSS-seq data were quantified by peak calling and differential expression ana
 \label{fig:tss_expression_levels}
 \end{SCfigure}
 
+The changes to binding of TFIIB in \textit{spt6-1004} are substantial. In wild-type cells, TFIIB ChIP-nexus signal is localized in discrete peaks in the promoter region of genes, while in \textit{spt6-1004}, many loci have TFIIB signal spread over a much broader region (Figure \ref{fig:tfiib_spreading}). The difference in binding pattern makes peak calling ineffective for quantifying TFIIB signal in this case: ChIP-seq peak callers generally use different algorithms for calling `narrow' peaks (e.g. for sequence-specific transcription factors) and `broad' peaks (e.g. for histone modifications), meaning that a single algorithm is unable to accurately call peaks in both wild-type and \textit{spt6-1004}. Therefore, to see whether changes in transcript levels in \textit{spt6-1004} correspond to changes in transcription initiation, I compared the change in TSS-seq signal at TSS-seq peaks in \textit{spt6-1004} to the change in TFIIB ChIP-nexus signal in the window extending 200 bp upstream of the TSS-seq peak. Changes in TSS-seq signal in \textit{spt6-1004} are associated with a change in TFIIB signal of the same sign at over 81\% of TSSs of any genomic class, indicating that the increase in intragenic transcript levels and decrease in genic transcript levels observed in \textit{spt6-1004} are in large part explained by changes in transcription initiation.
+
 \begin{SCfigure}[50][h]
 \centering
 \includegraphics[width=8cm]{figures/figure8_tfiib-spreading-ssa4.pdf}
 \caption{Top) TFIIB ChIP-nexus protection in wild-type and \textit{spt6-1004} strains over 20 kb of chromosome II flanking the \textit{SSA4} gene. Bottom) Expanded view of TFIIB protection over the \textit{SSA4} gene.}
+\label{fig:tfiib_spreading}
 \end{SCfigure}
 
 \begin{figure}[H]
@@ -159,8 +161,45 @@ The TSS-seq data were quantified by peak calling and differential expression ana
 \caption{Scatterplots of fold-change in \textit{spt6-1004} over wild-type, comparing TSS-seq and TFIIB ChIP-nexus. Each dot represents a TSS-seq peak paired with the window extending 200 nucleotides upstream of the TSS-seq peak summit for quantification of TFIIB ChIP-nexus signal. Fold-changes are regularized fold-change estimates from DESeq2, with size factors determined from the \textit{S. pombe} spike-in (TSS-seq), or \textit{S. cerevisiae} counts (ChIP-nexus).}
 \end{figure}
 
-\lipsum
+\subsection{studying chromatin structure in \textit{spt6-1004} with MNase-seq}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{figures/figure9_mnase-metagene.pdf}
+\caption{Average MNase-seq dyad signal in wild-type and \textit{spt6-1004}, over 3522 non-overlapping genes. Values are the mean of spike-in normalized coverage in nonoverlapping 20 basepair bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading represent the median and the inter-quartile range.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{figures/figure10_global-nuc-fuzz-occ.pdf}
+\caption{Contour plot of the global distribution of nucleosome occupancy and fuzziness in wild-type and \textit{spt6-1004}. Dashed lines indicate median values.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=17.4cm]{figures/figure11_mnase-heatmap.pdf}
+\caption{Left) Heatmap of sense strand NET-seq signal for 3522 non-overlapping genes, aligned by genic TSS and sorted by total sense strand NET-seq signal in the window extending 500 nucleotides downstream from the genic TSS. Values are the mean of library-size normalized coverage in non-overlapping 20 nt bins, averaged over two replicates. Middle) Heatmaps of MNase-seq dyad signal in wild-type and \textit{spt6-1004} for the same genes, aligned by wild-type +1 nucleosome dyad and arranged by sense NET-seq signal as in the leftmost panel. Values are the mean of spike-in normalized coverage in non-overlapping 20 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). Right) Heatmaps of fold-change in nucleosome occupancy and fuzziness for the same genes, aligned by wild-type +1 nucleosome dyad and arranged by sense NET-seq signal as in the leftmost panel.}
+\end{figure}
+
+\subsection{features of intragenic promoters}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{figures/figure12_intragenic-mnase.pdf}
+\caption{Top row) Average MNase-seq dyad signal for two clusters of \textit{spt6-1004} intragenic TSSs (clustered by the wild-type and \textit{spt6-1004} MNase-seq dyad signal flanking the TSS), as well as all genic TSSs detected in wild-type and \textit{spt6-1004}. Values are the mean of spike-in normalized dyad coverage in non-overlapping 10 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading represent the median and inter-quartile range. Bottom row) Average GC content of the DNA sequence, as above.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{figures/figure13_seqlogos.pdf}
+\caption{Sequence logos of the information content of TSS-seq reads overlapping genic and intragenic TSS-seq peaks in \textit{spt6-1004}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{figures/figure14_intragenic-tata.pdf}
+\caption{Scaled density of occurrences of exact matches to the motif TATAWAWR upstream of TSSs. For each category, a Gaussian kernel density estimate of the positions of motif occurrences is multiplied by the number of motif occurrences in the genomic category and divided by the number of regions in the category.}
+\end{figure}
 
 \section{searching for functions of intragenic transcription in stress}
 \subsection{introduction}
