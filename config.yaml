@@ -9,20 +9,20 @@ figure2:
     annotation: ../../intragenic/genomefiles_cerevisiae/annotations/Scer_transcripts_w_verifiedORFs-nonoverlapping_slopR300.bed
     tss_sense: ../../intragenic/tss-seq/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/spikenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tss-seq-spikenorm-SENSE.tsv.gz
     tss_antisense: ../../intragenic/tss-seq/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/spikenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tss-seq-spikenorm-ANTISENSE.tsv.gz
-    height: 10
+    height: 9.75
     width: 17.4
 
 figure3:
     sense_tfiib_data: ../../intragenic/chipnexus-tfiib/datavis/rhee2012-TATAboxes-cleaned/libsizenorm/rhee2012-TATAboxes-cleaned-allsamples-allannotations-tfiib-chipnexus-libsizenorm-SENSE.tsv.gz
     antisense_tfiib_data: ../../intragenic/chipnexus-tfiib/datavis/rhee2012-TATAboxes-cleaned/libsizenorm/rhee2012-TATAboxes-cleaned-allsamples-allannotations-tfiib-chipnexus-libsizenorm-ANTISENSE.tsv.gz
-    height: 4
-    width: 7
+    height: 5
+    width: 9
 
 figure4:
     tfiib_data: ../../intragenic/chipnexus-tfiib/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/libsizenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tfiib-chipnexus-libsizenorm-protection.tsv.gz
     annotation: ../../intragenic/genomefiles_cerevisiae/annotations/Scer_transcripts_w_verifiedORFs-nonoverlapping_slopR300.bed
+    height: 9.75
     width: 8.7
-    height: 10
 
 figure5:
     genic: ../../intragenic/tss-seq/diff_exp/spt6-1004-37C-v-WT-37C/spikenorm/genic/spt6-1004-37C-v-WT-37C_tss-seq-spikenorm-diffexp-results-genic-all.tsv
