@@ -48,7 +48,6 @@ metagene = function(df, assay, ylabel="", top=FALSE, bottom=FALSE){
         theme(legend.justification = c(0, 1),
               legend.background = element_blank(),
               legend.position = c(0.005, 0.90),
-              legend.key.width= unit(14, "pt"),
               legend.key.height = unit(10, "pt"),
               axis.title.x = element_blank(),
               axis.title.y = element_text(hjust=0.5),
@@ -71,7 +70,7 @@ metagene = function(df, assay, ylabel="", top=FALSE, bottom=FALSE){
     }
     if (top){
         plot = plot +
-            theme(strip.text = element_text(size=7, color="black",
+            theme(strip.text = element_text(size=9, color="black",
                                             margin = margin(0,0,0,0)))
     } else {
         plot = plot +
