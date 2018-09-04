@@ -1,13 +1,15 @@
-\documentclass[11pt, letterpaper]{article}
+\documentclass[10pt, letterpaper]{article}
 \usepackage[letterpaper, margin=21mm]{geometry}
 
-\usepackage{fontspec}
+\usepackage{mathspec}
 \setmainfont{Roboto-Regular}[
     Path=fonts/,
     BoldFont=Roboto-Bold,
     ItalicFont=Roboto-Italic,
     BoldItalicFont=Roboto-BoldItalic
 ]
+\setmathsfont(Digits)[Path=fonts/]{Roboto-Regular}
+\setmathrm[Path=fonts/]{Roboto-Regular}
 
 % \usepackage[style=nature]{biblatex}
 \usepackage[]{natbib}
@@ -46,7 +48,7 @@
 
 \section{analysis of genomics data relating to the transcription elongation factor Spt6}
 
-N.B. The work described in this section is in review. A preprint can be found at \url{https://doi.org/10.1101/347575} \cite{doris2018}.
+N.B. The work described in this section is in press. A preprint is available at \url{https://doi.org/10.1101/347575} \cite{doris2018}.
 
 \subsection{collaborators}
 
@@ -87,19 +89,19 @@ The aim of the work described in this section is related to understanding how a 
 \item Spt6 is likely to be a histone chaperone required to reassemble nucleosomes in the wake of transcription \cite{duina2011}.
 \end{itemize}
 
-Previous studies in the yeasts \textit{S. cerevisiae} and \textit{S. pombe} have examined the requirement for Spt6 in normal transcription \cite{cheung2008, degennaro2013, kaplan2003, pathak2018, uwimana2017, vanbakel2013}. Many of these studies make use of the same temperature-sensitive \textit{S. cerevisiae} \textit{spt6} mutant used in this project, \textbf{\textit{spt6-1004}}, in which Spt6 protein is depleted at the non-permissive temperature of 37\textdegree C. The most notable phenotype of the \textit{spt6-1004} mutant is the appearance of \textbf{intragenic transcripts}, transcripts which appear to start within protein-coding genes, both in the same orientation and in the antisense orientation relative to the coding gene \cite{cheung2008, degennaro2013, kaplan2003, uwimana2017}.
+Previous studies in the yeasts \textit{S. cerevisiae} and \textit{S. pombe} have examined the requirement for Spt6 in normal transcription \cite{cheung2008, degennaro2013, kaplan2003, pathak2018, uwimana2017, vanbakel2013}. Many of these studies make use of the same temperature-sensitive \textit{S. cerevisiae} \textit{spt6} mutant used in this project, \textbf{\textit{spt6-1004}}, in which Spt6 protein is depleted at the non-permissive temperature of 37\textdegree C. The most notable phenotype of the \textit{spt6-1004} mutant is the expression of \textbf{intragenic transcripts}, transcripts which appear to start within protein-coding genes, both in the same orientation and in the antisense orientation relative to the coding gene \cite{cheung2008, degennaro2013, kaplan2003, uwimana2017}.
 
-Previous genome-wide measurements of transcript levels in \textit{spt6-1004} were made using tiled microarrays \cite{cheung2008} and RNA sequencing \cite{uwimana2017}. These methods measure steady-state RNA levels, making them unable to determine whether the intragenic transcripts observed in \textit{spt6-1004} are the result of: A) new intragenic transcription initiation in the mutant, B) reduced decay of an intragenic transcript normally turned over rapidly in wild-type, or C) RNA processing of the full-length protein-coding RNA. Additionally, these methods are suboptimal for identifying where intragenic transcription occurs, since the signal for an intragenic transcript in the same orientation as the gene it overlaps is convoluted with the signal from the full-length `genic' transcript \cite{cheung2008, lickwar2009}.
+Previous genome-wide measurements of transcript levels in \textit{spt6-1004} were made using tiled microarrays \cite{cheung2008} and RNA sequencing \cite{uwimana2017}. These methods assay steady-state RNA levels, making them unable to determine whether the intragenic transcripts observed in \textit{spt6-1004} result from: A) new intragenic transcription initiation in the mutant, B) reduced decay of intragenic transcripts which are rapidly turned over in wild-type, or C) processing of full-length protein-coding RNAs. Additionally, these methods are suboptimal for identifying where intragenic transcription occurs, since the signal for an intragenic transcript in the same orientation as the gene it overlaps is convoluted with the signal from the full-length `genic' transcript \cite{cheung2008, lickwar2009}.
 
-To overcome these issues, one of my collaborators applied two genomic assays to study transcription in \textit{spt6-1004}: transcription start-site sequencing (TSS-seq), and ChIP-nexus of TFIIB, a component of the RNA polymerase II (RNAPII) pre-initiation complex (PIC). The TSS-seq technique used sequences the 5' end of capped and polyadenylated RNAs, allowing us to separate intragenic from genic RNA signals and identify the locations of intragenic transcripts with single-nucleotide resolution. The ChIP-nexus technique used is a high-resolution chromatin immunoprecipitation technique in which the ChIPed DNA is exonuclease digested up to the bases crosslinked with the factor of interest before sequencing. When applied to the PIC component TFIIB, ChIP-nexus allows us to test if intragenic transcripts actually result from new intragenic transcription initiation.
+To overcome these issues, one of my collaborators applied two genomic assays to study transcription in \textit{spt6-1004}: transcription start-site sequencing (TSS-seq), and ChIP-nexus of TFIIB, a component of the RNA polymerase II pre-initiation complex (PIC). The TSS-seq technique used sequences the 5' end of capped and polyadenylated RNAs, allowing separation of intragenic from genic RNA signals and identification of intragenic transcript starts with single-nucleotide resolution. The ChIP-nexus technique used is a high-resolution chromatin immunoprecipitation technique in which the ChIPed DNA is exonuclease digested up to the bases crosslinked with the factor of interest before sequencing. When applied to the PIC component TFIIB, ChIP-nexus provides a way to determine whether intragenic transcripts result from new intragenic transcription initiation.
 
 \subsection{pipeline development for TSS-seq and ChIP-nexus}
 
-In order to analyze TSS-seq and ChIP-nexus data and answer questions about Spt6 and intragenic transcription, I developed analysis pipelines for TSS-seq and ChIP-nexus data. The pipelines are written using the Python-based Snakemake workflow specification language, and carry out steps including read cleaning, various quality controls, read alignment, data normalization, coverage track generation, peak calling, differential expression/binding analyses, data visualization, motif enrichment analyses, and gene ontology analyses. The Snakemake framework allows data analyses using these pipelines to be reproducible and scalable from workstations up to computing clusters. Up-to-date versions of these pipelines with more details on their capabilities are available at \href{https://github.com/winston-lab}{github.com/winston-lab}. In the following subsections I will only describe the thought behind a few of the more novel pipeline steps before moving on to results relating to Spt6 and intragenic transcription.
+In order to use TSS-seq and ChIP-nexus to answer questions about Spt6 and intragenic transcription, I developed analysis pipelines for TSS-seq and ChIP-nexus data. The pipelines are written using the Python-based Snakemake workflow specification language, and perform steps including read cleaning, various quality controls, read alignment, data normalization, coverage track generation, peak calling, differential expression/binding analyses, data visualization, motif enrichment analyses, and gene ontology analyses. The Snakemake framework allows data analyses using these pipelines to be reproducible and scalable from workstations up to computing clusters. Up-to-date versions of these pipelines with more details on their capabilities are available at \href{https://github.com/winston-lab}{github.com/winston-lab}. In the following subsections I will only describe the thought behind a few of the more novel pipeline steps before moving on to results relating to Spt6 and intragenic transcription.
 
 \subsubsection{TSS-seq peak calling}
 
-TSS-seq data associated with a single region of transcription initiation tends to occur as a group of signal distributed over a range of positions, rather than signal at a single nucleotide (Figure \ref{fig:tss_coverage}). It is reasonable to consider such a group of TSS-seq signal as one entity, because the signals within the group are highly correlated to one another across different conditions. Therefore, to identify TSSs and quantify them for downstream analyses such as differential expression, it is necessary to perform peak-calling on TSS-seq data.
+TSS-seq data from a single region of transcription initiation tends to occur as a cluster of signal distributed over a range of positions, rather than a single nucleotide (Figure \ref{fig:tss_coverage}). It is reasonable to consider such a cluster of TSS-seq signal as one entity, because the signals within the cluster are highly correlated to one another across different conditions. Therefore, to identify TSSs from TSS-seq data and quantify them for downstream analyses such as differential expression, it is necessary to first perform peak-calling on the data.
 
 \begin{wrapfigure}[13]{l}{8.02cm}
 \centering
@@ -108,9 +110,9 @@ TSS-seq data associated with a single region of transcription initiation tends t
 \label{fig:tss_coverage}
 \end{wrapfigure}
 
-The TSS-seq pipeline used currently performs peak calling using a 1-D watershed segmentation algorithm, followed by filtering for reproducibility by the Irreproducible Discovery Rate (IDR) method. First, a smoothed version of the TSS-seq coverage is generated for each sample using a discretized Gaussian kernel. Next, an initial set of peaks is generated by assigning all nonzero signal in the original, unsmoothed coverage to the nearest local maximum of the smoothed coverage, and taking the minimum and maximum genomic coordinates of the original coverage as the peak boundaries for each local maximum of the smoothed coverage. Peaks are then trimmed to the smallest genomic window that includes 95\% of the original coverage, and the probability of the peak being generated by noise is estimated by a Poisson model where $\lambda$, the expected coverage, is the maximum of the expected coverage over the chromosome and the expected coverage in a window upstream of the peak (as for the ChIP-seq peak caller MACS2). Letting the expected coverage be influenced by the local read density is intended to reduce false positive peaks within gene bodies, especially for highly expressed genes: Since there are more fragments of RNA present for highly expressed genes, more fragments within the gene body will make it into the final library, even if they are not true 5' ends. The final step in the current peak calling algorithm is to rank the initial set of peaks by their significance under the Poisson model, and filter this list of peaks using the IDR method. In brief, IDR works using the following intuition: True positive peaks, when ranked by some metric, will have similar ranks in two replicates, while peaks arising from experimental noise will have less similar ranks in two replicates.
+In its current state, the TSS-seq pipeline calls peaks using 1-D watershed segmentation, followed by filtering for reproducibility by the Irreproducible Discovery Rate (IDR) method. First, a smoothed version of the TSS-seq coverage is generated for each sample using a discretized Gaussian kernel. Next, an initial set of peaks is generated by: 1) assigning all nonzero signal in the original, unsmoothed coverage to the nearest local maximum of the smoothed coverage, and 2) taking the minimum and maximum genomic coordinates of the original coverage assigned to each local maximum as the peak boundaries. The peaks are then trimmed to the smallest genomic window that includes 95\% of the original coverage, and the probability of the peak being generated by noise is estimated by a Poisson model where $\lambda$, the expected coverage, is the maximum of the expected coverage over the chromosome and the expected coverage in a window upstream of the peak (as for the ChIP-seq peak caller MACS2). The influence of local read density on $\lambda$ is intended to reduce false positive peaks within gene bodies, especially for highly expressed genes: Since there are more fragments of RNA present for highly expressed genes, more fragments within the gene body will make it into the final library, even if they are not true 5' ends. To generate the final set of peaks, the peaks are ranked by significance under the Poisson model, and filtered by IDR. In brief, IDR attempts to separate true peaks from experimental noise based on the intuition that, when peaks in each replicate are independently ranked by a metric such as significance, true peaks will have more similar ranks between replicates than peaks representing noise.
 
-Currently, the IDR algorithm only works for two replicates. Future improvements could include expanding the IDR implementation to take more than two replicates into account, which would improve the accuracy of peak calling given more data.
+The IDR algorithm currently only works for two replicates. Future improvements could include expanding the IDR implementation to handle more replicates and improve the accuracy of peak calling with more data.
 
 \subsubsection{ChIP-nexus peak calling}
 
@@ -213,30 +215,82 @@ Previous studies observed two trends: 1) In wild-type cells, nucleosome position
 
 \subsection{features of intragenic promoters}
 
+The resolution with which we were able to identify intragenic transcription start sites allowed us to closely examine the chromatin and sequence features of intragenic promoters, and to compare intragenic to genic promoters. We made this comparison for MNase-seq data, DNA sequence information content, and sequence motifs.
+
+\subsubsection{clustering MNase-seq data at intragenic TSSs}
+
+The average MNase-seq signal around all intragenic TSSs significantly upregulated in \textit{spt6-1004} showed no periodicity, suggesting the existence of multiple nucleosome patterns. To separate intragenic TSSs into groups with similar nucleosome patterning, I used the wild-type and \textit{spt6-1004} MNase-seq data flanking the intragenic TSSs to train a self-organizing map, an unsupervised learning method used to produce low-dimensional representations of an input space. First, spike-in normalized MNase-seq dyad signal in the window $\pm 150$ bp from the summits of the 6059 intragenic TSS-seq peaks was binned by taking the mean signal in non-overlapping 5 bp bins, and then averaged by taking the mean of two replicates (\textit{spt6-1004}) or one experiment (wild-type). The wild-type and \textit{spt6-1004} data were then used as equally weighted $6059 \times 60$ input layers to a self-organizing map which assigning similar MNase-seq observations in 60-dimensional input space to similar nodes in a 2-dimensional ($6 \times 8$) rectangular grid. The 48 `code vectors' representing the typical MNase-seq pattern for each node were then clustered by agglomerative hierarchical clustering using sum of squares distance and Ward linkage. The resulting dendrogram was cut to produce two clusters of intragenic TSSs, whose aggregate MNase-seq signals differed primarily by phasing relative to the TSS (Figure \ref{fig:intra_mnase_metagene}).
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=17.4cm]{figures/figure12_intragenic-mnase.pdf}
 \caption{Top row) Average MNase-seq dyad signal for two clusters of \textit{spt6-1004} intragenic TSSs (clustered by the wild-type and \textit{spt6-1004} MNase-seq dyad signal flanking the TSS), as well as all genic TSSs detected in wild-type and \textit{spt6-1004}. Values are the mean of spike-in normalized dyad coverage in non-overlapping 10 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading represent the median and inter-quartile range. Bottom row) Average GC content of the DNA sequence, as above.}
+\label{fig:intra_mnase_metagene}
 \end{figure}
 
-\begin{figure}[H]
+Similar to genic TSSs, the two clusters of intragenic TSSs tend to lie on the border between regions of relative nucleosome enrichment and depletion. However, they lack the relatively wide nucleosome-depleted region characteristic of genic promoters. Since AT-rich sequences are known to be unfavorable for nucleosomes, we examined the GC content of the DNA sequence at intragenic TSSs. For cluster two, GC content drops just upstream of the intragenic TSS, in the same region where MNase-seq signal is depleted. This depletion is similar in position but smaller in magnitude as the GC depletion upstream of genic TSSs (Figure \ref{fig:intra_mnase_metagene}). Overall, nucleosome positioning is weaker at intragenic promoters compared to genic promoters, consistent with the tendency of intragenic promoters to occur towards the 3' end of genes, where positioning is known to decrease.
+
+\pagebreak
+
+\subsubsection{information content of intragenic TSSs}
+
+\begin{wrapfigure}[12]{R}{8.72cm}
 \centering
-\includegraphics[width=8cm]{figures/figure13_seqlogos.pdf}
+\includegraphics[width=8.7cm]{figures/figure13_seqlogos.pdf}
 \caption{Sequence logos of the information content of TSS-seq reads overlapping genic and intragenic TSS-seq peaks in \textit{spt6-1004}.}
-\end{figure}
+\end{wrapfigure}
 
-\begin{figure}[H]
+To examine differences in DNA sequence at intragenic TSSs compared to genic TSSs, I aligned the sequences for all TSS-seq reads overlapping TSS-seq peaks of each class, and calculated the information content of each type of TSS. Intragenic TSSs have a sequence motif that is almost identical to the sequence motif previously observed for genic TSSs. This suggests that RNA polymerase initiates transcription similarly at genic and intragenic TSSs, and that the lack of intragenic initiation in wild-type is due to inaccessibility of the initiation motif, possibly due to being wrapped in histones.
+
+\subsubsection{enrichment of motifs at intragenic TSSs}
+
+\begin{wrapfigure}[12]{r}{8.72cm}
 \centering
-\includegraphics[width=8cm]{figures/figure14_intragenic-tata.pdf}
+\includegraphics[width=8.7cm]{figures/figure14_intragenic-tata.pdf}
 \caption{Scaled density of occurrences of exact matches to the motif TATAWAWR upstream of TSSs. For each category, a Gaussian kernel density estimate of the positions of motif occurrences is multiplied by the number of motif occurrences in the genomic category and divided by the number of regions in the category.}
-\end{figure}
+\end{wrapfigure}
 
+To examine whether sequence-specific transcription factors contribute to the expression of intragenic transcripts in \textit{spt6-1004}, we looked for enrichment or depletion of the DNA sequence motifs associated with these factors upstream of intragenic TSSs. Exact matches to the TATA element consensus sequence TATAWAWR are enriched upstream between 100 and 150 nt upstream of intragenic TSSs, in the same position but to a lesser degree to the TATA enrichment observed upstream of genic TSSs.
+
+\pagebreak
 \section{searching for functions of intragenic transcription in stress}
+
+\subsection{collaborators}
+
+\begin{description}[align=right, labelwidth=5cm, noitemsep]
+    \item [Steve Doris] generated TSS-seq and ChIP-nexus libraries
+    \item [Blake Tye] generated NET-seq and RNA-seq libraries
+\end{description}
+
 \subsection{introduction}
 \subsection{results}
 \subsection{discussion}
 
-\section{Spt5 does things}
+\pagebreak
+
+\section{Spt5}
+
+\subsection{collaborators}
+
+\begin{description}[align=right, labelwidth=5cm, noitemsep]
+    \item [Ameet Shetty] generated TSS-seq, MNase-seq, NET-seq, RNA-seq, and ChIP-seq libraries
+\end{description}
+
+\subsection{introduction to Spt5}
+
+\begin{itemize}[nosep, topsep=.5em]
+\item Spt5 is the only transcription factor known to be conserved in all three domains of life
+\item Spt5 interacts directly with RNAPII
+\item Spt5 co-localizes with elongating RNAPII
+\item Spt5 binds over the RNAP clamp domain, likely stabilizing the elongation complex
+\item Spt5 physically recruits factors to the elongating transcription complex, in a manner dependent on the modification status of its C-terminal region (CTR)
+    \begin{itemize}[nosep]
+        \item in its unphosphorylated state, the CTR aids in recruiting the mRNA capping enzyme
+        \item in its phosphorylated state, the CTR recruits the Paf1 complex, which is important for RNAPII elongation
+        \item Spt5 also helps to recruit mRNA 3' end processing factors
+        \item Spt5 also helps to recruit the Rpd3S histone deacetylase complex
+    \end{itemize}
+\end{itemize}
 
 % \printbibliography
 \bibliography{prospectus}{}

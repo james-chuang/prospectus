@@ -83,12 +83,12 @@ figure13:
         - ../../intragenic/tss-seq/seq_logos/spt6-1004-37C/spt6-1004-37C-genic-seqlogo.tsv
         - ../../intragenic/tss-seq/seq_logos/spt6-1004-37C/spt6-1004-37C-intragenic-seqlogo.tsv
     height: 4
-    width: 8
+    width: 8.7
 
 figure14:
     tata_genic: ../../intragenic/motif_analysis_tata/comparisons/all-genic-v-random/all-genic-v-random_condition_allFIMOresults.tsv.gz
     tata_intragenic: ../../intragenic/motif_analysis_tata/comparisons/all-intragenic-v-random/all-intragenic-v-random_condition_allFIMOresults.tsv.gz
     tata_random: ../../intragenic/motif_analysis_tata/comparisons/all-intragenic-v-random/all-intragenic-v-random_control_allFIMOresults.tsv.gz
-    height: 4.5
-    width: 8
+    height: 4
+    width: 8.7
 
