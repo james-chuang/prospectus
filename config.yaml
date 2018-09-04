@@ -9,7 +9,7 @@ figure2:
     annotation: ../../intragenic/genomefiles_cerevisiae/annotations/Scer_transcripts_w_verifiedORFs-nonoverlapping_slopR300.bed
     tss_sense: ../../intragenic/tss-seq/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/spikenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tss-seq-spikenorm-SENSE.tsv.gz
     tss_antisense: ../../intragenic/tss-seq/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/spikenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tss-seq-spikenorm-ANTISENSE.tsv.gz
-    height: 9.25
+    height: 8.6
     width: 17.4
 
 figure3:
