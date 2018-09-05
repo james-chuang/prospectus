@@ -23,7 +23,7 @@
 \usepackage{hyperref}
 \usepackage{textcomp}
 \usepackage{caption}
-\captionsetup{font=footnotesize}
+\captionsetup{font=footnotesize, singlelinecheck=off}
 \usepackage{lipsum}
 % \usepackage{wrapfig}
 
@@ -50,9 +50,9 @@
 
 Within the past two years, I have taken on the three projects described in this prospectus document. My role in these projects is best described as \textbf{data engineer}: I build pipelines for processing large (in this case, genomic) datasets, from raw data to statistical analysis and data visualization. For every step of a pipeline, this involves surveying available tools and selecting the tools that are most suitable. In some cases, existing tools are insufficient for a task, so I write code to complete the task. All of my data analyses are open source (\url{github.com/winston-lab}) and designed to be reproducible by others: For every publication, I upload an archive that allows anyone to go from the raw data to the figures in the publication (see \url{https://doi.org/10.5281/zenodo.1403167} for an example).
 
-\section{analysis of genomics data relating to the transcription elongation factor Spt6}
+\section{genomics of transcription elongation factor Spt6}
 
-N.B. The work described in this section is in press. A preprint is available at \url{https://doi.org/10.1101/347575} \cite{doris2018}.
+N.B. The work from this section is in press. A preprint is available at \url{https://doi.org/10.1101/347575} \cite{doris2018}.
 
 \subsection{collaborators}
 
@@ -129,7 +129,7 @@ The IDR algorithm currently only works for two replicates. Future improvements c
 
 A number of tools have been created specifically for peak calling using high-resolution ChIP techniques such as ChIP-nexus and ChIP-exo \cite{wang2014, hansen2016}. When applied to our TFIIB ChIP-nexus data, these tools tended to split what appeared to be a single TFIIB binding event into multiple peaks. This may be due to the fact that TFIIB has been observed to have multiple crosslinking points to the DNA \ref{fig:tfiib_tata} \cite{rhee2012}, and suggests that while these tools may work well for factors which bind symmetrically with a single crosslinking point on either side, there is still room for improvement when it comes to factors with more complex binding patterns. For the purposes of this project, the standard ChIP-seq peak caller MACS2 was used \cite{zhang2008}.
 
-ChIP-seq peaks lack strand information, as DNA binding factors usually do not bind DNA in a strand-specific manner. This precluded us from separating intragenic TFIIB peaks into peaks associated with sense or antisense transcription. The distinctive shape of the aggregate TFIIB ChIP-nexus signal suggests that information about the strand of transcription may be present in the ChIP-nexus binding profile. Future work could include learning the direction of transcription from labeled ChIP-nexus training data.
+ChIP-seq peaks lack strand information, as DNA binding factors usually do not bind DNA in a strand-specific manner. Because of this, we could not separate intragenic TFIIB peaks into peaks associated with sense or antisense transcription. The distinctive shape of the aggregate TFIIB ChIP-nexus signal suggests that information about the strand of transcription may be present in the ChIP-nexus binding profile. Future work could include learning the direction of transcription from labeled ChIP-nexus training data.
 
 \subsection{TSS-seq and TFIIB ChIP-nexus results in \textit{spt6-1004}}
 
@@ -141,22 +141,31 @@ ChIP-seq peaks lack strand information, as DNA binding factors usually do not bi
 \end{figure}
 
 \begin{wrapfigure}[23]{R}{8.72cm}
+% \begin{SCfigure}[0.7][h]
 \centering
 \includegraphics[width=8.7cm]{figures/figure4_tfiib-heatmaps.pdf}
 \caption{Heatmaps of TFIIB binding measured by ChIP-nexus, over the same regions shown in Figure \ref{fig:tss_heatmaps}. Values are the mean of library-size normalized coverage in 20 basepair windows, averaged over two replicates. Values above the 85th percentile are set to the 85th percentile for visualization.}
 \label{fig:tfiib_heatmaps}
+% \end{SCfigure}
 \end{wrapfigure}
 
 To assay transcription start sites and transcription initiation in \textit{spt6-1004}, one of my collaborators performed TSS-seq and ChIP-nexus of TFIIB. In wild-type cells, TSS-seq and TFIIB ChIP-nexus signal has the expected distribution over the genome, with most TSS-seq signal at annotated genic TSSs and most TFIIB signal just upstream (Figures \ref{fig:tss_heatmaps}, \ref{fig:tfiib_heatmaps}). In \textit{spt6-1004}, the signal for both assays infiltrates gene bodies, consistent with a role for intragenic initiation in the intragenic transcription phenotype. Notably, sense strand TSS-seq signal in \textit{spt6-1004} tends to occur towards the 3' end of genes, while antisense strand TSS-seq signal tends to occur towards the 5' ends of genes.
 
 The TSS-seq data were quantified by peak calling and differential expression analysis, and classified into genomic categories based on their position relative to coding genes (Figure \ref{fig:tss_diffexp_summary}). The results from this analysis support the pattern observed in the heatmap visualization (Figure \ref{fig:tss_heatmaps}), with most genic TSSs downregulated and almost 8000 TSSs upregulated intragenic or antisense to genes. The overall effect of this on expression levels is to equalize expression levels between the different classes of transcripts (Figure \ref{fig:tss_expression_levels}).
 
+\vspace{1.75cm}
+
 \begin{figure}[H]
     \centering
     \begin{minipage}[t]{8.5cm}
         \centering
         \includegraphics[width=8.5cm]{figures/figure5_tss-diffexp-summary.pdf}
-        \caption{Top) Diagram of different genomic classes of TSSs. Bottom) Bar plot showing the number of TSS-seq peaks differentially expressed in \textit{spt6-1004} versus wild-type.}
+        \caption[foo bar]{
+            \begin{description}[align=right, nosep, itemindent=0pt, leftmargin=4.2em, font=\normalfont]
+                \item [top)] Diagram of different genomic classes of TSSs.
+                \item [bottom)] Bar plot showing the number of TSS-seq peaks differentially expressed in \textit{spt6-1004} versus wild-type.
+            \end{description}
+        }
         \label{fig:tss_diffexp_summary}
     \end{minipage}\hfill
     \begin{minipage}[t]{8.5cm}
@@ -169,11 +178,16 @@ The TSS-seq data were quantified by peak calling and differential expression ana
 
 The changes to binding of TFIIB in \textit{spt6-1004} are substantial. In wild-type cells, TFIIB ChIP-nexus signal is localized in discrete peaks in the promoter region of genes, while in \textit{spt6-1004}, many loci have TFIIB signal spread over a much broader region (Figure \ref{fig:tfiib_spreading}). The difference in binding pattern makes peak calling ineffective for quantifying TFIIB signal in this case: ChIP-seq peak callers generally use different algorithms for calling `narrow' peaks (e.g. for sequence-specific transcription factors) and `broad' peaks (e.g. for histone modifications), meaning that a single algorithm is unable to accurately call peaks in both wild-type and \textit{spt6-1004}. Therefore, to see whether changes in transcript levels in \textit{spt6-1004} correspond to changes in transcription initiation, I compared the change in TSS-seq signal at TSS-seq peaks in \textit{spt6-1004} to the change in TFIIB ChIP-nexus signal in the window extending 200 bp upstream of the TSS-seq peak. Changes in TSS-seq signal in \textit{spt6-1004} are associated with a change in TFIIB signal of the same sign at over 81\% of TSSs of any genomic class, indicating that the increase in intragenic transcript levels and decrease in genic transcript levels observed in \textit{spt6-1004} are in large part explained by changes in transcription initiation.
 
-% \begin{wrapfigure}[18]{l}{8.02cm}
+% \begin{wrapfigure}[18]{r}{11.02cm}
 \begin{SCfigure}[50][h]
 \centering
 \includegraphics[width=11cm]{figures/figure8_tfiib-spreading-ssa4.pdf}
-\caption{Top) TFIIB ChIP-nexus protection in wild-type and \textit{spt6-1004} strains over 20 kb of chromosome II flanking the \textit{SSA4} gene. Bottom) Expanded view of TFIIB protection over the \textit{SSA4} gene.}
+\caption[foo bar]{
+    \begin{description}[align=right, nosep, itemindent=0pt, leftmargin=4.2em, font=\normalfont]
+        \item [top)] TFIIB ChIP-nexus protection in wild-type and \textit{spt6-1004} strains over 20 kb of chromosome II flanking the \textit{SSA4} gene.
+        \item [bottom)] Expanded view of TFIIB protection over the \textit{SSA4} gene.
+    \end{description}
+}
 \label{fig:tfiib_spreading}
 % \end{wrapfigure}
 \end{SCfigure}
@@ -188,12 +202,14 @@ The changes to binding of TFIIB in \textit{spt6-1004} are substantial. In wild-t
 
 To study the role that altered chromatin structure plays in the phenotypes seen in \textit{spt6-1004}, one of my collaborators performed MNase-sequencing in wild-type and \textit{spt6-1004}. To analyze the data, I developed a pipeline for paired-end MNase-seq data (\href{https://github.com/winston-lab/mnase-seq}{github.com/winston-lab/mnase-seq}) that includes quantification and visualization of changes in nucleosome properties, among other MNase-seq specific steps.
 
+In wild-type, the MNase-seq data recapitulates the expected patterns of a nucleosome depleted region upstream of a strongly positioned +1 nucleosome, and a regularly phased pattern of nucleosomes over gene bodies (Figure \ref{fig:mnase_metagene}). In \textit{spt6-1004}, nucleosome signal is severely reduced at canonical nucleosome positions and spreads into inter-nucleosome regions. A change in aggregate nucleosome signal such as that observed in Figure \ref{fig:mnase_metagene} can result from many combinations of changes to nucleosome occupancy (the number of reads assigned to a nucleosome), fuzziness (the standard deviation of read positions for a nucleosome), and position (the coordinate with the maximum reads for a nucleosome) \cite{chen2013}. Using DANPOS2 \cite{chen2013}, I called nucleosome positions and quantified these metrics for wild-type and \textit{spt6-1004}. Nucleosomes in wild-type span a relatively wide range of occupancy and fuzziness space, with highly occupied nucleosomes tending to be less fuzzy (i.e. more well-positioned) (Figure \ref{fig:global_nuc_fuzz}). In \textit{spt6-1004}, the population is much more homogeneous: nucleosome occupancy is decreased globally, and nucleosome fuzziness is restricted to the high end of the wild-type distribution.
+
 \begin{figure}[h]
     \centering
     \begin{minipage}[t]{8.5cm}
         \centering
         \includegraphics[width=8.5cm]{figures/figure9_mnase-metagene.pdf}
-        \caption{Average MNase-seq dyad signal in wild-type and \textit{spt6-1004}, over 3522 non-overlapping genes. Values are the mean of spike-in normalized coverage in nonoverlapping 20 basepair bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading represent the median and the inter-quartile range.}
+        \caption{Average MNase-seq dyad signal in wild-type and \textit{spt6-1004}, over 3522 non-overlapping genes. Values are the mean of spike-in normalized coverage in nonoverlapping 20 basepair bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading are the median and the inter-quartile range.}
         \label{fig:mnase_metagene}
     \end{minipage}\hfill
     \begin{minipage}[t]{8.5cm}
@@ -204,14 +220,18 @@ To study the role that altered chromatin structure plays in the phenotypes seen 
     \end{minipage}
 \end{figure}
 
-In wild-type, the MNase-seq data recapitulates the expected patterns of a nucleosome depleted region upstream of a strongly positioned +1 nucleosome, and a regularly phased pattern of nucleosomes over gene bodies (Figure \ref{fig:mnase_metagene}). In \textit{spt6-1004}, nucleosome signal is severely reduced at canonical nucleosome positions and spreads into inter-nucleosome regions. A change in aggregate nucleosome signal such as that observed in Figure \ref{fig:mnase_metagene} can result from many combinations of changes to nucleosome occupancy (the number of reads assigned to a nucleosome), fuzziness (the standard deviation of read positions for a nucleosome), and position (the coordinate with the maximum reads for a nucleosome). Using DANPOS2, I called nucleosome positions and quantified these metrics for wild-type and \textit{spt6-1004}. Nucleosomes in wild-type span a relatively wide range of occupancy and fuzziness space, with highly occupied nucleosomes tending to be less fuzzy (i.e. more well-positioned) (Figure \ref{fig:global_nuc_fuzz}). In \textit{spt6-1004}, the population is much more homogeneous: nucleosome occupancy is decreased globally, and nucleosome fuzziness is restricted to the high end of the wild-type distribution.
-
-Previous studies observed two trends: 1) In wild-type cells, nucleosome positioning is weaker over highly transcribed genes than over moderately transcribed genes, and 2) In \textit{spt6-1004} cells, the decrease in nucleosome occupancy is greater for highly transcribed genes. To re-examine these trends, we looked at the MNase-seq data in the context of NET-seq data, which reports the position of actively transcribing RNAPII and reflects a gene's level of transcription (Figure \ref{fig:mnase_heatmap}). The data support the first trend: in wild-type, genes with the strongest NET-seq signal have decreased MNase-seq signal. However, there is no obvious relationship between transcription level and the nucleosome changes observed in \textit{spt6-1004}. The apparent discrepancy might be explained by the improved resolution and breadth of MNase-seq versus the MNase and microarray of chromosome III used in the previous study.
+Previous studies observed two trends: 1) In wild-type cells, nucleosome positioning is weaker over highly transcribed genes than over moderately transcribed genes \cite{shivaswamy2008}, and 2) In \textit{spt6-1004} cells, the decrease in nucleosome occupancy is greater for highly transcribed genes \cite{ivanovska2011}. To re-examine these trends, we looked at the MNase-seq data in the context of NET-seq data, which reports the position of actively transcribing RNAPII and reflects a gene's level of transcription (Figure \ref{fig:mnase_heatmap}) \cite{churchman2012}. The data support the first trend: in wild-type, genes with the strongest NET-seq signal have decreased MNase-seq signal. However, there is no obvious relationship between transcription level and the nucleosome changes observed in \textit{spt6-1004} (Figure \ref{fig:mnase_heatmap}). The apparent discrepancy might be explained by the improved resolution and breadth of MNase-seq versus the MNase and microarray of chromosome III used in the previous study \cite{ivanovska2011}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=17.4cm]{figures/figure11_mnase-heatmap.pdf}
-\caption{Left) Heatmap of sense strand NET-seq signal for 3522 non-overlapping genes, aligned by genic TSS and sorted by total sense strand NET-seq signal in the window extending 500 nucleotides downstream from the genic TSS. Values are the mean of library-size normalized coverage in non-overlapping 20 nt bins, averaged over two replicates. Middle) Heatmaps of MNase-seq dyad signal in wild-type and \textit{spt6-1004} for the same genes, aligned by wild-type +1 nucleosome dyad and arranged by sense NET-seq signal as in the leftmost panel. Values are the mean of spike-in normalized coverage in non-overlapping 20 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). Right) Heatmaps of fold-change in nucleosome occupancy and fuzziness for the same genes, aligned by wild-type +1 nucleosome dyad and arranged by sense NET-seq signal as in the leftmost panel.}
+\caption[foo bar]{
+    \begin{description}[align=right, nosep, itemindent=0pt, leftmargin=4.2em, font=\normalfont]
+        \item [left)] Heatmap of sense strand NET-seq signal for 3522 non-overlapping genes, aligned by genic TSS and sorted by total sense strand NET-seq signal in the window extending 500 nucleotides downstream from the genic TSS. Values are the mean of library-size normalized coverage in non-overlapping 20 nt bins, averaged over two replicates.
+        \item [middle)] Heatmaps of MNase-seq dyad signal in wild-type and \textit{spt6-1004} for the same genes, aligned by wild-type +1 nucleosome dyad and arranged by sense NET-seq signal as in the leftmost panel. Values are the mean of spike-in normalized coverage in non-overlapping 20 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type).
+        \item [right)] Heatmaps of fold-change in nucleosome occupancy and fuzziness for the same genes, aligned by wild-type +1 nucleosome dyad and arranged by sense NET-seq signal as in the leftmost panel.
+    \end{description}
+}
 \label{fig:mnase_heatmap}
 \end{figure}
 
@@ -221,12 +241,17 @@ The resolution with which we were able to identify intragenic transcription star
 
 \subsubsection{clustering MNase-seq data at intragenic TSSs}
 
-The average MNase-seq signal around all intragenic TSSs significantly upregulated in \textit{spt6-1004} showed no periodicity, suggesting the existence of multiple nucleosome patterns. To separate intragenic TSSs into groups with similar nucleosome patterning, I used the wild-type and \textit{spt6-1004} MNase-seq data flanking the intragenic TSSs to train a self-organizing map, an unsupervised learning method used to produce low-dimensional representations of an input space. First, spike-in normalized MNase-seq dyad signal in the window $\pm 150$ bp from the summits of the 6059 intragenic TSS-seq peaks was binned by taking the mean signal in non-overlapping 5 bp bins, and then averaged by taking the mean of two replicates (\textit{spt6-1004}) or one experiment (wild-type). The wild-type and \textit{spt6-1004} data were then used as equally weighted $6059 \times 60$ input layers to a self-organizing map which assigning similar MNase-seq observations in 60-dimensional input space to similar nodes in a 2-dimensional ($6 \times 8$) rectangular grid. The 48 `code vectors' representing the typical MNase-seq pattern for each node were then clustered by agglomerative hierarchical clustering using sum of squares distance and Ward linkage. The resulting dendrogram was cut to produce two clusters of intragenic TSSs, whose aggregate MNase-seq signals differed primarily by phasing relative to the TSS (Figure \ref{fig:intra_mnase_metagene}).
+The average MNase-seq signal around all intragenic TSSs significantly upregulated in \textit{spt6-1004} showed no periodicity, suggesting the existence of multiple nucleosome patterns. To separate intragenic TSSs into groups with similar nucleosome patterning, I used the wild-type and \textit{spt6-1004} MNase-seq data flanking the intragenic TSSs to train a self-organizing map, an unsupervised learning method used to produce low-dimensional representations of an input space \cite{wehrens2007}. First, spike-in normalized MNase-seq dyad signal in the window $\pm 150$ bp from the summits of the 6059 intragenic TSS-seq peaks was binned by taking the mean signal in non-overlapping 5 bp bins, and then averaged by taking the mean of two replicates (\textit{spt6-1004}) or one experiment (wild-type). The wild-type and \textit{spt6-1004} data were then used as equally weighted 6059$\times$ 60 input layers to a self-organizing map which assigning similar MNase-seq observations in 60-dimensional input space to similar nodes in a 2-dimensional (6 $\times$ 8) rectangular grid. The 48 `code vectors' representing the typical MNase-seq pattern for each node were then clustered by agglomerative hierarchical clustering using sum of squares distance and Ward linkage. The resulting dendrogram was cut to produce two clusters of intragenic TSSs, whose aggregate MNase-seq signals differed primarily by phasing relative to the TSS (Figure \ref{fig:intra_mnase_metagene}).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=17.4cm]{figures/figure12_intragenic-mnase.pdf}
-\caption{Top row) Average MNase-seq dyad signal for two clusters of \textit{spt6-1004} intragenic TSSs (clustered by the wild-type and \textit{spt6-1004} MNase-seq dyad signal flanking the TSS), as well as all genic TSSs detected in wild-type and \textit{spt6-1004}. Values are the mean of spike-in normalized dyad coverage in non-overlapping 10 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading represent the median and inter-quartile range. Bottom row) Average GC content of the DNA sequence, as above.}
+\caption[foo bar]{
+    \begin{description}[align=right, nosep, itemindent=0pt, leftmargin=6.2em, font=\normalfont]
+        \item [top row)] Average MNase-seq dyad signal for two clusters of \textit{spt6-1004} intragenic TSSs (clustered by the wild-type and \textit{spt6-1004} MNase-seq dyad signal flanking the TSS), as well as all genic TSSs detected in wild-type and \textit{spt6-1004}. Values are the mean of spike-in normalized dyad coverage in non-overlapping 10 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading are the median and inter-quartile range.
+        \item [bottom row)] Average GC content of the DNA sequence, as above.
+    \end{description}
+}
 \label{fig:intra_mnase_metagene}
 \end{figure}
 
@@ -240,9 +265,10 @@ Similar to genic TSSs, the two clusters of intragenic TSSs tend to lie on the bo
 \centering
 \includegraphics[width=8.7cm]{figures/figure13_seqlogos.pdf}
 \caption{Sequence logos of the information content of TSS-seq reads overlapping genic and intragenic TSS-seq peaks in \textit{spt6-1004}.}
+\label{fig:seqlogos}
 \end{wrapfigure}
 
-To examine differences in DNA sequence at intragenic TSSs compared to genic TSSs, I aligned the sequences for all TSS-seq reads overlapping TSS-seq peaks of each class, and calculated the information content of each type of TSS. Intragenic TSSs have a sequence motif that is almost identical to the sequence motif previously observed for genic TSSs. This suggests that RNA polymerase initiates transcription similarly at genic and intragenic TSSs, and that the lack of intragenic initiation in wild-type is due to inaccessibility of the initiation motif, possibly due to being wrapped in histones.
+To examine differences in DNA sequence at intragenic TSSs compared to genic TSSs, I aligned the sequences for all TSS-seq reads overlapping TSS-seq peaks of each class, and calculated the information content of each type of TSS. Intragenic TSSs have a sequence motif that is almost identical to the sequence motif previously observed for genic TSSs (Figure \ref{fig:seqlogos}). This suggests that RNA polymerase initiates transcription similarly at genic and intragenic TSSs, and that the lack of intragenic initiation in wild-type is due to inaccessibility of the initiation motif, possibly due to being wrapped in histones.
 
 \subsubsection{enrichment of motifs at intragenic TSSs}
 
@@ -250,9 +276,10 @@ To examine differences in DNA sequence at intragenic TSSs compared to genic TSSs
 \centering
 \includegraphics[width=8.7cm]{figures/figure14_intragenic-tata.pdf}
 \caption{Scaled density of occurrences of exact matches to the motif TATAWAWR upstream of TSSs. For each category, a Gaussian kernel density estimate of the positions of motif occurrences is multiplied by the number of motif occurrences in the genomic category and divided by the number of regions in the category.}
+\label{fig:tata}
 \end{wrapfigure}
 
-To examine whether sequence-specific transcription factors contribute to the expression of intragenic transcripts in \textit{spt6-1004}, we looked for enrichment or depletion of the DNA sequence motifs associated with these factors upstream of intragenic TSSs. Exact matches to the TATA element consensus sequence TATAWAWR are enriched upstream between 100 and 150 nt upstream of intragenic TSSs, in the same position but to a lesser degree to the TATA enrichment observed upstream of genic TSSs.
+To examine whether sequence-specific transcription factors contribute to the expression of intragenic transcripts in \textit{spt6-1004}, we looked for enrichment or depletion of the DNA sequence motifs associated with these factors upstream of intragenic TSSs. Exact matches to the TATA element consensus sequence TATAWAWR are enriched upstream between 100 and 150 nt upstream of intragenic TSSs, in the same position but to a lesser degree to the TATA enrichment observed upstream of genic TSSs (Figure \ref{fig:tata}).
 
 \pagebreak
 \section{searching for functions of intragenic transcription in stress}
