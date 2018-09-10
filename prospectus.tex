@@ -15,6 +15,7 @@
 \usepackage[]{natbib}
 % \addbibresource{prospectus.bib}
 
+\usepackage{morefloats}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{float}
@@ -272,7 +273,7 @@ To examine differences in DNA sequence at intragenic TSSs compared to genic TSSs
 
 \subsubsection{enrichment of motifs at intragenic TSSs}
 
-\begin{wrapfigure}[12]{r}{8.72cm}
+\begin{wrapfigure}[10]{r}{8.72cm}
 \centering
 \includegraphics[width=8.7cm]{figures/figure14_intragenic-tata.pdf}
 \caption{Scaled density of occurrences of exact matches to the motif TATAWAWR upstream of TSSs. For each category, a Gaussian kernel density estimate of the positions of motif occurrences is multiplied by the number of motif occurrences in the genomic category and divided by the number of regions in the category.}
@@ -281,8 +282,9 @@ To examine differences in DNA sequence at intragenic TSSs compared to genic TSSs
 
 To examine whether sequence-specific transcription factors contribute to the expression of intragenic transcripts in \textit{spt6-1004}, we looked for enrichment or depletion of the DNA sequence motifs associated with these factors upstream of intragenic TSSs. Exact matches to the TATA element consensus sequence TATAWAWR are enriched upstream between 100 and 150 nt upstream of intragenic TSSs, in the same position but to a lesser degree to the TATA enrichment observed upstream of genic TSSs (Figure \ref{fig:tata}).
 
-\pagebreak
-\section{searching for functions of intragenic transcription in stress}
+\vspace{6em}
+
+\section{functions of intragenic transcription in stress}
 
 \subsection{collaborators}
 
@@ -292,12 +294,16 @@ To examine whether sequence-specific transcription factors contribute to the exp
 \end{description}
 
 \subsection{introduction}
-\subsection{results}
-\subsection{discussion}
 
-\pagebreak
+The aim of the project is to discover and characterize instances of intragenic transcription which are important in stress responses.
 
-\section{Spt5}
+In the \textit{spt6-1004} mutant, intragenic transcription is most likely spurious transcription that occurs when disruptions in chromatin make promoter-like sequences accessible to the transcription initiation machinery. However, in some cases intragenic transcription may also be important in wild-type cells. Examples.
+
+To discover intragenic transcription that may b
+
+
+
+\section{genomics of transcription elongation factor Spt5}
 
 \subsection{collaborators}
 
@@ -305,23 +311,83 @@ To examine whether sequence-specific transcription factors contribute to the exp
     \item [Ameet Shetty] generated TSS-seq, MNase-seq, NET-seq, RNA-seq, and ChIP-seq libraries
 \end{description}
 
-\subsection{introduction to Spt5}
+\subsection{introduction to Spt5 and techniques used to study it}
+
+My collaborators on this project are interested in better understanding the transcription elongation factor Spt5. The following is a quick introduction to Spt5 \cite{shetty2017}:
 
 \begin{itemize}[nosep, topsep=.5em]
-\item Spt5 is the only transcription factor known to be conserved in all three domains of life
-\item Spt5 interacts directly with RNAPII
-\item Spt5 co-localizes with elongating RNAPII
-\item Spt5 binds over the RNAP clamp domain, likely stabilizing the elongation complex
-\item Spt5 physically recruits factors to the elongating transcription complex, in a manner dependent on the modification status of its C-terminal region (CTR)
+    \item Spt5 is the only transcription factor known to be conserved in all three domains of life \cite{hartzog2013, werner2012}
+    \item Spt5 co-localizes with elongating RNAPII \cite{mayer2010, rahl2010}
+    \item Spt5 binds over the RNAPII clamp domain, likely stabilizing the elongation complex \cite{hirtreiter2010, klein2011, martinez-rucobo2011}
+    \item Spt5 physically recruits factors to the elongating transcription complex, in a manner dependent on the modification status of its C-terminal region (CTR) \cite{hartzog2013}
     \begin{itemize}[nosep]
-        \item in its unphosphorylated state, the CTR aids in recruiting the mRNA capping enzyme
-        \item in its phosphorylated state, the CTR recruits the Paf1 complex, which is important for RNAPII elongation
-        \item Spt5 also helps to recruit mRNA 3' end processing factors
-        \item Spt5 also helps to recruit the Rpd3S histone deacetylase complex
+        \item in its unphosphorylated state, the CTR aids in recruiting the mRNA capping enzyme \cite{doamekpor2014, doamekpor2015, schneider2010, wen1999}
+        \item in its phosphorylated state, the CTR recruits the Paf1 complex, which is important for RNAPII elongation \cite{liu2009, mbogning2013, wier2013, zhou2009}
+        \item Spt5 helps to recruit mRNA 3' end processing factors \cite{mayer2012, stadelmayer2014, yamamoto2014}
+        \item Spt5 helps to recruit the Rpd3S histone deacetylase complex \cite{drouin2010}
     \end{itemize}
 \end{itemize}
 
+The strategy my collaborator uses to study Spt5 is to apply genomic techniques to \textit{Schizosaccharomyces pombe} cells that are depleted of Spt5 protein. Spt5 is essential for viability in \textit{S. pombe}, so depletion of Spt5 cannot be achieved by using a deletion mutant. Instead, my collaborator uses a strain in which expression of Spt5 can be shut off at two levels: At the transcription level, Spt5 is under the control of a thiamine-repressible promoter, such that transcription of Spt5 can be shut off with the addition of thiamine to the media. At the protein level, the Spt5 protein is tagged with an auxin-inducible degron, such that Spt5 is degraded upon addition of auxin to the media. For most experiments, cells are collected 4.5 hours after the addition of thiamine and auxin to the media, a timepoint at which Spt5 is depleted to around 13\% of non-depleted levels but the cells are still viable \cite{shetty2017}.
+
+% \begin{wrapfigure}[12]{r}{8.72cm}
+% \centering
+% \includegraphics[width=8.7cm]{figures/spt5_figure1-netseq-metagene.pdf}
+% \caption{asdf}
+% \label{fig:spt5_netseq-metagene}
+% \end{wrapfigure}
+
+Using this system, my collaborator applied a battery of genomic assays to cells in which Spt5 is depleted or non-depleted, including ChIP-seq of RNAPII, NET-seq, RNA-seq, and 4tU-seq. The results of these assays (not analyzed by me) are published \cite{shetty2017}, and can be summarised as follows: 1) Upon depletion of Spt5, RNAPII accumulates at the 5' end of genes (\ref{fig:spt5_netseq-metagene}), consistent with the role of Spt5 as a factor required for transcription elongation. 2) Upon depletion of Spt5, many transcripts antisense to coding genes become upregulated, particularly towards the 5' end of genes (\ref{fig:spt5_rnaseq-heatmaps}).
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{8.5cm}
+        \centering
+        \includegraphics[width=8.5cm]{figures/spt5_figure1-netseq-metagene.pdf}
+        \caption{Average sense strand NET-seq signal in Spt5 non-depleted and depleted cells, over 1989 non-overlapping genes scaled to the same length. Values are the mean of spike-in normalized coverage over two replicates. The solid line and shading are the median and the inter-quartile range.}
+        \label{fig:spt5_netseq-metagene}
+    \end{minipage}\hfill
+    \begin{minipage}[c]{8.5cm}
+        \centering
+        \includegraphics[width=8.5cm]{figures/spt5_figure2-rnaseq-heatmaps.pdf}
+        \caption{Heatmaps of antisense RNA-seq signal in Spt5 non-depleted and depleted cells, over 1989 non-overlapping genes sorted by transcript length and aligned by annotated sense TSS. Values are the mean of library-size normalized coverage in non-overlapping 20 nt bins, averaged over two replicates. Values above the 90th percentile are set to the 90th percentile for visualization.}
+        \label{fig:spt5_rnaseq-heatmaps}
+    \end{minipage}
+\end{figure}
+
+% \begin{wrapfigure}[23]{r}{8.72cm}
+% \centering
+% \includegraphics[width=8.7cm]{figures/spt5_figure2-rnaseq-heatmaps.pdf}
+% \caption{asdf}
+% \label{fig:spt5_rnaseq-heatmaps}
+% \end{wrapfigure}
+
+Following the publication, my collaborator wanted to characterize the upregulation of these antisense transcripts in more detail, and carried out two more assays: TSS-seq to precisely map the start sites of these transcripts, and MNase-seq to ask whether their upregulation is associated with changes in chromatin.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=17.4cm]{figures/spt5_figure3-antisense-heatmaps.pdf}
+\caption{asdf}
+\label{fig:spt5_antisense-heatmaps}
+\end{figure}
+
+\begin{wrapfigure}[23]{l}{8.72cm}
+\centering
+\includegraphics[width=8.7cm]{figures/spt5_figure4-mnase-metagene.pdf}
+\caption{asdf}
+\label{fig:spt5_mnase-metagene}
+\end{wrapfigure}
+
+\begin{wrapfigure}[23]{r}{8.72cm}
+\centering
+\includegraphics[width=8.7cm]{figures/spt5_figure5-antisense-mnase-metagene.pdf}
+\caption{asdf}
+\label{fig:spt5_antisense-mnase-metagene}
+\end{wrapfigure}
+
+\newpage
 % \printbibliography
 \bibliography{prospectus}{}
 \bibliographystyle{plain}
 \end{document}
+

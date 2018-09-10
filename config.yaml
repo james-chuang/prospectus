@@ -92,3 +92,39 @@ figure14:
     height: 4
     width: 8.7
 
+spt5_figure1:
+    netseq_data: ../../spt5/spt5-data-integration/datavis/coding-transcripts-nonoverlapping-scaled/coding-transcripts-nonoverlapping-scaled_NET-seq-sense.tsv.gz
+    annotation: ../../spt5/genome/annotations/S_pombe_codingtranscripts-adjustedTSS-nonoverlapping-slopR300.bed
+    height: 5.5
+    width: 8.5
+
+spt5_figure2:
+    rnaseq_data: ../../spt5/rna-seq/datavis/coding-transcripts-nonoverlapping-slopR300-TSS/libsizenorm/coding-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-libsizenorm-wholeread-ANTISENSE.tsv.gz
+    annotation: ../../spt5/genome/annotations/S_pombe_codingtranscripts-adjustedTSS-nonoverlapping-slopR300.bed
+    height: 9.25
+    width: 8.5
+
+spt5_figure3:
+    tssseq_data: ../../spt5/spt5-data-integration/datavis/transcripts-w-anti-antidistsort/transcripts-w-anti-antidistsort_TSS-seq-antisense.tsv.gz
+    rnaseq_data: ../../spt5/spt5-data-integration/datavis/transcripts-w-anti-antidistsort/transcripts-w-anti-antidistsort_RNA-seq-antisense.tsv.gz
+    netseq_data: ../../spt5/spt5-data-integration/datavis/transcripts-w-anti-antidistsort/transcripts-w-anti-antidistsort_NET-seq-antisense.tsv.gz
+    width: 17.4
+    height: 10
+
+spt5_figure4:
+    mnase_data: ../../spt5/mnase-seq/datavis/nonoverlapping-genes-plusonenuc/libsizenorm/nonoverlapping-genes-plusonenuc-allsamples-allannotations-midpoint-libsizenorm.tsv.gz
+    width: 8.7
+    height: 6
+
+spt5_figure5:
+    mnase_data: ../../spt5/spt5-data-integration/datavis/antisense-tss/antisense-tss_MNase-seq.tsv.gz
+    gc_data: ../../spt5/spt5-data-integration/datavis/antisense-tss/antisense-tss_GC-pct.tsv.gz
+    width: 8.7
+    height: 6
+
+spt5_figure6:
+    wt_mnase_quant: ../../spt5/mnase-seq/nucleosome_quantification/depleted-v-non-depleted/libsizenorm/pooled/nucleosome_quantification_data_non-depleted.Fnor.smooth.positions.xls
+    spt5_mnase_quant: ../../spt5/mnase-seq/nucleosome_quantification/depleted-v-non-depleted/libsizenorm/pooled/nucleosome_quantification_data_depleted.Fnor.smooth.positions.xls
+    height: 4.25
+    width: 8.5
+

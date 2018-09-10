@@ -7,7 +7,7 @@ main = function(theme_spec, heatmap_scripts, annotation,
 
     sample_list = c("WT-37C-1", "WT-37C-2", "spt6-1004-37C-1", "spt6-1004-37C-2")
     cps_dist = 0.3
-    max_length = 3
+    max_length = 2.5
     add_ylabel = TRUE
     cutoff_pct = 0.93
 

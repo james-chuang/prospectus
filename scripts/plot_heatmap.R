@@ -1,17 +1,22 @@
 
-import = function(path, sample_list){
-    read_tsv(path, col_names = c("group", "sample", "annotation", "index", "position", "signal")) %>%
+import = function(path, sample_list, experiment){
+    df = read_tsv(path, col_names = c("group", "sample", "annotation", "index", "position", "signal")) %>%
         filter((sample %in% sample_list) & ! is.na(signal)) %>%
+        mutate(group = fct_inorder(group, ordered=TRUE)) %>%
         group_by(group, annotation, index, position) %>%
         summarise(signal = mean(signal)) %>%
-        ungroup() %>%
-        mutate(group = ordered(group,
-                               levels = c("WT-37C", "spt6-1004-37C"),
-                               labels = c("WT", "italic(\"spt6-1004\")"))) %>%
-        return()
+        ungroup()
+
+    if (experiment=="spt6"){
+        df %<>% mutate(group = ordered(group,
+                                       levels = c("WT-37C", "spt6-1004-37C"),
+                                       labels = c("WT", "italic(\"spt6-1004\")")))
+    }
+    return(df)
 }
 
 plot_heatmap = function(data_path, sample_list, anno_path, cps_dist,
+                        experiment = "spt6",
                         max_length, add_ylabel, y_label="",
                         cutoff_pct, colorbar_title){
 
@@ -23,7 +28,7 @@ plot_heatmap = function(data_path, sample_list, anno_path, cps_dist,
         rowid_to_column(var="sorted_index") %>%
         mutate(cps_position = (end-start)/1000-cps_dist)
 
-    df = import(data_path, sample_list=sample_list) %>%
+    df = import(data_path, sample_list=sample_list, experiment=experiment) %>%
         left_join(anno_df %>% select(index, sorted_index), by="index")
 
     label_df = df %>%
@@ -37,8 +42,8 @@ plot_heatmap = function(data_path, sample_list, anno_path, cps_dist,
         geom_path(data = anno_df %>% filter(cps_position <= max_length),
                      aes(x=cps_position, y=sorted_index),
                   size=0.3, linetype="dotted", color="white", alpha=0.9) +
-        geom_text(data=label_df, aes(x=1, y=sorted_index, label=group),
-                  hjust=0, nudge_y=-250, size=9/72*25.4, parse=TRUE) +
+        geom_text(data=label_df, aes(x = if_else(experiment=="spt6", 1, 0.9), y=sorted_index, label=group),
+                  hjust=0, nudge_y=if_else(experiment=="spt6", -250, -100), size=9/72*25.4, parse=TRUE) +
         scale_x_continuous(breaks = scales::pretty_breaks(n=3),
                            expand = c(0, 0.05),
                            labels = function(x){case_when(x==0 ~ "TSS",
