@@ -49,7 +49,7 @@
 
 \section{introduction}
 
-Within the past two years, I have taken on the three projects described in this prospectus document. My role in these projects is best described as \textbf{data engineer}: I build pipelines for processing large (in this case, genomic) datasets, from raw data to statistical analysis and data visualization. For every step of a pipeline, this involves surveying available tools and selecting the tools that are most suitable. In some cases, existing tools are insufficient for a task, so I write code to complete the task. All of my data analyses are open source (\url{github.com/winston-lab}) and designed to be reproducible by others: For every publication, I upload an archive that allows anyone to go from the raw data to the figures in the publication (see \url{https://doi.org/10.5281/zenodo.1403167} for an example).
+Within the past two years, I have taken on the three projects described in this prospectus document. My role in these projects is a mix of \href{https://blog.insightdatascience.com/data-science-vs-data-engineering-62da7678adaa}{\textbf{data scientist}} and \href{https://blog.insightdatascience.com/data-science-vs-data-engineering-62da7678adaa}{\textbf{data engineer}}: I build pipelines for processing large (in this case, genomic) datasets, from raw data to statistical analysis and data visualization. This involves surveying available tools and selecting the tools that are most suitable for each step of a pipeline, and coding solutions to problems when existing tools are insufficient. All of my data analyses are open source (\url{github.com/winston-lab}) and designed to be reproducible by others: For every publication, I upload an archive that allows anyone to go from the raw data to the figures in the publication (e.g. \url{https://doi.org/10.5281/zenodo.1409826}).
 
 \section{genomics of transcription elongation factor Spt6}
 
@@ -295,9 +295,9 @@ To examine whether sequence-specific transcription factors contribute to the exp
 
 \subsection{introduction}
 
-The aim of the project is to discover and characterize instances of intragenic transcription which are important in stress responses.
+In the \textit{spt6-1004} mutant, intragenic transcription is most likely spurious transcription that occurs when disruptions in chromatin make promoter-like sequences accessible to the transcription initiation machinery. However, a handful of studies have shown that specific instances of intragenic transcription may also be important in wild-type cells \cite{mcknight2014, gammie1999}.
 
-In the \textit{spt6-1004} mutant, intragenic transcription is most likely spurious transcription that occurs when disruptions in chromatin make promoter-like sequences accessible to the transcription initiation machinery. However, in some cases intragenic transcription may also be important in wild-type cells. Examples.
+in some cases intragenic transcription may also be important in wild-type cells. Examples.
 
 To discover intragenic transcription that may b
 
@@ -362,14 +362,18 @@ Using this system, my collaborator applied a battery of genomic assays to cells 
 % \label{fig:spt5_rnaseq-heatmaps}
 % \end{wrapfigure}
 
-Following the publication, my collaborator wanted to characterize the upregulation of these antisense transcripts in more detail, and carried out two more assays: TSS-seq to precisely map the start sites of these transcripts, and MNase-seq to ask whether their upregulation is associated with changes in chromatin.
+\subsection{TSS-seq and MNase-seq results in Spt5 depletion}
+
+Following the publication, my collaborator performed two more assays to characterize the upregulation of these antisense transcripts in more detail: TSS-seq to precisely map the start sites of these transcripts, and MNase-seq to ask whether their upregulation is associated with changes in chromatin.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=17.4cm]{figures/spt5_figure3-antisense-heatmaps.pdf}
-\caption{asdf}
+\caption{Heatmaps of antisense TSS-seq, RNA-seq, and NET-seq signal in Spt5 non-depleted and depleted cells, over 1355 genes with a significantly upregulated antisense TSS-seq peak, aligned by sense TSS and arranged by the distance from the sense TSS to the upregulated antisense peak. Values are the mean of spike-in (TSS-seq and NET-seq) or library-size (RNA-seq) normalized coverage in non-overlapping 20 nt bins, averaged over two or more replicates. Values above the .995 (TSS-seq), .96 (RNA-seq), and .95 (NET-seq) quantiles are set to their respective quantiles for visualization.}
 \label{fig:spt5_antisense-heatmaps}
 \end{figure}
+
+Using TSS-seq, we identify around 1300 TSSs that are significantly upregulated in Spt5 depletion and lie antisense to a coding transcript (Figure \ref{fig:spt5_antisense-heatmaps}). The majority of these antisense TSSs occur within 1 kb downstream of the corresponding sense TSS, and most are associated with elevated antisense RNA-seq and NET-seq signal in the depletion condition (Figure \ref{fig:spt5_antisense-heatmaps}).
 
 \begin{wrapfigure}[23]{l}{8.72cm}
 \centering
