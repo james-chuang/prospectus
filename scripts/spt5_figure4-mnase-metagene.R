@@ -23,8 +23,8 @@ main = function(theme_spec, mnase_data,
     plot = ggplot(data = df, aes(x=position, color=group, fill=group)) +
         geom_ribbon(aes(ymin=low, ymax=high), alpha=0.17, linetype='blank') +
         geom_line(aes(y=mid), alpha=0.75) +
-        scale_x_continuous(breaks = seq(0, 1.5, 0.5),
-                           labels = c("+1 dyad", "0.5", "1", "1.5 kb"),
+        scale_x_continuous(breaks = seq(0, 1, 0.5),
+                           labels = c("+1 dyad", "0.5", "1 kb"),
                            name = NULL,
                            expand = c(0,0)) +
         scale_y_continuous(breaks = scales::pretty_breaks(n=2),
