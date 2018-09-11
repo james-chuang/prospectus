@@ -236,7 +236,7 @@ Previous studies observed two trends: 1) In wild-type cells, nucleosome position
 \label{fig:mnase_heatmap}
 \end{figure}
 
-\subsection{features of intragenic promoters}
+\subsection{features of \textit{spt6-1004} intragenic promoters}
 
 The resolution with which we were able to identify intragenic transcription start sites allowed us to closely examine the chromatin and sequence features of intragenic promoters, and to compare intragenic to genic promoters. We made this comparison for MNase-seq data, DNA sequence information content, and sequence motifs.
 
@@ -293,15 +293,30 @@ To examine whether sequence-specific transcription factors contribute to the exp
     \item [Blake Tye] generated NET-seq and RNA-seq libraries
 \end{description}
 
-\subsection{introduction}
+\subsection{introduction to wild-type intragenic transcription}
 
-In the \textit{spt6-1004} mutant, intragenic transcription is most likely spurious transcription that occurs when disruptions in chromatin make promoter-like sequences accessible to the transcription initiation machinery. However, a handful of studies have shown that specific instances of intragenic transcription may also be important in wild-type cells \cite{mcknight2014, gammie1999}.
+In the \textit{spt6-1004} mutant, intragenic transcription is most likely spurious transcription that occurs when disruptions in chromatin make promoter-like sequences accessible to the transcription initiation machinery. In wild-type cells, intragenic transcription is much more limited, but there is evidence for specific instances of intragenic transcription to be biologically functional \cite{mcknight2014, gammie1999}. In one example, DNA replication stress induces intragenic transcription of the \textit{ASE1} mitotic spindle microtubule bundling gene \cite{mcknight2014}. Translation of the \textit{ASE1} intragenic transcript produces a truncated protein containing a C-terminal microtubule-binding domain but lacking an N-terminal dimerization domain. Because the short protein binds microtubules but does not dimerize, it antagonizes the function of the full length Ase1 protein, a function which is important for the cellular response to replication stress.
 
-in some cases intragenic transcription may also be important in wild-type cells. Examples.
+Even if intragenic transcription does not act through the production of truncated protein, the possibility for either the process of intragenic transcription or the intragenic RNA to be important to a cell is supported by numerous examples of the regulatory role of noncoding transcription and noncoding RNA. Conversely, it is entirely possible for intragenic transcription to have no function and simply exist as an evolutionarily neutral coincidence of DNA sequence. In this project, we are attempting to identify and characterize biologically functional cases of intragenic transcription in wild-type \textit{S. cerevisiae}. Experimentally determining whether a case of intragenic transcription has a function is costly because the search space is large: Negative results indicating that the transcription is non-functional can occur if transcription truly is spurious, but also if the conditions tested aren't the conditions in which the transcription is functional. This makes it especially important to limit experiments to the cases of intragenic transcription that are most likely to have a function. My collaborators have therefore generated three datasets based on three assumptions that we will be using to find top experimental candidates.
 
-To discover intragenic transcription that may b
+\subsection{TFIIB ChIP-nexus in stress conditions}
 
+The first assumption is that intragenic transcription with a biological function in a certain condition will be differentially transcribed in that condition.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=17.4cm]{figures/stress_figure1-tfiib-heatmaps.pdf}
+\caption{asdf}
+\label{fig:stress_tfiib-heatmaps}
+\end{figure}
+
+\subsection{TSS-seq of different yeast species in oxidative stress}
+
+The second assumption is that intragenic transcription which is evolutionarily conserved is more likely to be functional.
+
+\subsection{polyribosome-associated TSS-seq in oxidative stress}
+
+Assumption 3: Intragenic transcripts that are translated have an experimentally testable function
 
 \section{genomics of transcription elongation factor Spt5}
 

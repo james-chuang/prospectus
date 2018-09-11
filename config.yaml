@@ -92,6 +92,11 @@ figure14:
     height: 4
     width: 8.7
 
+stress_figure1:
+    tfiib_data: ../../intragenic/chipnexus-tfiib/datavis/genes-with-stress-induced-intra-peaks/libsizenorm/genes-with-stress-induced-intra-peaks-allsamples-allannotations-tfiib-chipnexus-libsizenorm-protection.tsv.gz
+    height: 10
+    width: 17.4
+
 spt5_figure1:
     netseq_data: ../../spt5/spt5-data-integration/datavis/coding-transcripts-nonoverlapping-scaled/coding-transcripts-nonoverlapping-scaled_NET-seq-sense.tsv.gz
     annotation: ../../spt5/genome/annotations/S_pombe_codingtranscripts-adjustedTSS-nonoverlapping-slopR300.bed

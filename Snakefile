@@ -3,6 +3,7 @@
 configfile: "config.yaml"
 
 include: "rules/spt6_figures.smk"
+include: "rules/stress_figures.smk"
 include: "rules/spt5_figures.smk"
 
 rule all:
@@ -21,6 +22,7 @@ rule all:
         "figures/figure12_intragenic-mnase.pdf",
         "figures/figure13_seqlogos.pdf",
         "figures/figure14_intragenic-tata.pdf",
+        "figures/stress_figure1-tfiib-heatmaps.pdf",
         "figures/spt5_figure1-netseq-metagene.pdf",
         "figures/spt5_figure2-rnaseq-heatmaps.pdf",
         "figures/spt5_figure3-antisense-heatmaps.pdf",
@@ -44,6 +46,7 @@ rule compile_document:
         "figures/figure12_intragenic-mnase.pdf",
         "figures/figure13_seqlogos.pdf",
         "figures/figure14_intragenic-tata.pdf",
+        "figures/stress_figure1-tfiib-heatmaps.pdf",
         "figures/spt5_figure1-netseq-metagene.pdf",
         "figures/spt5_figure2-rnaseq-heatmaps.pdf",
         "figures/spt5_figure3-antisense-heatmaps.pdf",
