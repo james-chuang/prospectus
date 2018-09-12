@@ -49,11 +49,11 @@
 
 \section{introduction}
 
-Within the past two years, I have taken on the three projects described in this prospectus document. My role in these projects is a mix of \href{https://blog.insightdatascience.com/data-science-vs-data-engineering-62da7678adaa}{\textbf{data scientist}} and \href{https://blog.insightdatascience.com/data-science-vs-data-engineering-62da7678adaa}{\textbf{data engineer}}: I build pipelines for processing large (in this case, genomic) datasets, from raw data to statistical analysis and data visualization. This involves surveying available tools and selecting the tools that are most suitable for each step of a pipeline, and coding solutions to problems when existing tools are insufficient. All of my data analyses are open source (\url{github.com/winston-lab}) and designed to be reproducible by others: For every publication, I upload an archive that allows anyone to go from the raw data to the figures in the publication (e.g. \url{https://doi.org/10.5281/zenodo.1409826}).
+In the past two years, I have taken on the three projects described in this document. My role in these projects is a mix of \href{https://blog.insightdatascience.com/data-science-vs-data-engineering-62da7678adaa}{\textbf{data scientist}} and \href{https://blog.insightdatascience.com/data-science-vs-data-engineering-62da7678adaa}{\textbf{data engineer}}: I build pipelines for processing large (in this case, genomic) datasets, from raw data to statistical analysis and data visualization. This mostly involves surveying available tools, selecting the tools most suitable for each step of a pipeline, and coding solutions to problems when existing tools are insufficient. All of my data analyses are open source (\href{https://github.com/winston-lab}{github.com/winston-lab}) and are designed to be reproducible by others: For every publication, I upload an archive that allows those interested to recreate the figures in the publication starting from raw data (e.g. \url{https://doi.org/10.5281/zenodo.1409826}).
 
 \section{genomics of transcription elongation factor Spt6}
 
-N.B. The work from this section is in press. A preprint is available at \url{https://doi.org/10.1101/347575} \cite{doris2018}.
+N.B. This work is in press. A preprint is available at \url{https://doi.org/10.1101/347575} \cite{doris2018}.
 
 \subsection{collaborators}
 
@@ -67,7 +67,7 @@ N.B. The work from this section is in press. A preprint is available at \url{htt
 
 \subsection{introduction to Spt6, intragenic transcription, and assays used to study the two}
 
-The aim of the work described in this section is related to understanding how a eukaryotic cell specifies which sites in its genome are permitted to become sites of transcription initiation. From past genetic studies in yeast, it is known that some of the factors involved in controlling the specificity of transcription initiation are actually transcription \textit{elongation} factors, including histone chaperones and histone modification enzymes \cite{kaplan2003, cheung2008, hennig2013}. My collaborators on this project are interested in the role of the transcription elongation factor \textbf{Spt6} in this process. The following is a quick introduction to Spt6 \cite{doris2018}:
+The aim of this work is related to understanding how a eukaryotic cell specifies which sites in its genome are permitted to become sites of transcription initiation. From genetic studies in yeast, it is known that some factors controlling the specificity of transcription initiation are actually transcription \textit{elongation} factors, including histone chaperones and histone modification enzymes \cite{kaplan2003, cheung2008, hennig2013}. My collaborators on this project are interested in the role of the transcription elongation factor \textbf{Spt6} in this process. The following is a quick introduction to Spt6 \cite{doris2018}:
 
 \begin{itemize}[nosep, topsep=.5em]
 \item Spt6 interacts directly with:
@@ -91,10 +91,17 @@ The aim of the work described in this section is related to understanding how a 
 		\item in some organisms, H3K4 and H3K27 methylation \cite{begum2012, chen2012, degennaro2013, wang2017, wang2013}
 		\end{itemize}
 	\end{itemize}
-\item Spt6 is likely to be a histone chaperone required to reassemble nucleosomes in the wake of transcription \cite{duina2011}.
+\item Spt6 is likely a histone chaperone required to reassemble nucleosomes in the wake of transcription \cite{duina2011}.
 \end{itemize}
 
-Previous studies in the yeasts \textit{S. cerevisiae} and \textit{S. pombe} have examined the requirement for Spt6 in normal transcription \cite{cheung2008, degennaro2013, kaplan2003, pathak2018, uwimana2017, vanbakel2013}. Many of these studies make use of the same temperature-sensitive \textit{S. cerevisiae} \textit{spt6} mutant used in this project, \textbf{\textit{spt6-1004}}, in which Spt6 protein is depleted at the non-permissive temperature of 37\textdegree C \cite{kaplan2003}. The most notable phenotype of the \textit{spt6-1004} mutant is the expression of \textbf{intragenic transcripts}, transcripts which appear to start within protein-coding genes, both in the same orientation and in the antisense orientation relative to the coding gene \cite{cheung2008, degennaro2013, kaplan2003, uwimana2017}.
+\begin{wrapfigure}[9]{r}{7.02cm}
+\centering
+\includegraphics[width=7cm]{figures/figure0_txn-diagram.pdf}
+\caption{Diagram of transcript orientation with respect to coding DNA sequences, for the categories of transcripts referred to in this document.}
+\label{fig:txn-diagram}
+\end{wrapfigure}
+
+Previous studies in the yeasts \textit{S. cerevisiae} and \textit{S. pombe} have examined the requirement for Spt6 in normal transcription \cite{cheung2008, degennaro2013, kaplan2003, pathak2018, uwimana2017, vanbakel2013}. Many of these studies make use of the same temperature-sensitive \textit{S. cerevisiae} \textit{spt6} mutant used in this project, \textbf{\textit{spt6-1004}}, in which Spt6 protein is depleted at the non-permissive temperature of 37\textdegree C \cite{kaplan2003}. The most notable phenotype of the \textit{spt6-1004} mutant is the expression of \textbf{intragenic transcripts}, transcripts which appear to start within protein-coding genes, both in the same orientation and in the antisense orientation relative to the coding gene (Figure \ref{fig:txn-diagram}) \cite{cheung2008, degennaro2013, kaplan2003, uwimana2017}.
 
 Previous genome-wide measurements of transcript levels in \textit{spt6-1004} were made using tiled microarrays \cite{cheung2008} and RNA sequencing \cite{uwimana2017}. These methods assay steady-state RNA levels, making them unable to determine whether the intragenic transcripts observed in \textit{spt6-1004} result from: A) new intragenic transcription initiation in the mutant, B) reduced decay of intragenic transcripts which are rapidly turned over in wild-type, or C) processing of full-length protein-coding RNAs. Additionally, these methods are suboptimal for identifying where intragenic transcription occurs, since the signal for an intragenic transcript in the same orientation as the gene it overlaps is convoluted with the signal from the full-length `genic' transcript \cite{cheung2008, lickwar2009}.
 

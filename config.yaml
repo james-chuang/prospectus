@@ -1,5 +1,9 @@
 theme_spec: scripts/spt6_2018_theme_specification.R
 
+figure0:
+    height: 2
+    width: 7
+
 figure1:
     data_path: ../../intragenic/spt6-data-integration/browser-shots/TEF1/TEF1_TSS-seq-sense.tsv.gz
     height: 4

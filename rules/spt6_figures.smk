@@ -1,5 +1,17 @@
 #!/usr/bin/env python
 
+rule figure0:
+    input:
+        theme = config["theme_spec"],
+    output:
+        pdf = "figures/figure0_txn-diagram.pdf"
+    params:
+        height = eval(str(config["figure0"]["height"])),
+        width = eval(str(config["figure0"]["width"])),
+    conda: "../envs/plot.yaml"
+    script:
+        "../scripts/figure0_txn-diagram.R"
+
 rule figure1:
     input:
         theme = config["theme_spec"],

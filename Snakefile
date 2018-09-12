@@ -8,6 +8,7 @@ include: "rules/spt5_figures.smk"
 
 rule all:
     input:
+        "figures/figure0_txn-diagram.pdf",
         "figures/figure1_tss-seq-coverage.pdf",
         "figures/figure2_tss-seq-heatmaps.pdf",
         "figures/figure3_tfiib-nexus-tata.pdf",
@@ -32,6 +33,7 @@ rule all:
 
 rule compile_document:
     input:
+        "figures/figure0_txn-diagram.pdf",
         "figures/figure1_tss-seq-coverage.pdf",
         "figures/figure2_tss-seq-heatmaps.pdf",
         "figures/figure3_tfiib-nexus-tata.pdf",
