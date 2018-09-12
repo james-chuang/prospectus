@@ -6,14 +6,14 @@ figure0:
 
 figure1:
     data_path: ../../intragenic/spt6-data-integration/browser-shots/TEF1/TEF1_TSS-seq-sense.tsv.gz
-    height: 4
-    width: 8
+    height: 3.3
+    width: 7
 
 figure2:
     annotation: ../../intragenic/genomefiles_cerevisiae/annotations/Scer_transcripts_w_verifiedORFs-nonoverlapping_slopR300.bed
     tss_sense: ../../intragenic/tss-seq/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/spikenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tss-seq-spikenorm-SENSE.tsv.gz
     tss_antisense: ../../intragenic/tss-seq/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/spikenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tss-seq-spikenorm-ANTISENSE.tsv.gz
-    height: 9.25
+    height: 9.55
     width: 17.4
 
 figure3:
@@ -25,7 +25,7 @@ figure3:
 figure4:
     tfiib_data: ../../intragenic/chipnexus-tfiib/datavis/verified-transcripts-nonoverlapping-slopR300-TSS/libsizenorm/verified-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-tfiib-chipnexus-libsizenorm-protection.tsv.gz
     annotation: ../../intragenic/genomefiles_cerevisiae/annotations/Scer_transcripts_w_verifiedORFs-nonoverlapping_slopR300.bed
-    height: 9.25
+    height: 9.55
     width: 8.7
 
 figure5:
@@ -33,7 +33,7 @@ figure5:
     intragenic: ../../intragenic/tss-seq/diff_exp/spt6-1004-37C-v-WT-37C/spikenorm/intragenic/spt6-1004-37C-v-WT-37C_tss-seq-spikenorm-diffexp-results-intragenic-all.tsv
     antisense: ../../intragenic/tss-seq/diff_exp/spt6-1004-37C-v-WT-37C/spikenorm/antisense/spt6-1004-37C-v-WT-37C_tss-seq-spikenorm-diffexp-results-antisense-all.tsv
     intergenic: ../../intragenic/tss-seq/diff_exp/spt6-1004-37C-v-WT-37C/spikenorm/intergenic/spt6-1004-37C-v-WT-37C_tss-seq-spikenorm-diffexp-results-intergenic-all.tsv
-    height: 6
+    height: 4
     width: 8.5
 
 figure6:
@@ -41,7 +41,7 @@ figure6:
     tss_intragenic: ../../intragenic/tss-seq/diff_exp/spt6-1004-37C-v-WT-37C/spikenorm/intragenic/spt6-1004-37C-v-WT-37C_tss-seq-spikenorm-diffexp-results-intragenic-all.tsv
     tss_antisense: ../../intragenic/tss-seq/diff_exp/spt6-1004-37C-v-WT-37C/spikenorm/antisense/spt6-1004-37C-v-WT-37C_tss-seq-spikenorm-diffexp-results-antisense-all.tsv
     tss_intergenic: ../../intragenic/tss-seq/diff_exp/spt6-1004-37C-v-WT-37C/spikenorm/intergenic/spt6-1004-37C-v-WT-37C_tss-seq-spikenorm-diffexp-results-intergenic-all.tsv
-    height: 6
+    height: 5
     width: 8.5
 
 figure7:
@@ -59,13 +59,13 @@ figure8:
 figure9:
     mnase_data: ../../intragenic/viktorovskaya-mnase-seq/datavis/verified-transcripts-nonoverlapping-plusonenuc/spikenorm/verified-transcripts-nonoverlapping-plusonenuc-allsamples-allannotations-midpoint-spikenorm.tsv.gz
     annotation: ../../intragenic/genomefiles_cerevisiae/annotations/Scer_transcripts_w_verifiedORFs-nonoverlapping-WT-NETseq-sort-plusone-nucdyad.bed
-    height: 4.25
+    height: 5.5
     width: 8.5
 
 figure10:
     wt_mnase_quant: ../../intragenic/viktorovskaya-mnase-seq/nucleosome_quantification/spt6-1004-37C-v-WT-37C/spikenorm/pooled/nucleosome_quantification_data_WT-37C.Fnor.smooth.positions.xls
     spt6_mnase_quant: ../../intragenic/viktorovskaya-mnase-seq/nucleosome_quantification/spt6-1004-37C-v-WT-37C/spikenorm/pooled/nucleosome_quantification_data_spt6-1004-37C.Fnor.smooth.positions.xls
-    height: 4.25
+    height: 5.5
     width: 8.5
 
 figure11:
@@ -73,7 +73,7 @@ figure11:
     mnase_data: ../../intragenic/viktorovskaya-mnase-seq/datavis/verified-transcripts-nonoverlapping-plusonenuc-NETseq-sort/spikenorm/verified-transcripts-nonoverlapping-plusonenuc-NETseq-sort-allsamples-allannotations-midpoint-spikenorm.tsv.gz
     quant_data: ../../intragenic/viktorovskaya-mnase-seq/nucleosome_quantification/regions/verified-transcripts-nonoverlapping-plusonenuc-NETseq-sort/spikenorm/spt6-1004-37C-v-WT-37C/verified-transcripts-nonoverlapping-plusonenuc-NETseq-sort-allannotations-integrated-spikenorm.tsv
     annotation: ../../intragenic/genomefiles_cerevisiae/annotations/Scer_transcripts_w_verifiedORFs-nonoverlapping-WT-NETseq-sort-plusone-nucdyad.bed
-    height: 8.5
+    height: 11.5
     width: 17.4
 
 figure12:

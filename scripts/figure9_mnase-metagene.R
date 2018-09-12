@@ -47,7 +47,7 @@ main = function(theme_spec,
         theme(legend.key.height = unit(10, "pt"),
               legend.position = c(0.7, 0.95),
               panel.grid = element_blank(),
-              plot.margin = margin(0, 11, 4, 0, "pt"))
+              plot.margin = margin(11, 11, 4, 0, "pt"))
 
     ggsave(pdf_out, plot=fig_four_a, width=fig_width, height=fig_height, units="cm")
 }

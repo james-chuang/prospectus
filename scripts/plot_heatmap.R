@@ -41,13 +41,13 @@ plot_heatmap = function(data_path, sample_list, anno_path, cps_dist,
                     interpolate=FALSE) +
         geom_path(data = anno_df %>% filter(cps_position <= max_length),
                      aes(x=cps_position, y=sorted_index),
-                  size=0.3, linetype="dotted", color="white", alpha=0.9) +
+                  size=0.5, linetype="dotted", color="white", alpha=0.9) +
         geom_text(data=label_df, aes(x = if_else(experiment=="spt6", 1, 0.9), y=sorted_index, label=group),
                   hjust=0, nudge_y=if_else(experiment=="spt6", -250, -100), size=9/72*25.4, parse=TRUE) +
         scale_x_continuous(breaks = scales::pretty_breaks(n=3),
-                           expand = c(0, 0.05),
+                           expand = c(0, 0),
                            labels = function(x){case_when(x==0 ~ "TSS",
-                                                          x==max_length ~ paste(x, "kb"),
+                                                          x==2 ~ "2 kb",
                                                           TRUE ~ as.character(x))}) +
         scale_y_continuous(breaks = function(x){seq(min(x)+500, max(x)-500, 500)},
                            name = if(add_ylabel){paste(n_distinct(df[["sorted_index"]]), y_label)} else {""},

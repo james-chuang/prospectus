@@ -25,7 +25,8 @@ main = function(theme_spec, data_path,
         theme(panel.grid.major = element_blank(),
               panel.grid.minor = element_blank(),
               panel.border = element_blank(),
-              axis.line = element_line(size=0.2, color="grey70"))
+              axis.line = element_line(size=0.2, color="grey70"),
+              plot.margin = margin(0,0,0,0,"pt"))
     ggsave(pdf_out, plot=plot, height=fig_height, width=fig_width, units="cm")
 }
 
