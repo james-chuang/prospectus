@@ -94,36 +94,36 @@ figure14:
     tata_intragenic: ../../intragenic/motif_analysis_tata/comparisons/all-intragenic-v-random/all-intragenic-v-random_condition_allFIMOresults.tsv.gz
     tata_random: ../../intragenic/motif_analysis_tata/comparisons/all-intragenic-v-random/all-intragenic-v-random_control_allFIMOresults.tsv.gz
     height: 4
-    width: 8.7
+    width: 8.6
 
 stress_figure1:
     tfiib_data: ../../intragenic/chipnexus-tfiib/datavis/genes-with-stress-induced-intra-peaks/libsizenorm/genes-with-stress-induced-intra-peaks-allsamples-allannotations-tfiib-chipnexus-libsizenorm-protection.tsv.gz
-    height: 10
+    height: 12
     width: 17.4
 
 spt5_figure1:
     netseq_data: ../../spt5/spt5-data-integration/datavis/coding-transcripts-nonoverlapping-scaled/coding-transcripts-nonoverlapping-scaled_NET-seq-sense.tsv.gz
-    annotation: ../../spt5/genome/annotations/S_pombe_codingtranscripts-adjustedTSS-nonoverlapping-slopR300.bed
-    height: 5.5
+    annotation: ../../spt5/genome/annotations/S_pombe_codingtranscripts-adjustedTSS-nonoverlapping.bed
+    height: 4.5
     width: 8.5
 
 spt5_figure2:
     rnaseq_data: ../../spt5/rna-seq/datavis/coding-transcripts-nonoverlapping-slopR300-TSS/libsizenorm/coding-transcripts-nonoverlapping-slopR300-TSS-allsamples-allannotations-libsizenorm-wholeread-ANTISENSE.tsv.gz
     annotation: ../../spt5/genome/annotations/S_pombe_codingtranscripts-adjustedTSS-nonoverlapping-slopR300.bed
-    height: 9.25
-    width: 8.5
+    height: 8.5
+    width: 11
 
 spt5_figure3:
     tssseq_data: ../../spt5/spt5-data-integration/datavis/transcripts-w-anti-antidistsort/transcripts-w-anti-antidistsort_TSS-seq-antisense.tsv.gz
     rnaseq_data: ../../spt5/spt5-data-integration/datavis/transcripts-w-anti-antidistsort/transcripts-w-anti-antidistsort_RNA-seq-antisense.tsv.gz
     netseq_data: ../../spt5/spt5-data-integration/datavis/transcripts-w-anti-antidistsort/transcripts-w-anti-antidistsort_NET-seq-antisense.tsv.gz
     width: 17.4
-    height: 10
+    height: 10.25
 
 spt5_figure4:
     mnase_data: ../../spt5/mnase-seq/datavis/nonoverlapping-genes-plusonenuc/libsizenorm/nonoverlapping-genes-plusonenuc-allsamples-allannotations-midpoint-libsizenorm.tsv.gz
     width: 8.7
-    height: 6
+    height: 5
 
 spt5_figure5:
     mnase_data: ../../spt5/spt5-data-integration/datavis/antisense-tss/antisense-tss_MNase-seq.tsv.gz

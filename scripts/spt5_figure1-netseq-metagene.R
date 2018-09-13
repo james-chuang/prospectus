@@ -40,7 +40,7 @@ main = function(theme_spec, netseq_data,
               panel.grid = element_blank(),
               legend.position = c(0.7, 0.99),
               legend.background = element_rect(color=NA, fill="white", size=0),
-              plot.margin = margin(11/2, 11/2, 11/2, 0, unit="pt"))
+              plot.margin = margin(11/2, 11/2, 0, 0, unit="pt"))
 
     ggsave(pdf_out, plot=plot, width=fig_width, height=fig_height, units="cm")
 }

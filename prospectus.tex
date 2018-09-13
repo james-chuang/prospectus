@@ -144,7 +144,7 @@ ChIP-seq peaks lack strand information, as DNA binding factors usually do not bi
 \begin{figure}[H]
 \centering
 \includegraphics[width=17.4cm]{figures/figure2_tss-seq-heatmaps.pdf}
-\caption{Heatmaps of sense and antisense TSS-seq signal from wild-type and \textit{spt6-1004} cells, over 3522 non-overlapping genes aligned by wild-type genic TSS and sorted by annotated transcript length. Data are shown for each gene up to 300 nucleotides 3' of the cleavage and polyadenylation site (CPS, indicated by the white dotted line). Values are the mean of spike-in normalized coverage in non-overlapping 20 nucleotide bins, averaged over two replicates. Values above the 93rd percentile are set to the 93rd percentile for visualization.}
+\caption{Heatmaps of sense and antisense TSS-seq signal from wild-type and \textit{spt6-1004} cells, over 3522 non-overlapping genes aligned by wild-type genic TSS and sorted by annotated transcript length. Data are shown for each gene up to 300 nucleotides 3' of the cleavage and polyadenylation site (CPS), indicated by the white dotted line. Values are the mean of spike-in normalized coverage in non-overlapping 20 nucleotide bins, averaged over two replicates. Values above the 93rd percentile are set to the 93rd percentile for visualization.}
 \label{fig:tss_heatmaps}
 \end{figure}
 
@@ -152,7 +152,7 @@ ChIP-seq peaks lack strand information, as DNA binding factors usually do not bi
 % \begin{SCfigure}[0.7][h]
 \centering
 \includegraphics[width=8.7cm]{figures/figure4_tfiib-heatmaps.pdf}
-\caption{Heatmaps of TFIIB binding measured by ChIP-nexus, over the same regions shown in Figure \ref{fig:tss_heatmaps}. Values are the mean of library-size normalized coverage in 20 basepair windows, averaged over two replicates. Values above the 85th percentile are set to the 85th percentile for visualization.}
+\caption{Heatmaps of TFIIB binding measured by ChIP-nexus, over the same regions shown in Figure \ref{fig:tss_heatmaps}. Values are the mean of library-size normalized coverage in non-overlappin 20 bp bins, averaged over two replicates. Values above the 85th percentile are set to the 85th percentile for visualization.}
 \label{fig:tfiib_heatmaps}
 % \end{SCfigure}
 \end{wrapfigure}
@@ -210,7 +210,7 @@ To study the role that altered chromatin structure plays in the phenotypes seen 
     \begin{minipage}[t]{8.5cm}
         \centering
         \includegraphics[width=8.5cm]{figures/figure9_mnase-metagene.pdf}
-        \caption{Average MNase-seq dyad signal in wild-type and \textit{spt6-1004}, over 3522 non-overlapping genes. Values are the mean of spike-in normalized coverage in nonoverlapping 20 basepair bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading are the median and the inter-quartile range.}
+        \caption{Average MNase-seq dyad signal in wild-type and \textit{spt6-1004}, over 3522 non-overlapping genes. Values are the mean of spike-in normalized coverage in non-overlapping 20 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading are the median and the inter-quartile range.}
         \label{fig:mnase_metagene}
     \end{minipage}\hfill
     \begin{minipage}[t]{8.5cm}
@@ -258,7 +258,7 @@ The average MNase-seq signal around all intragenic TSSs significantly upregulate
 \label{fig:intra_mnase_metagene}
 \end{figure}
 
-Similar to genic TSSs, the two clusters of intragenic TSSs tend to lie on the border between regions of relative nucleosome enrichment and depletion. However, they lack the relatively wide nucleosome-depleted region characteristic of genic promoters. Since AT-rich sequences are known to be unfavorable for nucleosomes, we examined the GC content of the DNA sequence at intragenic TSSs. For cluster two, GC content drops just upstream of the intragenic TSS, in the same region where MNase-seq signal is depleted. This depletion is similar in position but smaller in magnitude as the GC depletion upstream of genic TSSs (Figure \ref{fig:intra_mnase_metagene}). Overall, nucleosome positioning is weaker at intragenic promoters compared to genic promoters, consistent with the tendency of intragenic promoters to occur towards the 3' end of genes, where positioning is known to decrease.
+Similar to genic TSSs, the two clusters of intragenic TSSs tend to lie on the border between regions of relative nucleosome enrichment and depletion. However, they lack the relatively wide nucleosome-depleted region characteristic of genic promoters. Since low-GC sequences are known to be unfavorable for nucleosomes, we examined the GC content of the DNA sequence at intragenic TSSs. For cluster two, GC content drops just upstream of the intragenic TSS, in the same region where MNase-seq signal is depleted. This depletion is similar in position but smaller in magnitude as the GC depletion upstream of genic TSSs (Figure \ref{fig:intra_mnase_metagene}). Overall, nucleosome positioning is weaker at intragenic promoters compared to genic promoters, consistent with the tendency of intragenic promoters to occur towards the 3' end of genes, where positioning is known to decrease.
 
 \pagebreak
 
@@ -275,51 +275,53 @@ To examine differences in DNA sequence at intragenic TSSs compared to genic TSSs
 
 \subsubsection{enrichment of motifs at intragenic TSSs}
 
-\begin{wrapfigure}[10]{r}{8.72cm}
+\begin{wrapfigure}[13]{r}{8.62cm}
 \centering
-\includegraphics[width=8.7cm]{figures/figure14_intragenic-tata.pdf}
+\includegraphics[width=8.6cm]{figures/figure14_intragenic-tata.pdf}
 \caption{Scaled density of occurrences of exact matches to the motif TATAWAWR upstream of TSSs. For each category, a Gaussian kernel density estimate of the positions of motif occurrences is multiplied by the number of motif occurrences in the genomic category and divided by the number of regions in the category.}
 \label{fig:tata}
 \end{wrapfigure}
 
-To examine whether sequence-specific transcription factors contribute to the expression of intragenic transcripts in \textit{spt6-1004}, we looked for enrichment or depletion of the DNA sequence motifs associated with these factors upstream of intragenic TSSs. Exact matches to the TATA element consensus sequence TATAWAWR are enriched upstream between 100 and 150 nt upstream of intragenic TSSs, in the same position but to a lesser degree than the TATA enrichment observed upstream of genic TSSs (Figure \ref{fig:tata}).
+To examine whether sequence-specific transcription factors contribute to the expression of intragenic transcripts in \textit{spt6-1004}, we looked for enrichment or depletion of the DNA sequence motifs associated with these factors upstream of intragenic TSSs. Exact matches to the TATA element consensus sequence TATAWAWR are enriched upstream between 100 and 150 nt upstream of intragenic TSSs, in the same position but to a lesser degree than the TATA enrichment observed upstream of genic TSSs (Figure \ref{fig:tata}). This further supports the model that \textit{spt6-1004} intragenic promoters are sequences similar to canonical genic promoters, which become accessible for transcription initiation when the normal chromatin state is disturbed.
 
 \vspace{6em}
 
+\newpage
 \section{functions of intragenic transcription in stress}
 
 \subsection{collaborators}
 
 \begin{description}[align=right, labelwidth=5cm, noitemsep]
     \item [Steve Doris] generated TSS-seq and ChIP-nexus libraries
-    \item [Blake Tye] generated NET-seq and RNA-seq libraries
+    \item [Dan Spatt] polyribosome fractionation
 \end{description}
 
 \subsection{introduction to wild-type intragenic transcription}
 
 In the \textit{spt6-1004} mutant, intragenic transcription is most likely spurious transcription that occurs when disruptions in chromatin make promoter-like sequences accessible to the transcription initiation machinery. In wild-type cells, intragenic transcription is much more limited, but there is evidence for specific instances of intragenic transcription to be biologically functional \cite{mcknight2014, gammie1999}. In one example, DNA replication stress induces intragenic transcription of the \textit{ASE1} mitotic spindle microtubule bundling gene \cite{mcknight2014}. Translation of the \textit{ASE1} intragenic transcript produces a truncated protein containing a C-terminal microtubule-binding domain but lacking an N-terminal dimerization domain. Because the short protein binds microtubules but does not dimerize, it antagonizes the function of the full length Ase1 protein, a function which is important for the cellular response to replication stress.
 
-Even if intragenic transcription does not act through the production of truncated protein, the possibility for either the process of intragenic transcription or the intragenic RNA to be important to a cell is supported by numerous examples of the regulatory role of noncoding transcription and noncoding RNA. Conversely, it is entirely possible for intragenic transcription to have no function and simply exist as an evolutionarily neutral coincidence of DNA sequence. In this project, we are attempting to identify and characterize biologically functional cases of intragenic transcription in wild-type \textit{S. cerevisiae}. Experimentally determining whether a case of intragenic transcription has a function is costly because the search space is large: Negative results indicating that the transcription is non-functional can occur if transcription truly is spurious, but also if the conditions tested aren't the conditions in which the transcription is functional. This makes it especially important to limit experiments to the cases of intragenic transcription that are most likely to have a function. My collaborators have therefore generated three datasets based on three assumptions that we will be using to find top experimental candidates.
+Even if intragenic transcription does not act through the production of truncated protein, the possibility for either the process of intragenic transcription or the intragenic RNA to be important to a cell is supported by numerous examples of the regulatory role of noncoding transcription and noncoding RNA. Conversely, it is entirely possible for intragenic transcription to have no function and simply exist as an evolutionarily neutral coincidence of DNA sequence. In this project, we are attempting to identify and characterize biologically functional cases of intragenic transcription in wild-type \textit{S. cerevisiae}. Experimentally determining whether a case of intragenic transcription has a function is costly because the search space is large: Negative results indicating that the transcription is non-functional can occur if transcription truly is spurious, but also if the conditions tested aren't the conditions in which the transcription is functional. This makes it especially important to limit experiments to the cases of intragenic transcription that are most likely to have a function. My collaborators have generated three datasets which we are using to identify the best experimental candidates.
 
 \subsection{TFIIB ChIP-nexus in stress conditions}
 
-Assumption 1: Intragenic transcription with a biological function in a certain condition will be differentially transcribed in that condition.
+A straightforward way to begin to link intragenic transcription to a phenotype is to perturb cells and find instances of intragenic transcription with expression changes following the perturbation. To do this, one of my collaborators has performed TFIIB ChIP-nexus for yeast cells in three stress conditions: oxidative stress (by addition of diamide to the media), amino acid starvation, and nitrogen starvation. In each condition, we identify upregulated intragenic TFIIB peaks (Figure \ref{fig:stress_tfiib-heatmaps}). Some peaks are upregulated in more than one condition; these may be peaks relevant to more general stress responses. Because we rely on the existing annotation of coding sequences to classify peaks as intragenic, there are undoubtedly peaks which are classified as intragenic due to annotation errors. However, the number of peaks is small enough that manually verifying individual cases is reasonable. As we have done for other datasets, we will be searching for DNA motifs proximal to intragenic peaks to find binding sites of sequence-specific transcription factors which may be responsible for regulating cases of intragenic transcription. Such binding sites will be useful targets for mutation when testing the function of intragenic transcription.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=17.4cm]{figures/stress_figure1-tfiib-heatmaps.pdf}
-\caption{asdf}
+\caption{Heatmaps of TFIIB ChIP-nexus protection in unstressed, oxidative stress, amino acid starvation, and nitrogen starvation conditions, over genes that contain an intragenic TFIIB peak induced in a stress condition. Genes are aligned by their genic TSS, and sorted by the distance between the genic TSS and the intragenic TFIIB peak. Values are the mean of library-size normalized coverage in non-overlappin 10 bp bins, averaged over two replicates. Values above the 90th percentile are set to the 90th percentile for visualization.}
 \label{fig:stress_tfiib-heatmaps}
 \end{figure}
 
 \subsection{TSS-seq of different yeast species in oxidative stress}
 
-The second assumption is that intragenic transcription which is evolutionarily conserved is more likely to be functional.
+It is reasonable to assume that intragenic transcription that is evolutionarily conserved is more likely to be functional. We cannot only consider DNA sequence conservation of intragenic promoters: intragenic promoters by definition lie within coding sequences, which will be highly conserved. To generate data on conservation of intragenic transcription, one of my collaborators performed TSS-seq for oxidative stress in \textit{S. cerevisiae} and the \textit{Saccharomyces sensu stricto} species \textit{S. mikatae} and \textit{S. bayanus var. uvarum}. To determine which instances of intragenic transcription are conserved between these species, it is necessary to map the \textit{cerevisiae} genome sequence to the other two genome sequences. We are doing this using the LASTZ pairwise genome alignment tool \cite{harris2007}, and are currently working on finding conserved cases of intragenic transcription in oxidative stress.
 
 \subsection{polyribosome-associated TSS-seq in oxidative stress}
 
-Assumption 3: Intragenic transcripts that are translated have an experimentally testable function
+As previously noted, intragenic transcripts can potentially act through translation into truncated protein. To discover intragenic transcripts where this might be the case in \textit{S. cerevisiae} under oxidative stress, my collaborators performed sucrose gradient fractionation and sequenced TSS-seq libraries constructed from the RNA associated with the polyribosome fraction. These libraries represent transcription start sites which are associated with the translation machinery and are thus likely to be translated. Intragenic transcripts which are translated are attractive targets for experimentation because preventing expression of the intragenic protein is easily achieved by silently mutating the intragenic start codon. We are currently analyzing the data to identify these targets. Additionally, by normalizing results from polyribosome-associated TSS-seq to standard TSS-seq from total RNA, we may be able to extract information on what features make an intragenic transcript more or less likely to be translated.
 
+\newpage
 \section{genomics of transcription elongation factor Spt5}
 
 \subsection{collaborators}
@@ -330,83 +332,93 @@ Assumption 3: Intragenic transcripts that are translated have an experimentally 
 
 \subsection{introduction to Spt5 and techniques used to study it}
 
-My collaborators on this project are interested in better understanding the transcription elongation factor Spt5. The following is a quick introduction to Spt5 \cite{shetty2017}:
+My collaborators on this project are interested in better understanding the transcription elongation factor \textbf{Spt5}. The following is a quick introduction to Spt5 \cite{shetty2017}:
 
 \begin{itemize}[nosep, topsep=.5em]
-    \item Spt5 is the only transcription factor known to be conserved in all three domains of life \cite{hartzog2013, werner2012}
-    \item Spt5 co-localizes with elongating RNAPII \cite{mayer2010, rahl2010}
-    \item Spt5 binds over the RNAPII clamp domain, likely stabilizing the elongation complex \cite{hirtreiter2010, klein2011, martinez-rucobo2011}
-    \item Spt5 physically recruits factors to the elongating transcription complex, in a manner dependent on the modification status of its C-terminal region (CTR) \cite{hartzog2013}
+    \item Spt5 is the only transcription factor known to be conserved in all three domains of life \cite{hartzog2013, werner2012}.
+    \item Spt5 co-localizes with elongating RNAPII \cite{mayer2010, rahl2010}.
+    \item Spt5 binds over the RNAPII clamp domain, likely stabilizing the elongation complex \cite{hirtreiter2010, klein2011, martinez-rucobo2011}.
+    \item Spt5 physically recruits factors to the elongating transcription complex, in a manner dependent on the modification status of its C-terminal region (CTR) \cite{hartzog2013}:
     \begin{itemize}[nosep]
         \item in its unphosphorylated state, the CTR aids in recruiting the mRNA capping enzyme \cite{doamekpor2014, doamekpor2015, schneider2010, wen1999}
         \item in its phosphorylated state, the CTR recruits the Paf1 complex, which is important for RNAPII elongation \cite{liu2009, mbogning2013, wier2013, zhou2009}
-        \item Spt5 helps to recruit mRNA 3' end processing factors \cite{mayer2012, stadelmayer2014, yamamoto2014}
-        \item Spt5 helps to recruit the Rpd3S histone deacetylase complex \cite{drouin2010}
+        \item Spt5 helps to recruit mRNA 3' end processing factors \cite{mayer2012, stadelmayer2014, yamamoto2014}.
+        \item Spt5 helps to recruit the Rpd3S histone deacetylase complex \cite{drouin2010}.
     \end{itemize}
 \end{itemize}
 
+\begin{wrapfigure}[16]{r}{8.52cm}
+\centering
+\includegraphics[width=8.5cm]{figures/spt5_figure1-netseq-metagene.pdf}
+\caption{Average sense strand NET-seq signal in Spt5 non-depleted and depleted cells, over 1989 non-overlapping coding genes scaled to the same length. Values are the mean of spike-in normalized coverage over two replicates. The solid line and shading are the median and the inter-quartile range.}
+\label{fig:spt5_netseq-metagene}
+\end{wrapfigure}
+
 The strategy my collaborator uses to study Spt5 is to apply genomic techniques to \textit{Schizosaccharomyces pombe} cells that are depleted of Spt5 protein. Spt5 is essential for viability in \textit{S. pombe}, so depletion of Spt5 cannot be achieved by using a deletion mutant. Instead, my collaborator uses a strain in which expression of Spt5 can be shut off at two levels: At the transcription level, Spt5 is under the control of a thiamine-repressible promoter, such that transcription of Spt5 can be shut off with the addition of thiamine to the media. At the protein level, the Spt5 protein is tagged with an auxin-inducible degron, such that Spt5 is degraded upon addition of auxin to the media. For most experiments, cells are collected 4.5 hours after the addition of thiamine and auxin to the media, a timepoint at which Spt5 is depleted to around 13\% of non-depleted levels but the cells are still viable \cite{shetty2017}.
 
-% \begin{wrapfigure}[12]{r}{8.72cm}
-% \centering
-% \includegraphics[width=8.7cm]{figures/spt5_figure1-netseq-metagene.pdf}
-% \caption{asdf}
-% \label{fig:spt5_netseq-metagene}
-% \end{wrapfigure}
+Using this system, my collaborator applied a battery of genomic assays to cells in which Spt5 is depleted, including ChIP-seq of RNAPII, NET-seq, RNA-seq, and 4tU-seq. The results of these assays (not analyzed by me, although I am re-analyzing these datasets) are published \cite{shetty2017}, and can be summarised as follows: 1) Upon depletion of Spt5, RNAPII accumulates at the 5' end of genes (Figure \ref{fig:spt5_netseq-metagene}), consistent with the role of Spt5 as a factor required for transcription elongation. 2) Upon depletion of Spt5, many transcripts antisense to coding genes become upregulated, particularly towards the 5' end of genes (Figure \ref{fig:spt5_rnaseq-heatmaps}).
 
-Using this system, my collaborator applied a battery of genomic assays to cells in which Spt5 is depleted or non-depleted, including ChIP-seq of RNAPII, NET-seq, RNA-seq, and 4tU-seq. The results of these assays (not analyzed by me) are published \cite{shetty2017}, and can be summarised as follows: 1) Upon depletion of Spt5, RNAPII accumulates at the 5' end of genes (\ref{fig:spt5_netseq-metagene}), consistent with the role of Spt5 as a factor required for transcription elongation. 2) Upon depletion of Spt5, many transcripts antisense to coding genes become upregulated, particularly towards the 5' end of genes (\ref{fig:spt5_rnaseq-heatmaps}).
+\begin{SCfigure}[50][h]
+\centering
+\includegraphics[width=11cm]{figures/spt5_figure2-rnaseq-heatmaps.pdf}
+\caption{Heatmaps of antisense RNA-seq signal in Spt5 non-depleted and depleted cells, over 1989 non-overlapping coding genes aligned by sense strand genic TSS and sorted by transcript length. Data are shown for each gene up to 300 nt downstream of the cleavage and polyadenylation site (CPS), indicated by the dotted white line. Values are the mean of library-size normalized coverage in non-overlapping 20 nt bins, averaged over two replicates. Values above the 90th percentile are set to the 90th percentile for visualization.}
+\label{fig:spt5_rnaseq-heatmaps}
+\end{SCfigure}
 
-\begin{figure}[H]
-    \centering
-    \begin{minipage}[c]{8.5cm}
-        \centering
-        \includegraphics[width=8.5cm]{figures/spt5_figure1-netseq-metagene.pdf}
-        \caption{Average sense strand NET-seq signal in Spt5 non-depleted and depleted cells, over 1989 non-overlapping genes scaled to the same length. Values are the mean of spike-in normalized coverage over two replicates. The solid line and shading are the median and the inter-quartile range.}
-        \label{fig:spt5_netseq-metagene}
-    \end{minipage}\hfill
-    \begin{minipage}[c]{8.5cm}
-        \centering
-        \includegraphics[width=8.5cm]{figures/spt5_figure2-rnaseq-heatmaps.pdf}
-        \caption{Heatmaps of antisense RNA-seq signal in Spt5 non-depleted and depleted cells, over 1989 non-overlapping genes sorted by transcript length and aligned by annotated sense TSS. Values are the mean of library-size normalized coverage in non-overlapping 20 nt bins, averaged over two replicates. Values above the 90th percentile are set to the 90th percentile for visualization.}
-        \label{fig:spt5_rnaseq-heatmaps}
-    \end{minipage}
-\end{figure}
-
-% \begin{wrapfigure}[23]{r}{8.72cm}
-% \centering
-% \includegraphics[width=8.7cm]{figures/spt5_figure2-rnaseq-heatmaps.pdf}
-% \caption{asdf}
-% \label{fig:spt5_rnaseq-heatmaps}
-% \end{wrapfigure}
+% \begin{figure}[H]
+%     \centering
+%     \begin{minipage}[c]{8.5cm}
+%         \centering
+%         \includegraphics[width=8.5cm]{figures/spt5_figure1-netseq-metagene.pdf}
+%         \caption{Average sense strand NET-seq signal in Spt5 non-depleted and depleted cells, over 1989 non-overlapping genes scaled to the same length. Values are the mean of spike-in normalized coverage over two replicates. The solid line and shading are the median and the inter-quartile range.}
+%         \label{fig:spt5_netseq-metagene}
+%     \end{minipage}\hfill
+%     \begin{minipage}[c]{8.5cm}
+%         \centering
+%         \includegraphics[width=8.5cm]{figures/spt5_figure2-rnaseq-heatmaps.pdf}
+%         \caption{Heatmaps of antisense RNA-seq signal in Spt5 non-depleted and depleted cells, over 1989 non-overlapping genes sorted by transcript length and aligned by annotated sense TSS. Values are the mean of library-size normalized coverage in non-overlapping 20 nt bins, averaged over two replicates. Values above the 90th percentile are set to the 90th percentile for visualization.}
+%         \label{fig:spt5_rnaseq-heatmaps}
+%     \end{minipage}
+% \end{figure}
 
 \subsection{TSS-seq and MNase-seq results in Spt5 depletion}
 
-Following the publication, my collaborator performed two more assays to characterize the upregulation of these antisense transcripts in more detail: TSS-seq to precisely map the start sites of these transcripts, and MNase-seq to ask whether their upregulation is associated with changes in chromatin.
+Following the publication, my collaborator performed two more assays to characterize the upregulation of Spt5-depletion antisense transcripts in more detail: TSS-seq to map the start sites of these transcripts, and MNase-seq to ask whether their upregulation is associated with changes in chromatin.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=17.4cm]{figures/spt5_figure3-antisense-heatmaps.pdf}
-\caption{Heatmaps of antisense TSS-seq, RNA-seq, and NET-seq signal in Spt5 non-depleted and depleted cells, over 1355 genes with a significantly upregulated antisense TSS-seq peak, aligned by sense TSS and arranged by the distance from the sense TSS to the upregulated antisense peak. Values are the mean of spike-in (TSS-seq and NET-seq) or library-size (RNA-seq) normalized coverage in non-overlapping 20 nt bins, averaged over two or more replicates. Values above the .995 (TSS-seq), .96 (RNA-seq), and .95 (NET-seq) quantiles are set to their respective quantiles for visualization.}
+\caption{Heatmaps of antisense TSS-seq, RNA-seq, and NET-seq signal in Spt5 non-depleted and depleted cells, over 1355 genes with a significantly upregulated antisense TSS-seq peak, aligned by sense TSS and arranged by the distance from the sense TSS to the upregulated antisense peak. Values are the mean of spike-in (TSS-seq and NET-seq) or library-size (RNA-seq) normalized coverage in non-overlapping 20 nt bins, averaged over two or more replicates. Values above the 0.995 (TSS-seq), 0.96 (RNA-seq), and 0.95 (NET-seq) quantiles are set to their respective quantiles for visualization.}
 \label{fig:spt5_antisense-heatmaps}
 \end{figure}
 
-Using TSS-seq, we identify around 1300 TSSs that are significantly upregulated in Spt5 depletion and lie antisense to a coding transcript (Figure \ref{fig:spt5_antisense-heatmaps}). The majority of these antisense TSSs occur within 1 kb downstream of the corresponding sense TSS, and most are associated with elevated antisense RNA-seq and NET-seq signal in the depletion condition (Figure \ref{fig:spt5_antisense-heatmaps}).
+Using TSS-seq, we identify around 1300 TSSs that are significantly upregulated in Spt5 depletion and lie antisense to a coding transcript (Figure \ref{fig:spt5_antisense-heatmaps}). The majority of these antisense TSSs occur within 1 kb downstream of the corresponding sense TSS, and most are associated with elevated antisense RNA-seq and NET-seq signal in the depletion condition (Figure \ref{fig:spt5_antisense-heatmaps}). In order to do more quantitative comparisons between the assays, we will be performing transcript annotation using existing tools to annotate these transcripts by RNA-seq and NET-seq. We will also be using the TSS positions to search for DNA motifs which may be associated with these transcripts. There are no readily available databases of known motifs for \textit{S. pombe}, so we will be doing \textit{de novo} motif discovery using existing tools.
 
-\begin{wrapfigure}[23]{l}{8.72cm}
+\begin{wrapfigure}[13]{r}{8.72cm}
 \centering
 \includegraphics[width=8.7cm]{figures/spt5_figure4-mnase-metagene.pdf}
-\caption{asdf}
+\caption{Average MNase-seq dyad signal in Spt5 non-depleted and depleted cells, over 1985 non-overlapping coding genes aligned by +1 nucleosome dyad. Values are the mean of library-size normalized coverage in non-overlapping 5 bp bins, averaged over biological triplicates. The solid line and shading are the median and the inter-quartile range.}
 \label{fig:spt5_mnase-metagene}
 \end{wrapfigure}
 
+The initial MNase-seq results in Spt5 depletion are summarized in Figure \ref{fig:spt5_mnase-metagene}. Nucleosome signal is reduced at canonical nucleosome positions and increased in inter-nucleosomal spaces. Notably, these effects seem to mainly occur downstream of the +1 nucleosome, though it should be noted that the lack of spike-in normalization in this experiment means that nucleosome signal could be globally increased or decreased in reality. We have separated the changes in MNase-seq signal into changes in nucleosome occupancy, position, and fuzziness as we have done for \textit{spt6-1004}, and will be analyzing these results in more detail.
+
+\vspace{1.6cm}
 \subsection{chromatin structure at Spt5-depletion antisense TSSs}
 
-\begin{wrapfigure}[23]{r}{8.72cm}
+\begin{wrapfigure}[21]{r}{8.72cm}
 \centering
 \includegraphics[width=8.7cm]{figures/spt5_figure5-antisense-mnase-metagene.pdf}
-\caption{asdf}
+\caption[foo bar]{
+    \begin{description}[align=right, nosep, itemindent=0pt, leftmargin=4.2em, font=\normalfont]
+        \item [top)] Average MNase-seq dyad signal in Spt5 non-depleted and depleted cells, over 1312 antisense TSSs upregulated in Spt5 depletion. Values are the mean of library-size normalized coverage in non-overlapping 10 bp bins, averaged over biological triplicates. The solid line and shading are the median and the inter-quartile range.
+        \item [bottom)] Average GC content of the DNA, over the same regions.
+    \end{description}
+}
 \label{fig:spt5_antisense-mnase-metagene}
 \end{wrapfigure}
+
+The average MNase-seq signature for all antisense Spt5-depletion TSSs is shown in Figure \ref{fig:spt5_antisense-mnase-metagene}. There is moderate periodicity in the signal even without clustering, indicating that the nucleosome signature around the antisense TSSs is relatively uniform. Spt5-depletion TSSs tend to occur between canonical nucleosome positions, likely in the internucleosomal spaces between the +1, +2, and +3 nucleosomes, based on the distance these TSSs occur from the sense strand genic TSS (Figure \ref{fig:spt5_antisense-heatmaps}). Interestingly, GC content is increased in the region of nucleosome depletion where the antisense TSS is (Figure \ref{fig:spt5_antisense-mnase-metagene}), in contrast to the expected decrease due to the nucleosome-disfavoring properties of low-GC sequences (compare to GC content at \textit{S. cerevisiae} TSSs in Figure \ref{fig:mnase_metagene}). We will be clustering the MNase-seq data similar to what we have done in \textit{spt6-1004} to refine the picture of the nucleosome landscape at antisense TSSs, following up on sequence properties with \textit{de novo} motif finding, and quantifying changes in nucleosome properties around the TSSs.
 
 \newpage
 % \printbibliography
