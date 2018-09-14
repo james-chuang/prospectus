@@ -21,7 +21,10 @@
 \usepackage{float}
 \usepackage{sidecap}
 \usepackage{wrapfig}
-\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{blue}{HTML}{114477}
+\definecolor{purple}{HTML}{440154}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=purple]{hyperref}
 \usepackage{textcomp}
 \usepackage{caption}
 \captionsetup{font=footnotesize, singlelinecheck=off}
@@ -33,15 +36,15 @@
 \begin{document}
 
 \begin{titlepage}
-\begin{tabular}{ r l }
- proposed title:   & Digital plumbing in the genomics era. \\
- 		   & \\
- author:	   & James Chuang \\
- 		   & \\
- research advisor: & Fred Winston \\
- 		   & \\
- abstract:	   & Lorem ipsum.
-\end{tabular}
+    \begin{tabular}{ r p{13cm} }
+        proposed title:     & Development of reproducible genomics data analysis pipelines and their application to transcription-related datasets. \\
+ 		                    & \\
+        author:	            & James Chuang \\
+ 		                    & \\
+        research advisor:   & Fred Winston \\
+ 		                    & \\
+        abstract:	        & The complexity of genomics data and its analysis makes errors likely and the validity of reported results difficult to assess. This makes it critical to provide a complete and reproducible record of how results were obtained, which others can use to decide how strongly to believe the results, to find errors so the record can be corrected, and to make improvements for further analyses. To this end, the major work described in this prospectus is the development of analysis pipelines based on the Snakemake platform, which lend themselves to reproduction by others. I have developed pipelines for a number of data types, including transcription start site sequencing (TSS-seq), high resolution ChIP (ChIP-nexus), nascent transcript sequencing (NET-seq), RNA sequencing (RNA-seq), and micrococcal nuclease sequencing (MNase-seq). I describe results obtained from the application of these pipelines to data from three projects in progress relating to the biological process of transcription: 1) A study of the transcription elongation factor Spt6 and the phenomenon of intragenic transcription. 2) A study characterizing possible functions of intragenic transcription in stress conditions. 3) A study of the transcription elongation factor Spt5.
+    \end{tabular}
 \end{titlepage}
 
 \tableofcontents
@@ -109,7 +112,7 @@ To overcome these issues, one of my collaborators applied two assays to study tr
 
 \subsection{pipeline development for TSS-seq and ChIP-nexus}
 
-In order to use TSS-seq and ChIP-nexus to answer questions about Spt6 and intragenic transcription, I developed analysis pipelines for TSS-seq and ChIP-nexus data. The pipelines are written using the Python-based Snakemake workflow specification language \cite{koster2012}, and perform steps including read cleaning \cite{martin2011}, various quality controls \cite{andrews2012}, read alignment \cite{kim2013, langmead2012}, data normalization, coverage track generation \cite{quinlan2010}, peak calling \cite{zhang2008}, differential expression/binding analyses \cite{love2014}, data visualization with clustering, motif enrichment analyses \cite{bailey2015}, and gene ontology analyses \cite{young2010}. The Snakemake framework allows thesee data analyses to be reproducible and scalable from workstations up to computing clusters. Updated versions of these pipelines with more details on their capabilities are available at \href{https://github.com/winston-lab}{github.com/winston-lab}. In the following subsections I will describe the thought behind only a few of the more novel pipeline steps before moving on to results relating to Spt6 and intragenic transcription.
+In order to use TSS-seq and ChIP-nexus to answer questions about Spt6 and intragenic transcription, I developed analysis pipelines for TSS-seq and ChIP-nexus data. The pipelines are written using the Python-based Snakemake workflow specification language \cite{koster2012}, and perform steps including read cleaning \cite{martin2011}, various quality controls \cite{andrews2012}, read alignment \cite{kim2013, langmead2012}, data normalization, coverage track generation \cite{quinlan2010}, peak calling \cite{zhang2008}, differential expression/binding analyses \cite{love2014}, data visualization with clustering, motif enrichment analyses \cite{bailey2015}, and gene ontology analyses \cite{young2010}. The Snakemake framework allows these data analyses to be reproducible and scalable from workstations up to computing clusters. Updated versions of these pipelines with more details on their capabilities are available at \href{https://github.com/winston-lab}{github.com/winston-lab}. In the following subsections I will describe the thought behind only a few of the more novel pipeline steps before moving on to results relating to Spt6 and intragenic transcription.
 
 \subsubsection{TSS-seq peak calling}
 
@@ -144,7 +147,7 @@ ChIP-seq peaks lack strand information, as DNA binding factors usually do not bi
 \begin{figure}[H]
 \centering
 \includegraphics[width=17.4cm]{figures/figure2_tss-seq-heatmaps.pdf}
-\caption{Heatmaps of sense and antisense TSS-seq signal from wild-type and \textit{spt6-1004} cells, over 3522 non-overlapping genes aligned by wild-type genic TSS and sorted by annotated transcript length. Data are shown for each gene up to 300 nucleotides 3' of the cleavage and polyadenylation site (CPS), indicated by the white dotted line. Values are the mean of spike-in normalized coverage in non-overlapping 20 nucleotide bins, averaged over two replicates. Values above the 93rd percentile are set to the 93rd percentile for visualization.}
+\caption{Heatmaps of sense and antisense TSS-seq signal from wild-type and \textit{spt6-1004} cells, over 3522 non-overlapping genes aligned by wild-type genic TSS and sorted by annotated transcript length. Data are shown for each gene up to 300 nucleotides 3' of the cleavage and polyadenylation site (CPS), indicated by the white dotted line. Values are the mean of spike-in normalized coverage in non-overlapping 20 nucleotide bins, averaged over two replicates. Values above the 92nd percentile are set to the 92nd percentile for visualization.}
 \label{fig:tss_heatmaps}
 \end{figure}
 
@@ -356,7 +359,7 @@ My collaborators on this project are interested in better understanding the tran
 
 The strategy my collaborator uses to study Spt5 is to apply genomic techniques to \textit{Schizosaccharomyces pombe} cells that are depleted of Spt5 protein. Spt5 is essential for viability in \textit{S. pombe}, so depletion of Spt5 cannot be achieved by using a deletion mutant. Instead, my collaborator uses a strain in which expression of Spt5 can be shut off at two levels: At the transcription level, Spt5 is under the control of a thiamine-repressible promoter, such that transcription of Spt5 can be shut off with the addition of thiamine to the media. At the protein level, the Spt5 protein is tagged with an auxin-inducible degron, such that Spt5 is degraded upon addition of auxin to the media. For most experiments, cells are collected 4.5 hours after the addition of thiamine and auxin to the media, a timepoint at which Spt5 is depleted to around 13\% of non-depleted levels but the cells are still viable \cite{shetty2017}.
 
-Using this system, my collaborator applied a battery of genomic assays to cells in which Spt5 is depleted, including ChIP-seq of RNAPII, NET-seq, RNA-seq, and 4tU-seq. The results of these assays (not analyzed by me, although I am re-analyzing these datasets) are published \cite{shetty2017}, and can be summarised as follows: 1) Upon depletion of Spt5, RNAPII accumulates at the 5' end of genes (Figure \ref{fig:spt5_netseq-metagene}), consistent with the role of Spt5 as a factor required for transcription elongation. 2) Upon depletion of Spt5, many transcripts antisense to coding genes become upregulated, particularly towards the 5' end of genes (Figure \ref{fig:spt5_rnaseq-heatmaps}).
+Using this system, my collaborator applied a battery of genomic assays to cells in which Spt5 is depleted, including ChIP-seq of RNAPII, NET-seq, RNA-seq, and 4tU-seq. The results of these assays (not analyzed by me, though I am re-analyzing these datasets) are published \cite{shetty2017}, and can be summarised as follows: 1) Upon depletion of Spt5, RNAPII accumulates at the 5' end of genes (Figure \ref{fig:spt5_netseq-metagene}), consistent with the role of Spt5 as a factor required for transcription elongation. 2) Upon depletion of Spt5, many transcripts antisense to coding genes become upregulated, particularly towards the 5' end of genes (Figure \ref{fig:spt5_rnaseq-heatmaps}).
 
 \begin{SCfigure}[50][h]
 \centering

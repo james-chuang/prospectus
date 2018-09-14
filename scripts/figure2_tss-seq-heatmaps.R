@@ -9,7 +9,7 @@ main = function(theme_spec, heatmap_scripts, annotation,
     cps_dist = 0.3
     max_length = 2.5
     add_ylabel = TRUE
-    cutoff_pct = 0.93
+    cutoff_pct = 0.92
 
     sense_heatmap = plot_heatmap(data_path = sense_tss_data,
                                  sample_list = sample_list,
