@@ -155,7 +155,7 @@ ChIP-seq peaks lack strand information, as DNA binding factors usually do not bi
 % \begin{SCfigure}[0.7][h]
 \centering
 \includegraphics[width=8.7cm]{figures/figure4_tfiib-heatmaps.pdf}
-\caption{Heatmaps of TFIIB binding measured by ChIP-nexus, over the same regions shown in Figure \ref{fig:tss_heatmaps}. Values are the mean of library-size normalized coverage in non-overlappin 20 bp bins, averaged over two replicates. Values above the 85th percentile are set to the 85th percentile for visualization.}
+\caption{Heatmaps of TFIIB binding measured by ChIP-nexus, over the same regions shown in Figure \ref{fig:tss_heatmaps}. Values are the mean of library-size normalized coverage in non-overlapping 20 bp bins, averaged over two replicates. Values above the 85th percentile are set to the 85th percentile for visualization.}
 \label{fig:tfiib_heatmaps}
 % \end{SCfigure}
 \end{wrapfigure}
@@ -201,7 +201,7 @@ The changes to binding of TFIIB in \textit{spt6-1004} are substantial. In wild-t
 \begin{figure}[h]
 \centering
 \includegraphics[width=17.4cm]{figures/figure7_tss-v-tfiib.pdf}
-\caption{Scatterplots of fold-change in \textit{spt6-1004} over wild-type, comparing TSS-seq and TFIIB ChIP-nexus. Each dot represents a TSS-seq peak paired with the window extending 200 nucleotides upstream of the TSS-seq peak summit for quantification of TFIIB ChIP-nexus signal. Fold-changes are regularized fold-change estimates from DESeq2, with size factors determined from the \textit{S. pombe} spike-in (TSS-seq), or \textit{S. cerevisiae} counts (ChIP-nexus).}
+\caption{Scatterplots of fold-change in \textit{spt6-1004} over wild-type, comparing TSS-seq and TFIIB ChIP-nexus. Each dot represents a TSS-seq peak paired with the window extending 200 bp upstream of the TSS-seq peak summit for quantification of TFIIB ChIP-nexus signal. Fold-changes are regularized fold-change estimates from DESeq2, with size factors determined from the \textit{S. pombe} spike-in (TSS-seq), or \textit{S. cerevisiae} counts (ChIP-nexus).}
 \end{figure}
 
 \subsection{studying chromatin structure in \textit{spt6-1004} with MNase-seq}
@@ -213,7 +213,7 @@ To study the role that altered chromatin structure plays in the phenotypes seen 
     \begin{minipage}[t]{8.5cm}
         \centering
         \includegraphics[width=8.5cm]{figures/figure9_mnase-metagene.pdf}
-        \caption{Average MNase-seq dyad signal in wild-type and \textit{spt6-1004}, over 3522 non-overlapping genes. Values are the mean of spike-in normalized coverage in non-overlapping 20 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading are the median and the inter-quartile range.}
+        \caption{Average MNase-seq dyad signal in wild-type and \textit{spt6-1004}, over 3522 non-overlapping genes aligned by wild-type +1 nucleosome dyad. Values are the mean of spike-in normalized coverage in non-overlapping 20 bp bins, averaged over two replicates (\textit{spt6-1004}) or one experiment (wild-type). The solid line and shading are the median and the inter-quartile range.}
         \label{fig:mnase_metagene}
     \end{minipage}\hfill
     \begin{minipage}[t]{8.5cm}
@@ -224,7 +224,7 @@ To study the role that altered chromatin structure plays in the phenotypes seen 
     \end{minipage}
 \end{figure}
 
-In wild-type, the MNase-seq data recapitulates the expected patterns of a nucleosome depleted region upstream of a strongly positioned +1 nucleosome, and a regularly phased pattern of nucleosomes over gene bodies (Figure \ref{fig:mnase_metagene}). In \textit{spt6-1004}, nucleosome signal is severely reduced at canonical nucleosome positions and spreads into inter-nucleosome regions. A change in aggregate nucleosome signal such as that observed in Figure \ref{fig:mnase_metagene} can result from many combinations of changes to nucleosome occupancy (the number of reads assigned to a nucleosome), fuzziness (the standard deviation of read positions for a nucleosome), and position (the coordinate with the maximum reads for a nucleosome) \cite{chen2013}. Using DANPOS2 \cite{chen2013}, I called nucleosome positions and quantified these metrics for wild-type and \textit{spt6-1004}. Nucleosomes in wild-type span a relatively wide range of occupancy and fuzziness space, with highly occupied nucleosomes tending to be less fuzzy (i.e. more well-positioned) (Figure \ref{fig:global_nuc_fuzz}). In \textit{spt6-1004}, the population is much more homogeneous: nucleosome occupancy is decreased globally, and nucleosome fuzziness is restricted to the high end of the wild-type distribution.
+In wild-type, the MNase-seq data recapitulate the expected patterns of a nucleosome depleted region upstream of a strongly positioned +1 nucleosome, and a regularly phased pattern of nucleosomes over gene bodies (Figure \ref{fig:mnase_metagene}). In \textit{spt6-1004}, nucleosome signal is severely reduced at canonical nucleosome positions and spreads into inter-nucleosome regions. A change in aggregate nucleosome signal such as that observed in Figure \ref{fig:mnase_metagene} can result from many combinations of changes to nucleosome occupancy (the number of reads assigned to a nucleosome), fuzziness (the standard deviation of read positions for a nucleosome), and position (the coordinate with the maximum reads for a nucleosome) \cite{chen2013}. Using DANPOS2 \cite{chen2013}, I called nucleosome positions and quantified these metrics for wild-type and \textit{spt6-1004}. Nucleosomes in wild-type span a relatively wide range of occupancy and fuzziness space, with highly occupied nucleosomes tending to be less fuzzy (i.e. more well-positioned) (Figure \ref{fig:global_nuc_fuzz}). In \textit{spt6-1004}, the population is much more homogeneous: nucleosome occupancy is decreased globally, and nucleosome fuzziness is restricted to the high end of the wild-type distribution.
 
 Previous studies observed two trends: 1) In wild-type cells, nucleosome positioning is weaker over highly transcribed genes than over moderately transcribed genes \cite{shivaswamy2008}, and 2) In \textit{spt6-1004} cells, the decrease in nucleosome occupancy is greater for highly transcribed genes \cite{ivanovska2011}. To re-examine these trends, we looked at the MNase-seq data in the context of NET-seq data, which reports the position of actively transcribing RNAPII and reflects a gene's level of transcription (Figure \ref{fig:mnase_heatmap}) \cite{churchman2012}. The data support the first trend: in wild-type, genes with the strongest NET-seq signal have decreased MNase-seq signal. However, there is no obvious relationship between transcription level and the nucleosome changes observed in \textit{spt6-1004} (Figure \ref{fig:mnase_heatmap}). The apparent discrepancy might be explained by the improved resolution and breadth of MNase-seq versus the MNase and microarray of chromosome III used in the previous study \cite{ivanovska2011}.
 
@@ -278,7 +278,7 @@ To examine differences in DNA sequence at intragenic TSSs compared to genic TSSs
 
 \subsubsection{enrichment of motifs at intragenic TSSs}
 
-\begin{wrapfigure}[13]{r}{8.62cm}
+\begin{wrapfigure}[15]{r}{8.62cm}
 \centering
 \includegraphics[width=8.6cm]{figures/figure14_intragenic-tata.pdf}
 \caption{Scaled density of occurrences of exact matches to the motif TATAWAWR upstream of TSSs. For each category, a Gaussian kernel density estimate of the positions of motif occurrences is multiplied by the number of motif occurrences in the genomic category and divided by the number of regions in the category.}
@@ -287,7 +287,9 @@ To examine differences in DNA sequence at intragenic TSSs compared to genic TSSs
 
 To examine whether sequence-specific transcription factors contribute to the expression of intragenic transcripts in \textit{spt6-1004}, we looked for enrichment or depletion of the DNA sequence motifs associated with these factors upstream of intragenic TSSs. Exact matches to the TATA element consensus sequence TATAWAWR are enriched upstream between 100 and 150 nt upstream of intragenic TSSs, in the same position but to a lesser degree than the TATA enrichment observed upstream of genic TSSs (Figure \ref{fig:tata}). This further supports the model that \textit{spt6-1004} intragenic promoters are sequences similar to canonical genic promoters, which become accessible for transcription initiation when the normal chromatin state is disturbed.
 
-\vspace{6em}
+\subsection{summary}
+
+In support of this project, I developed analysis pipelines for \href{https://github.com/winston-lab/tss-seq}{TSS-seq}, \href{https://github.com/winston-lab/chip-nexus}{ChIP-nexus}, \href{https://github.com/winston-lab/mnase-seq}{MNase-seq}, \href{https://github.com/winston-lab/net-and-rna-seq}{NET- and RNA-seq}, \href{https://github.com/winston-lab/motif-enrichment}{motif enrichment}, and \href{https://github.com/winston-lab/integrated-datavis}{integrated data visualization of multiple data types}, as well as a number of \href{https://github.com/winston-lab}{one-off pipelines used to analyze published datasets}. Using these pipelines, we were able to determine the extent of intragenic transcripts in the \textit{spt6-1004} mutant, attribute most intragenic transcripts in the mutant to new transcription initiation, and characterize the chromatin structure and sequence features of intragenic promoters. A complete record of these data analyses is \href{https://doi.org/10.5281/zenodo.1409826}{archived} for future reference, and the individual pipelines are \href{https://github.com/winston-lab}{available} for application to other datasets.
 
 \newpage
 \section{functions of intragenic transcription in stress}
@@ -312,7 +314,7 @@ A straightforward way to begin to link intragenic transcription to a phenotype i
 \begin{figure}[H]
 \centering
 \includegraphics[width=17.4cm]{figures/stress_figure1-tfiib-heatmaps.pdf}
-\caption{Heatmaps of TFIIB ChIP-nexus protection in unstressed, oxidative stress, amino acid starvation, and nitrogen starvation conditions, over genes that contain an intragenic TFIIB peak induced in a stress condition. Genes are aligned by their genic TSS, and sorted by the distance between the genic TSS and the intragenic TFIIB peak. Values are the mean of library-size normalized coverage in non-overlappin 10 bp bins, averaged over two replicates. Values above the 90th percentile are set to the 90th percentile for visualization.}
+\caption{Heatmaps of TFIIB ChIP-nexus protection in unstressed, oxidative stress, amino acid starvation, and nitrogen starvation conditions, over genes that contain an intragenic TFIIB peak induced in a stress condition. Genes are aligned by their genic TSS, and sorted by the distance between the genic TSS and the intragenic TFIIB peak. Values are the mean of library-size normalized coverage in non-overlapping 10 bp bins, averaged over two replicates. Values above the 90th percentile are set to the 90th percentile for visualization.}
 \label{fig:stress_tfiib-heatmaps}
 \end{figure}
 
@@ -323,6 +325,21 @@ It is reasonable to assume that intragenic transcription that is evolutionarily 
 \subsection{polyribosome-associated TSS-seq in oxidative stress}
 
 As previously noted, intragenic transcripts can potentially act through translation into truncated protein. To discover intragenic transcripts where this might be the case in \textit{S. cerevisiae} under oxidative stress, my collaborators performed sucrose gradient fractionation and sequenced TSS-seq libraries constructed from the RNA associated with the polyribosome fraction. These libraries represent transcription start sites which are associated with the translation machinery and are thus likely to be translated. Intragenic transcripts which are translated are attractive targets for experimentation because preventing expression of the intragenic protein is easily achieved by silently mutating the intragenic start codon. We are currently analyzing the data to identify these targets. Additionally, by normalizing results from polyribosome-associated TSS-seq to standard TSS-seq from total RNA, we may be able to extract information on what features make an intragenic transcript more or less likely to be translated.
+
+\subsection{future work}
+
+\begin{itemize}[nosep]
+    \item identify candidate intragenic transcripts from stress TFIIB ChIP-nexus data
+        \begin{itemize}[nosep]
+            \item manual verification of upregulated intragenic TFIIB peaks to remove intragenic peaks resulting from annotation errors
+            \item motif finding at intragenic TFIIB peaks
+        \end{itemize}
+    \item identify conserved intragenic transcripts from oxidative stress TSS-seq data in \textit{Saccharomyces sensu stricto} yeast species
+        \begin{itemize}[nosep]
+            \item align \textit{S. cerevisiae} genome sequence to \textit{S. mikatae} and \textit{S. bayanus var. uvarum} genome sequences
+        \end{itemize}
+    \item identify potentially translated intragenic transcripts from oxidative stress polyribosome-associated TSS-seq data
+\end{itemize}
 
 \newpage
 \section{genomics of transcription elongation factor Spt5}
@@ -422,6 +439,15 @@ The initial MNase-seq results in Spt5 depletion are summarized in Figure \ref{fi
 \end{wrapfigure}
 
 The average MNase-seq signature for all antisense Spt5-depletion TSSs is shown in Figure \ref{fig:spt5_antisense-mnase-metagene}. There is moderate periodicity in the signal even without clustering, indicating that the nucleosome signature around the antisense TSSs is relatively uniform. Spt5-depletion TSSs tend to occur between canonical nucleosome positions, likely in the internucleosomal spaces between the +1, +2, and +3 nucleosomes, based on the distance these TSSs occur from the sense strand genic TSS (Figure \ref{fig:spt5_antisense-heatmaps}). Interestingly, GC content is increased in the region of nucleosome depletion where the antisense TSS is (Figure \ref{fig:spt5_antisense-mnase-metagene}), in contrast to the expected decrease due to the nucleosome-disfavoring properties of low-GC sequences (compare to GC content at \textit{S. cerevisiae} TSSs in Figure \ref{fig:mnase_metagene}). We will be clustering the MNase-seq data similar to what we have done in \textit{spt6-1004} to refine the picture of the nucleosome landscape at antisense TSSs, following up on sequence properties with \textit{de novo} motif finding, and quantifying changes in nucleosome properties around the TSSs.
+
+\subsection{future work}
+
+\begin{itemize}[nosep]
+    \item add \textit{ab initio} transcript annotation to NET- and RNA-seq pipelines in order to quantify Spt5-depletion antisense transcripts and compare to TSS-seq results
+    \item add \textit{de novo} motif finding to TSS-seq pipeline in order to look for motifs at Spt5-depletion antisense TSSs
+    \item develop ChIP-seq analysis pipeline for the re-analysis of Spt5-depletion ChIP-seq data
+    \item clustering of Spt5-depletion antisense TSSs by MNase-seq data to refine picture of flanking chromatin structure
+\end{itemize}
 
 \newpage
 % \printbibliography
