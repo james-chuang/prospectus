@@ -54,7 +54,7 @@ main = function(theme_spec, tfiib_data,
               panel.grid.minor.x = element_blank(),
               panel.grid.minor.y = element_blank(),
               panel.spacing.y = unit(1, "pt"),
-              plot.margin = margin(0, 5, 0, 0))
+              plot.margin = margin(0, 11, 0, 0))
 
     ggplot2::ggsave(pdf_out, plot=fig_two_b, width=fig_width, height=fig_height, units="cm")
 }

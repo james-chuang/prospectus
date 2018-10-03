@@ -35,7 +35,8 @@ rule all:
         "figures/presentation_figure1-timeline.pdf",
         "figures/presentation_figure2_tss-seq-heatmaps.pdf",
         "figures/presentation_figure3_tfiib-heatmaps.pdf",
-        "figures/presentation_figure0-mvd1-coverage.pdf"
+        "figures/presentation_figure0-mvd1-coverage.pdf",
+        "figures/presentation_figure4_tss-v-tfiib.pdf",
 
 rule compile_document:
     input:
@@ -97,6 +98,7 @@ rule compile_presentation:
         "figures/presentation_figure2_tss-seq-heatmaps.pdf",
         "figures/presentation_figure3_tfiib-heatmaps.pdf",
         "figures/presentation_figure0-mvd1-coverage.pdf",
+        "figures/presentation_figure4_tss-v-tfiib.pdf",
         tex = "presentation.tex"
     output:
         "presentation.pdf"
