@@ -59,7 +59,7 @@ plot_heatmap = function(data_path, sample_list, anno_path, cps_dist,
                            oob = scales::squish,
                            name = colorbar_title,
                            guide = guide_colorbar(title.position="top",
-                                                  barwidth=8,
+                                                  barwidth=12,
                                                   barheight=0.3,
                                                   title.hjust=0.5)) +
         facet_grid(.~group, labeller=label_parsed) +

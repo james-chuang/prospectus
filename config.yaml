@@ -137,3 +137,19 @@ spt5_figure6:
     height: 4.25
     width: 8.5
 
+presentation_figure0:
+    data_path: ../../intragenic/spt6-data-integration/browser-shots/MVD1/MVD1_all-assays.tsv.gz
+    height: 9
+    width: 16
+
+presentation_figure1:
+    height: 9
+    width: 16
+
+presentation_figure2:
+    height: 9
+    width: 16
+
+presentation_figure3:
+    height: 9
+    width: 16
