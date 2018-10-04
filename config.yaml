@@ -157,3 +157,7 @@ presentation_figure3:
 presentation_figure4:
     height: 6.5
     width: 16
+
+presentation_figure5:
+    height: 8
+    width: 8

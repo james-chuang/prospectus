@@ -37,6 +37,7 @@ rule all:
         "figures/presentation_figure3_tfiib-heatmaps.pdf",
         "figures/presentation_figure0-mvd1-coverage.pdf",
         "figures/presentation_figure4_tss-v-tfiib.pdf",
+        "figures/presentation_figure5-nucattributes.pdf"
 
 rule compile_document:
     input:
@@ -99,6 +100,7 @@ rule compile_presentation:
         "figures/presentation_figure3_tfiib-heatmaps.pdf",
         "figures/presentation_figure0-mvd1-coverage.pdf",
         "figures/presentation_figure4_tss-v-tfiib.pdf",
+        "figures/presentation_figure5-nucattributes.pdf",
         tex = "presentation.tex"
     output:
         "presentation.pdf"
