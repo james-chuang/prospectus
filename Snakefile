@@ -46,6 +46,7 @@ rule all:
         "figures/presentation_figure11-intragenic-mnase.pdf",
         "figures/presentation_figure12-seqlogos.pdf",
         "figures/presentation_figure13-intragenic-tata.pdf",
+        "figures/presentation_figure14-tfiib-spreading-ssa4.pdf",
 
 rule compile_document:
     input:
@@ -117,6 +118,7 @@ rule compile_presentation:
         "figures/presentation_figure11-intragenic-mnase.pdf",
         "figures/presentation_figure12-seqlogos.pdf",
         "figures/presentation_figure13-intragenic-tata.pdf",
+        "figures/presentation_figure14-tfiib-spreading-ssa4.pdf",
         tex = "presentation.tex"
     output:
         "presentation.pdf"

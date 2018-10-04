@@ -193,3 +193,7 @@ presentation_figure12:
 presentation_figure13:
     height: 7
     width: 16
+
+presentation_figure14:
+    height: 8
+    width: 16
