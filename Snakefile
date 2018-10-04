@@ -40,6 +40,12 @@ rule all:
         "figures/presentation_figure5-nucattributes.pdf",
         "figures/presentation_figure6-tss-diffexp-summary.pdf",
         "figures/presentation_figure7-tss-expression-levels.pdf",
+        "figures/presentation_figure8-global-nuc-fuzz-occ.pdf",
+        "figures/presentation_figure9-mnase-metagene.pdf",
+        "figures/presentation_figure10-mnase-heatmaps.pdf",
+        "figures/presentation_figure11-intragenic-mnase.pdf",
+        "figures/presentation_figure12-seqlogos.pdf",
+        "figures/presentation_figure13-intragenic-tata.pdf",
 
 rule compile_document:
     input:
@@ -105,6 +111,12 @@ rule compile_presentation:
         "figures/presentation_figure5-nucattributes.pdf",
         "figures/presentation_figure6-tss-diffexp-summary.pdf",
         "figures/presentation_figure7-tss-expression-levels.pdf",
+        "figures/presentation_figure8-global-nuc-fuzz-occ.pdf",
+        "figures/presentation_figure9-mnase-metagene.pdf",
+        "figures/presentation_figure10-mnase-heatmaps.pdf",
+        "figures/presentation_figure11-intragenic-mnase.pdf",
+        "figures/presentation_figure12-seqlogos.pdf",
+        "figures/presentation_figure13-intragenic-tata.pdf",
         tex = "presentation.tex"
     output:
         "presentation.pdf"
