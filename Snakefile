@@ -37,7 +37,9 @@ rule all:
         "figures/presentation_figure3_tfiib-heatmaps.pdf",
         "figures/presentation_figure0-mvd1-coverage.pdf",
         "figures/presentation_figure4_tss-v-tfiib.pdf",
-        "figures/presentation_figure5-nucattributes.pdf"
+        "figures/presentation_figure5-nucattributes.pdf",
+        "figures/presentation_figure6-tss-diffexp-summary.pdf",
+        "figures/presentation_figure7-tss-expression-levels.pdf",
 
 rule compile_document:
     input:
@@ -101,6 +103,8 @@ rule compile_presentation:
         "figures/presentation_figure0-mvd1-coverage.pdf",
         "figures/presentation_figure4_tss-v-tfiib.pdf",
         "figures/presentation_figure5-nucattributes.pdf",
+        "figures/presentation_figure6-tss-diffexp-summary.pdf",
+        "figures/presentation_figure7-tss-expression-levels.pdf",
         tex = "presentation.tex"
     output:
         "presentation.pdf"

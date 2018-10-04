@@ -161,3 +161,11 @@ presentation_figure4:
 presentation_figure5:
     height: 8
     width: 8
+
+presentation_figure6:
+    height: 6
+    width: 8
+
+presentation_figure7:
+    height: 6
+    width: 8
