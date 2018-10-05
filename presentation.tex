@@ -1,4 +1,5 @@
 \documentclass[aspectratio=169]{beamer}
+\usepackage{tikz}
 \mode<presentation>
 
 \title{digital plumbing}
@@ -28,6 +29,9 @@
 \includegraphics[width=\textwidth]{figures/presentation_figure1-timeline.pdf}
 \end{frame}
 
+\begin{frame}{purpose of this meeting}
+\end{frame}
+
 \begin{frame}{I develop analysis pipelines for genomics data}
 \end{frame}
 
@@ -35,10 +39,16 @@
 \includegraphics[width=\textwidth]{figures/rulegraph.pdf}
 \end{frame}
 
-\begin{frame}{Snakemake}
+\begin{frame}{Snakemake for reproducible data analyses}
+    \begin{itemize}
+        \item a Python-based workflow management system developed by Johannes Köster
+        \item \textbf{rules} describe how to create \textbf{output files} from \textbf{input files}:
+        \item dependency management using \textbf{conda}
+        \item scalable from workstations to computing clusters
+    \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{projects I'm working on}
     \begin{itemize}[]
         \setlength{\itemsep}{1cm}
         \item transcription elongation factor \textbf{Spt6}
@@ -73,11 +83,19 @@
 % \end{frame}
 
 \begin{frame}
-\includegraphics[width=\textwidth]{figures/presentation_figure0-mvd1-coverage.pdf}
+    \begin{tikzpicture}
+        \node<1,2>[anchor=south west, inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{figures/presentation_figure0-mvd1-coverage.pdf}};
+        \fill<1>[white] (0,0) rectangle (\textwidth, 4.38cm);
+        \fill<2>[white, opacity=0] (0,0) rectangle (\textwidth, 4.38cm);
+    \end{tikzpicture}
 \end{frame}
 
 \begin{frame}
-\includegraphics[width=\textwidth]{figures/presentation_figure2_tss-seq-heatmaps.pdf}
+    \begin{tikzpicture}
+        \node<1,2>[anchor=south west, inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{figures/presentation_figure2_tss-seq-heatmaps.pdf}};
+        \draw<1>[ultra thick, draw=white, fill=white] (0.52\textwidth,0) rectangle (\textwidth, 8cm);
+        \draw<2>[ultra thick, draw opacity=0] (0.52\textwidth,0) rectangle (\textwidth, 8cm);
+    \end{tikzpicture}
 \end{frame}
 
 \begin{frame}
@@ -97,8 +115,8 @@
 \end{frame}
 
 \begin{frame}
-\centering
-\includegraphics[width=\textwidth]{figures/presentation_figure3_tfiib-heatmaps.pdf}
+    \centering
+    \includegraphics[width=12cm]{figures/presentation_figure3_tfiib-heatmaps.pdf}
 \end{frame}
 
 \begin{frame}{TFIIB is spread across the genome in \textit{spt6-1004}}
@@ -123,6 +141,7 @@
         \end{column}
         \begin{column}{0.5\textwidth}
             \centering
+            \pause
             \includegraphics[width=\textwidth]{figures/presentation_figure8-global-nuc-fuzz-occ.pdf}
         \end{column}
     \end{columns}
@@ -145,6 +164,43 @@
 \end{frame}
 
 \begin{frame}{summary of Spt6 results}
+    \begin{itemize}
+        \item TSS-seq identifies over 8000 intragenic or antisense TSSs in \textit{spt6-1004}
+        \item TFIIB is spread across the genome in \textit{spt6-1004}
+        \item chromatin structure is severly disrupted in \textit{spt6-1004}
+        \item \textit{spt6-1004} intragenic promoter share some features with genic promoters
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{software written}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item TSS-seq
+                \item ChIP-nexus
+                \item MNase-seq
+                \item NET- and RNA-seq
+                \item integrated data visualization
+                \item genome annotation
+                \item motif enrichment
+                \item assay correlations
+                \item paired-end demultiplexing
+                \item one-off data analyses
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \hspace{2.7em} \includegraphics[height=1.5em]{figures/github-small.pdf} \href{https://github.com/winston-lab}{github.com/winston-lab} \\
+            \vspace{1em}
+            \includegraphics[height=1.5em]{figures/zenodo-black.pdf} \href{https://doi.org/10.5281/zenodo.1409826}{DOI: 10.5281/zenodo.1409826}
+        \end{column}
+    \end{columns}
+    \begin{itemize}
+        \item \small TSS-seq vs. TFIIB ChIP-nexus
+        \item \small previous TSS-seq data (Malabat and Feuerbach \textit{et al}., 2015)
+        \item \small ChIP-exo data (Rhee and Pugh, 2012)
+        \item \small previous \textit{spt6-1004} data (Cheung \textit{et al}., 2008; Uwimana \textit{et al}., 2017)
+        \item \small figure generation for publication
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{functions of intragenic transcription project collaborators}
@@ -182,6 +238,48 @@
 
 \begin{frame}
 \includegraphics[width=\textwidth]{figures/spt5_figure5-antisense-mnase-metagene.pdf}
+\end{frame}
+
+\begin{frame}{acknowledgements}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Winston lab
+                    \begin{itemize}
+                        \item Fred Winston
+                        \item Ameet Shetty
+                        \item Steve Doris
+                        \item Olga Viktorovskaya
+                        \item Magdalena Murawska
+                        \item Dan Spatt
+                        \item Natalia Reim
+                        \item Rajaraman Gopalakrishnan
+                        \item Francheska Lopez Rivera
+                        \item Katie Weiner
+                        \item James Warner
+                        \item Mallory Rice
+                    \end{itemize}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item committee
+                    \begin{itemize}
+                        \item Fred Winston
+                        \item Mo Khalil
+                        \item Stirling Churchman
+                        \item John Ngo
+                        \item Daniel Segre
+                    \end{itemize}
+                \item HMS Research Computing
+            \end{itemize}
+            \begin{description}
+                \item [\href{https://github.com/winston-lab}{github.com/winston-lab}]
+                \item [\href{https://github.com/james-chuang}{github.com/james-chuang}]
+                \item [\href{https://james-chuang.github.io}{james-chuang.github.io}]
+            \end{description}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \end{document}
