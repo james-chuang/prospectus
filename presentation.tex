@@ -1,5 +1,6 @@
 \documentclass[aspectratio=169]{beamer}
 \usepackage{tikz}
+\usepackage{listings}
 \mode<presentation>
 
 \title{digital plumbing}
@@ -39,10 +40,16 @@
 \includegraphics[width=\textwidth]{figures/rulegraph.pdf}
 \end{frame}
 
-\begin{frame}{Snakemake for reproducible data analyses}
+\begin{frame}[fragile]{Snakemake for reproducible data analyses}
     \begin{itemize}
         \item a Python-based workflow management system developed by Johannes Köster
         \item \textbf{rules} describe how to create \textbf{output files} from \textbf{input files}:
+            \begin{lstlisting}
+            rule foobar:
+                input: "input.txt"
+                output: "output.txt"
+                script: "turn_input_into_output.py"
+            \end{lstlisting}
         \item dependency management using \textbf{conda}
         \item scalable from workstations to computing clusters
     \end{itemize}
@@ -123,7 +130,7 @@
 \includegraphics[width=\textwidth]{figures/presentation_figure14-tfiib-spreading-ssa4.pdf}
 \end{frame}
 
-\begin{frame}{new initiation explains most \textit{spt6-1004} intragenic transcripts}
+\begin{frame}{new initiation contributes to most \textit{spt6-1004} intragenic transcripts}
     \centering
     \includegraphics[height=0.2\textheight]{figures/figure0_txn-diagram.pdf}
     \includegraphics[width=\textwidth]{figures/presentation_figure4_tss-v-tfiib.pdf}
@@ -203,7 +210,10 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{functions of intragenic transcription project collaborators}
+\begin{frame}{intragenic transcription in wild-type cells}
+\end{frame}
+
+\begin{frame}{collaborators}
     \begin{description}[align=right, noitemsep]
         \item [Steve Doris] generated TSS-seq and ChIP-nexus libraries
         \item [Dan Spatt] polyribosome fractionation
@@ -211,33 +221,79 @@
 \end{frame}
 
 \begin{frame}
-\includegraphics[width=\textwidth]{figures/stress_figure1-tfiib-heatmaps.pdf}
+    TFIIB ChIP-nexus in three stress conditions:
+    \begin{itemize}
+        \item oxidative stress (diamide)
+        \item amino acid starvation
+        \item nitrogen starvation
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Spt5 project collaborators}
+\begin{frame}
+\includegraphics[width=\textwidth]{figures/presentation_figure15-tfiib-heatmaps.pdf}
+\end{frame}
+
+\begin{frame}
+    oxidative stress TSS-seq in three \textit{Saccharomyces} species:
+    \begin{itemize}
+        \item \textit{S. cerevisiae}
+        \item \textit{S. mikatae}
+        \item \textit{S. bayanus} var. \textit{uvarum}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{enumerate}
+        \item induce oxidative stress
+        \item get RNA associated with the polyribosome fraction
+        \item prepare TSS-seq libraries
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    TODO
+\end{frame}
+
+\begin{frame}{Spt5}
     \begin{description}[align=right, noitemsep]
         \item [Ameet Shetty] generated TSS-seq, MNase-seq, NET-seq, RNA-seq, and ChIP-seq libraries
     \end{description}
 \end{frame}
 
-\begin{frame}
-\includegraphics[width=\textwidth]{figures/spt5_figure1-netseq-metagene.pdf}
+\begin{frame}{RNAPII accumulates at the 5' end of genes in Spt5 depletion}
+    \includegraphics[width=\textwidth]{figures/presentation_figure16-netseq-metagene.pdf}
+\end{frame}
+
+\begin{frame}{antisense transcripts appear at the 5' ends of genes in Spt5 depletion}
+    \includegraphics[width=\textwidth]{figures/presentation_figure17-rnaseq-heatmaps.pdf}
 \end{frame}
 
 \begin{frame}
-\includegraphics[width=\textwidth]{figures/spt5_figure2-rnaseq-heatmaps.pdf}
+    two more assays:
+    \begin{itemize}
+        \item TSS-seq
+        \item MNase-seq
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-\includegraphics[width=\textwidth]{figures/spt5_figure3-antisense-heatmaps.pdf}
+    \includegraphics[width=\textwidth]{figures/presentation_figure18-antisense-heatmaps.pdf}
+\end{frame}
+
+\begin{frame}{chromatin structure in Spt5 depletion}
+    \includegraphics[width=\textwidth]{figures/presentation_figure19-mnase-metagene.pdf}
+\end{frame}
+
+\begin{frame}{chromatin structure at Spt5-depletion antisense TSSs}
+    \includegraphics[width=\textwidth]{figures/presentation_figure20-antisense-mnase-metagene.pdf}
 \end{frame}
 
 \begin{frame}
-\includegraphics[width=\textwidth]{figures/spt5_figure4-mnase-metagene.pdf}
+    TODO
 \end{frame}
 
 \begin{frame}
-\includegraphics[width=\textwidth]{figures/spt5_figure5-antisense-mnase-metagene.pdf}
+    overall summary
 \end{frame}
 
 \begin{frame}{acknowledgements}
