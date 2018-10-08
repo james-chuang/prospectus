@@ -1,7 +1,24 @@
 \documentclass[aspectratio=169]{beamer}
 \usepackage{tikz}
 \usepackage{listings}
+\usepackage{fontspec}
 \mode<presentation>
+
+\lstset{basicstyle=\ttfamily}
+\definecolor{light-gray}{gray}{0.95}
+\definecolor{blue}{HTML}{114477}
+\setbeamercolor{title}{fg=blue}
+\setbeamercolor{frametitle}{fg=blue}
+\setbeamercolor{structure}{fg=blue}
+
+\setbeamertemplate{itemize items}[circle]
+
+\setsansfont{Roboto-Regular}[
+    Path=fonts/,
+    BoldFont=Roboto-Bold,
+    ItalicFont=Roboto-Italic,
+    BoldItalicFont=Roboto-BoldItalic
+]
 
 \title{digital plumbing}
 
@@ -10,7 +27,7 @@
     \titlepage
 \end{frame}
 
-\begin{frame}{who am I?}
+\begin{frame}{about me}
     \begin{description}[align=right]
         \setlength{\itemsep}{1cm}
         \item[undergrad:]
@@ -30,11 +47,16 @@
 \includegraphics[width=\textwidth]{figures/presentation_figure1-timeline.pdf}
 \end{frame}
 
-\begin{frame}{purpose of this meeting}
-\end{frame}
-
-\begin{frame}{I develop analysis pipelines for genomics data}
-\end{frame}
+{
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture, overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth, height=\paperheight]{figures/montage.png}
+            };
+        \end{tikzpicture}
+    \end{frame}
+}
 
 \begin{frame}{genomics data and its analysis are complex}
 \includegraphics[width=\textwidth]{figures/rulegraph.pdf}
@@ -42,9 +64,9 @@
 
 \begin{frame}[fragile]{Snakemake for reproducible data analyses}
     \begin{itemize}
-        \item a Python-based workflow management system developed by Johannes Köster
+        \item a Python-based workflow management system by Johannes Köster
         \item \textbf{rules} describe how to create \textbf{output files} from \textbf{input files}:
-            \begin{lstlisting}
+            \begin{lstlisting}[backgroundcolor = \color{light-gray}]
             rule foobar:
                 input: "input.txt"
                 output: "output.txt"
@@ -68,7 +90,7 @@
 \end{frame}
 
 \begin{frame}{Spt6 project collaborators}
-    \begin{description}[align=right, noitemsep]
+    \begin{description}[Magdalena Murawskaw]
         \item [Steve Doris] optimized TSS-seq and ChIP-nexus protocols
         \item [] generated TSS-seq and ChIP-nexus libraries
         \item [Olga Viktorovskaya] generated MNase-seq libraries
@@ -171,12 +193,21 @@
 \end{frame}
 
 \begin{frame}{summary of Spt6 results}
-    \begin{itemize}
-        \item TSS-seq identifies over 8000 intragenic or antisense TSSs in \textit{spt6-1004}
-        \item TFIIB is spread across the genome in \textit{spt6-1004}
-        \item chromatin structure is severly disrupted in \textit{spt6-1004}
-        \item \textit{spt6-1004} intragenic promoter share some features with genic promoters
-    \end{itemize}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            in \textit{spt6-1004}:
+            \begin{itemize}
+                \item TSS-seq identifies over 8000 intragenic or antisense TSSs
+                \item TFIIB is spread across the genome
+                \item new initiation contributes to most intragenic transcripts
+                \item chromatin structure is severely disrupted
+                \item intragenic promoters share some features with genic promoters
+                \item genic promoters are downregulated, perhaps due to competition for initiation factors
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{software written}
@@ -196,9 +227,9 @@
             \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
-            \hspace{2.7em} \includegraphics[height=1.5em]{figures/github-small.pdf} \href{https://github.com/winston-lab}{github.com/winston-lab} \\
+            \hspace{2.7em} \includegraphics[height=1.4em]{figures/github-small.pdf} \href{https://github.com/winston-lab}{github.com/winston-lab} \\
             \vspace{1em}
-            \includegraphics[height=1.5em]{figures/zenodo-black.pdf} \href{https://doi.org/10.5281/zenodo.1409826}{DOI: 10.5281/zenodo.1409826}
+            \includegraphics[height=1.4em]{figures/zenodo-black.pdf} \href{https://doi.org/10.5281/zenodo.1409826}{DOI: 10.5281/zenodo.1409826}
         \end{column}
     \end{columns}
     \begin{itemize}

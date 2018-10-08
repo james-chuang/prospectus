@@ -67,7 +67,7 @@ main = function(fig_width, fig_height, pdf_out){
         theme(text = element_text(size=20),
               axis.title = element_blank(),
               axis.text.y = element_blank(),
-              axis.text.x = element_text(color="black", size=24,
+              axis.text.x = element_text(color="black", size=30,
                                          face="bold"),
               panel.grid.major.y = element_blank(),
               panel.grid.minor.y = element_blank())

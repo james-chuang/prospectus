@@ -7,4 +7,8 @@ presentation*
 !presentation.tex
 .snakemake/
 Rplots.pdf
-figures/
+figures/*
+!figures/montage.png
+!figures/zenodo-black.pdf
+!figures/github-small.pdf
+!figures/rulegraph.pdf
