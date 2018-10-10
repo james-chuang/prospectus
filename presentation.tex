@@ -1,5 +1,6 @@
 \documentclass[aspectratio=169]{beamer}
 \usepackage{tikz}
+\usetikzlibrary{shapes}
 \usepackage{listings}
 \usepackage{fontspec}
 \mode<presentation>
@@ -7,6 +8,7 @@
 \lstset{basicstyle=\ttfamily}
 \definecolor{light-gray}{gray}{0.95}
 \definecolor{blue}{HTML}{114477}
+\definecolor{green}{HTML}{beaed4}
 \setbeamercolor{title}{fg=blue}
 \setbeamercolor{frametitle}{fg=blue}
 \setbeamercolor{structure}{fg=blue}
@@ -20,7 +22,9 @@
     BoldItalicFont=Roboto-BoldItalic
 ]
 
-\title{digital plumbing}
+\title{reproducible genomics analysis pipelines\\applied to the study of transcription}
+\author{James Chuang}
+\date{October 11, 2018}
 
 \begin{document}
 \begin{frame}
@@ -77,16 +81,29 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{projects I'm working on}
+\begin{frame}{projects}
     \begin{itemize}[]
         \setlength{\itemsep}{1cm}
         \item transcription elongation factor \textbf{Spt6}
-        \item intragenic transcription in stress
+        \item functions of intragenic transcription in stress
         \item transcription elongation factor \textbf{Spt5}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{intro to Spt6}
+\begin{frame}{Spt6}
+    How does a eukaryotic cell specify where transcription initiation occurs?
+    \begin{itemize}
+        \item transcription \textit{elongation} factors like \textbf{Spt6} contribute
+    \end{itemize}
+
+    \begin{description}
+        \item [\textbf{Spt6}:] a histone chaperone required for H3K36 methylation
+        \item [\textbf{\textit{spt6-1004}}:] an \textit{S. cerevisiae} Spt6 mutant producing \textbf{intragenic transcripts}
+    \end{description}
+    \vspace{1em}
+
+    \centering
+    \includegraphics[width=0.65\textwidth]{figures/figure0_txn-diagram.pdf}
 \end{frame}
 
 \begin{frame}{Spt6 project collaborators}
@@ -97,10 +114,6 @@
         \item [Magdalenda Murawska] generated NET-seq libraries
         \item [Dan Spatt] wetlab experiments for publication
     \end{description}
-\end{frame}
-
-\begin{frame}{WASSDA}
-\includegraphics[width=\textwidth]{figures/figure0_txn-diagram.pdf}
 \end{frame}
 
 % \begin{frame}
@@ -193,21 +206,15 @@
 \end{frame}
 
 \begin{frame}{summary of Spt6 results}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            in \textit{spt6-1004}:
-            \begin{itemize}
-                \item TSS-seq identifies over 8000 intragenic or antisense TSSs
-                \item TFIIB is spread across the genome
-                \item new initiation contributes to most intragenic transcripts
-                \item chromatin structure is severely disrupted
-                \item intragenic promoters share some features with genic promoters
-                \item genic promoters are downregulated, perhaps due to competition for initiation factors
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-        \end{column}
-    \end{columns}
+    in \textit{spt6-1004}:
+    \begin{itemize}
+        \item TSS-seq identifies over 8000 intragenic or antisense TSSs
+        \item TFIIB is spread across the genome
+        \item new initiation contributes to most intragenic transcripts
+        \item chromatin structure is severely disrupted
+        \item intragenic promoters share some features with genic promoters
+        \item genic promoters are downregulated, perhaps due to competition for initiation factors
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{software written}
@@ -242,16 +249,30 @@
 \end{frame}
 
 \begin{frame}{intragenic transcription in wild-type cells}
+    \centering
+    \includegraphics[height=0.3\textheight]{figures/figure0_txn-diagram.pdf}
+    \begin{itemize}
+        \item in wild-type cells, intragenic transcription is limited\\but could have biological functions
+        \item possible mechanisms of regulation:
+            \begin{itemize}
+                \item via production of truncated protein
+                \item via transcription-associated processes
+                \item via the intragenic transcript
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{collaborators}
+\begin{frame}{how to assign functions to intragenic transcription}
     \begin{description}[align=right, noitemsep]
         \item [Steve Doris] generated TSS-seq and ChIP-nexus libraries
         \item [Dan Spatt] polyribosome fractionation
     \end{description}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{dataset 1}
+    to begin to link phenotypes to intragenic transcription
+    \vspace{2em}
+
     TFIIB ChIP-nexus in three stress conditions:
     \begin{itemize}
         \item oxidative stress (diamide)
@@ -264,7 +285,10 @@
 \includegraphics[width=\textwidth]{figures/presentation_figure15-tfiib-heatmaps.pdf}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{dataset 2}
+    to identify evolutionarily conserved intragenic transcription
+    \vspace{2em}
+
     oxidative stress TSS-seq in three \textit{Saccharomyces} species:
     \begin{itemize}
         \item \textit{S. cerevisiae}
@@ -273,7 +297,10 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{dataset 3}
+    to identify intragenic transcripts that are translated
+    \vspace{2em}
+
     \begin{enumerate}
         \item induce oxidative stress
         \item get RNA associated with the polyribosome fraction
@@ -281,29 +308,71 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}
-    TODO
+\begin{frame}{future work}
+    \begin{itemize}
+        \item identify candidate loci from stress TFIIB ChIP-nexus data
+            \begin{itemize}
+                \item manual verification of upregulated TFIIB peaks
+                \item motif finding at intragenic TFIIB peaks
+            \end{itemize}
+        \item identify conserved intragenic transcripts\\from oxidative TSS-seq in \textit{Saccharomyces} species
+            \begin{itemize}
+                \item align \textit{S. cerevisiae} genome sequence\\to \textit{S. mikatae} and \textit{S. bayanus} var. \textit{uvarum} genomes
+            \end{itemize}
+        \item identify potentially translated intragenic transcripts\\from oxidative stress polyribosome-associated TSS-seq data
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Spt5}
-    \begin{description}[align=right, noitemsep]
-        \item [Ameet Shetty] generated TSS-seq, MNase-seq, NET-seq, RNA-seq, and ChIP-seq libraries
+\begin{frame}{the \textbf{Spt5} transcription elongation factor:}
+    \begin{itemize}
+        \item forms a complex with Spt4 known as DSIF in humans
+        \item recruits many factors to the elongation complex:
+            \begin{itemize}
+                \item mRNA capping factors
+                \item transcription elongation factors (e.g. PAF complex)
+                \item mRNA 3' end processing factors
+                \item histone modification factors (e.g. Rpd3S HDAC)
+            \end{itemize}
+    \end{itemize}
+
+    \begin{description}[align=left]
+        \item [Ameet Shetty] generated  NET-, RNA-, ChIP-, TSS-, and MNase-seq libraries
     \end{description}
+
+    \centering
+    \begin{tikzpicture}
+        \draw [line width=2pt] (1,1) -- (14,1);
+        \draw [->, line width=3pt] (2,1) -- (2,1.5) -- (4, 1.5);
+        \draw [line width=2pt] (3,2.0) -- (3, 1.65);
+        \draw [line width=2pt] (2.85, 1.65) -- (3.15, 1.65);
+        \node at (3, 2.2) {\large \textbf{thiamine}};
+        \draw [fill=green, line width=1pt] (4.5, 0.7) rectangle (11, 1.3);
+        \node at (7.75, 1) {\large \textbf{spt5}};
+        \draw [->, line width=2pt] (6, 1.4) to [out=90, in=180] (8,2.2);
+        \draw [fill=green, line width=1pt] (9.2, 2.2) circle [x radius=1cm, y radius=0.5cm];
+        \node at (9.2, 2.2) {\large \textbf{Spt5}};
+        \draw [->, line width=2pt] (10.4, 2.2) to (12, 2.2);
+        \node at (10.7, 2.8) {\large \textbf{auxin}};
+        \draw [, line width=2pt] (10.7, 2.6) to [out=270, in=180] (11.7,2.2);
+        \node at (12.5, 2.2) {\scalebox{2.5}{$\varnothing$}};
+    \end{tikzpicture}
+
 \end{frame}
 
 \begin{frame}{RNAPII accumulates at the 5' end of genes in Spt5 depletion}
     \includegraphics[width=\textwidth]{figures/presentation_figure16-netseq-metagene.pdf}
 \end{frame}
 
-\begin{frame}{antisense transcripts appear at the 5' ends of genes in Spt5 depletion}
-    \includegraphics[width=\textwidth]{figures/presentation_figure17-rnaseq-heatmaps.pdf}
+\begin{frame}{antisense transcripts appear in Spt5 depletion}
+    \centering
+    \includegraphics[width=12cm]{figures/presentation_figure17-rnaseq-heatmaps.pdf}
 \end{frame}
 
 \begin{frame}
     two more assays:
     \begin{itemize}
-        \item TSS-seq
-        \item MNase-seq
+        \item \textbf{TSS-seq} to determine precise position of antisense starts
+        \item \textbf{MNase-seq} to see how chromatin changes
     \end{itemize}
 \end{frame}
 
@@ -319,12 +388,27 @@
     \includegraphics[width=\textwidth]{figures/presentation_figure20-antisense-mnase-metagene.pdf}
 \end{frame}
 
-\begin{frame}
-    TODO
+\begin{frame}{future work}
+    \begin{itemize}
+        \setlength{\itemsep}{1em}
+        \item \textit{ab initio} transcript annotation from NET- and RNA-seq data\\for quantification of Spt5-depletion antisense transcripts
+        \item \textit{de novo} motif finding for motifs at Spt5-depletion antisense TSSs
+        \item development of ChIP-seq analysis pipeline\\for re-analysis of Spt5-depletion ChIP-seq data
+        \item clustering of Spt5-depletion antisense TSSs by MNase-seq data
+    \end{itemize}
 \end{frame}
 
-\begin{frame}
-    overall summary
+\begin{frame}{summary}
+    \begin{itemize}
+        \setlength{\itemsep}{1em}
+        \item developed reproducible data analysis pipelines for genomics data
+        \item applied these pipelines to three projects:
+            \begin{itemize}
+                \item Spt6 and intragenic transcription
+                \item functions of intragenic transcription in stress
+                \item transcription elongation factor Spt5
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{acknowledgements}
